@@ -395,7 +395,7 @@ if is_streamlit_context():
     with tab2:
 
         # st.subheader("📧 Изменение email")
-        st.subheader("📧 Изменение email")
+        st.subheader("Изменение email")
 
         st.info("Вы можете изменить или добавить email адрес для вашего профиля.")
 
