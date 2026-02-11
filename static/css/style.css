@@ -528,7 +528,7 @@ div[data-testid="stDataFrame"] [role="columnheader"] {
 
 
 [data-testid="stSidebar"] > div:first-child {
-    background-color: #12385C !important;
+    background-color: gold !important;
     overflow-y: scroll !important;          /* ← force vertical scroll */
     overflow-x: hidden !important;
     scrollbar-width: thin !important;       /* Firefox: тонкий скроллбар */
