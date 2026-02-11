@@ -532,7 +532,7 @@ div[data-testid="stDataFrame"] [role="columnheader"] {
     overflow-y: scroll !important;          /* ← force vertical scroll */
     overflow-x: hidden !important;
     scrollbar-width: thin !important;       /* Firefox: тонкий скроллбар */
-    scrollbar-color: #4a6a8c #1e3a5f !important;  /* Firefox: цвета */
+    scrollbar-color: #4a6a8c red !important;  /* Firefox: цвета */
 }
 
 /* 3. Самый важный — внутренний скроллируемый контент */
