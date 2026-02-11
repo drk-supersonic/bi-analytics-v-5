@@ -105,210 +105,210 @@ if is_streamlit_context():
     )
 
     # Custom CSS для фона страницы
-    st.markdown(
-        """
-        <style>
-        /* Фон приложения - основной цвет */
-        .stApp {
-            background-color: #12385C !important;
-        }
-        
-        /* Стилизация хедера Streamlit - фон цвета основного фона */
-        header[data-testid="stHeader"],
-        .stHeader,
-        header,
-        div[data-testid="stHeader"],
-        .stHeader > div,
-        header > div,
-        div[data-testid="stHeader"] > div {
-            background-color: #12385C !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-        }
-        
-        /* Текст в хедере */
-        header[data-testid="stHeader"] *,
-        .stHeader *,
-        header *,
-        div[data-testid="stHeader"] * {
-            color: #ffffff !important;
-        }
-        
-        /* Основной контент - белый текст на темном фоне */
-        .main .block-container,
-        .main .element-container,
-        .main h1, .main h2, .main h3, .main h4, .main h5, .main h6,
-        .main p, .main span, .main div,
-        .main label {
-            color: #ffffff !important;
-        }
-        
-        /* Контейнеры с контентом - темный фон */
-        .main .block-container {
-            background-color: rgba(18, 56, 92, 0.8) !important;
-        }
-        
-        /* Стилизация таблиц (dataframes) - фон цвета основного фона с белым текстом и границами */
-        /* Базовые контейнеры */
-        .stDataFrame,
-        div[data-testid="stDataFrame"],
-        .dataframe {
-            background-color: #12385C !important;
-        }
-        
-        /* Вложенные div элементы */
-        .stDataFrame > div,
-        div[data-testid="stDataFrame"] > div,
-        .dataframe > div,
-        .stDataFrame div,
-        div[data-testid="stDataFrame"] div,
-        .dataframe div {
-            background-color: #12385C !important;
-        }
-        
-        /* Таблицы - белый текст и белые границы */
-        .stDataFrame table,
-        div[data-testid="stDataFrame"] table,
-        .dataframe table {
-            background-color: #12385C !important;
-            border-collapse: collapse !important;
-            border: 1px solid #ffffff !important;
-            color: #ffffff !important;
-        }
-        
-        /* Заголовки таблиц */
-        .stDataFrame thead,
-        div[data-testid="stDataFrame"] thead,
-        .dataframe thead {
-            background-color: rgba(18, 56, 92, 0.95) !important;
-        }
-        
-        /* Тела таблиц */
-        .stDataFrame tbody,
-        div[data-testid="stDataFrame"] tbody,
-        .dataframe tbody {
-            background-color: #12385C !important;
-        }
-        
-        /* Строки таблиц */
-        .stDataFrame tr,
-        div[data-testid="stDataFrame"] tr,
-        .dataframe tr {
-            background-color: #12385C !important;
-            border-bottom: 1px solid #ffffff !important;
-        }
-        
-        /* Заголовки ячеек - белый текст, белые границы */
-        .stDataFrame th,
-        div[data-testid="stDataFrame"] th,
-        .dataframe th {
-            background-color: rgba(18, 56, 92, 0.95) !important;
-            color: #ffffff !important;
-            border: 1px solid #ffffff !important;
-            border-right: 1px solid #ffffff !important;
-            border-bottom: 1px solid #ffffff !important;
-            border-left: 1px solid #ffffff !important;
-            border-top: 1px solid #ffffff !important;
-            padding: 8px !important;
-            font-weight: bold !important;
-        }
-        
-        /* Ячейки таблиц - белый текст, белые границы */
-        .stDataFrame td,
-        div[data-testid="stDataFrame"] td,
-        .dataframe td {
-            background-color: rgba(18, 56, 92, 0.85) !important;
-            color: #ffffff !important;
-            border: 1px solid #ffffff !important;
-            border-right: 1px solid #ffffff !important;
-            border-bottom: 1px solid #ffffff !important;
-            border-left: 1px solid #ffffff !important;
-            border-top: 1px solid #ffffff !important;
-            padding: 8px !important;
-        }
-        
-        /* Четные строки */
-        .stDataFrame tbody tr:nth-child(even),
-        div[data-testid="stDataFrame"] tbody tr:nth-child(even),
-        .dataframe tbody tr:nth-child(even) {
-            background-color: rgba(18, 56, 92, 0.7) !important;
-        }
-        
-        .stDataFrame tbody tr:nth-child(even) td,
-        div[data-testid="stDataFrame"] tbody tr:nth-child(even) td,
-        .dataframe tbody tr:nth-child(even) td {
-            background-color: rgba(18, 56, 92, 0.7) !important;
-            color: #ffffff !important;
-            border: 1px solid #ffffff !important;
-            border-right: 1px solid #ffffff !important;
-            border-bottom: 1px solid #ffffff !important;
-            border-left: 1px solid #ffffff !important;
-            border-top: 1px solid #ffffff !important;
-        }
-        
-        /* При наведении */
-        .stDataFrame tbody tr:hover,
-        div[data-testid="stDataFrame"] tbody tr:hover,
-        .dataframe tbody tr:hover {
-            background-color: rgba(18, 56, 92, 1) !important;
-        }
-        
-        .stDataFrame tbody tr:hover td,
-        div[data-testid="stDataFrame"] tbody tr:hover td,
-        .dataframe tbody tr:hover td {
-            background-color: rgba(18, 56, 92, 1) !important;
-            color: #ffffff !important;
-            border: 1px solid #ffffff !important;
-            border-right: 1px solid #ffffff !important;
-            border-bottom: 1px solid #ffffff !important;
-            border-left: 1px solid #ffffff !important;
-            border-top: 1px solid #ffffff !important;
-        }
-        
-        /* Текст в таблицах - принудительно белый для всех элементов */
-        .stDataFrame,
-        div[data-testid="stDataFrame"],
-        .dataframe,
-        .stDataFrame *,
-        div[data-testid="stDataFrame"] *,
-        .dataframe * {
-            color: #ffffff !important;
-        }
-        
-        /* Специфичные селекторы для текста в ячейках - переопределяем все возможные стили Streamlit */
-        .stDataFrame td,
-        .stDataFrame th,
-        div[data-testid="stDataFrame"] td,
-        div[data-testid="stDataFrame"] th {
-            color: #ffffff !important;
-        }
-        
-        /* Вложенные элементы в ячейках - белый текст */
-        .stDataFrame td *,
-        .stDataFrame th *,
-        div[data-testid="stDataFrame"] td *,
-        div[data-testid="stDataFrame"] th *,
-        .stDataFrame td span,
-        .stDataFrame th span,
-        div[data-testid="stDataFrame"] td span,
-        div[data-testid="stDataFrame"] th span,
-        .stDataFrame td div,
-        .stDataFrame th div,
-        div[data-testid="stDataFrame"] td div,
-        div[data-testid="stDataFrame"] th div,
-        .stDataFrame td p,
-        .stDataFrame th p,
-        div[data-testid="stDataFrame"] td p,
-        div[data-testid="stDataFrame"] th p,
-        .stDataFrame td strong,
-        .stDataFrame th strong,
-        div[data-testid="stDataFrame"] td strong,
-        div[data-testid="stDataFrame"] th strong {
-            color: #ffffff !important;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
+    # st.markdown(
+    #     """
+    #     <style>
+    #     /* Фон приложения - основной цвет */
+    #     .stApp {
+    #         background-color: #12385C !important;
+    #     }
+    #
+    #     /* Стилизация хедера Streamlit - фон цвета основного фона */
+    #     header[data-testid="stHeader"],
+    #     .stHeader,
+    #     header,
+    #     div[data-testid="stHeader"],
+    #     .stHeader > div,
+    #     header > div,
+    #     div[data-testid="stHeader"] > div {
+    #         background-color: #12385C !important;
+    #         border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    #     }
+    #
+    #     /* Текст в хедере */
+    #     header[data-testid="stHeader"] *,
+    #     .stHeader *,
+    #     header *,
+    #     div[data-testid="stHeader"] * {
+    #         color: #ffffff !important;
+    #     }
+    #
+    #     /* Основной контент - белый текст на темном фоне */
+    #     .main .block-container,
+    #     .main .element-container,
+    #     .main h1, .main h2, .main h3, .main h4, .main h5, .main h6,
+    #     .main p, .main span, .main div,
+    #     .main label {
+    #         color: #ffffff !important;
+    #     }
+    #
+    #     /* Контейнеры с контентом - темный фон */
+    #     .main .block-container {
+    #         background-color: rgba(18, 56, 92, 0.8) !important;
+    #     }
+    #
+    #     /* Стилизация таблиц (dataframes) - фон цвета основного фона с белым текстом и границами */
+    #     /* Базовые контейнеры */
+    #     .stDataFrame,
+    #     div[data-testid="stDataFrame"],
+    #     .dataframe {
+    #         background-color: #12385C !important;
+    #     }
+    #
+    #     /* Вложенные div элементы */
+    #     .stDataFrame > div,
+    #     div[data-testid="stDataFrame"] > div,
+    #     .dataframe > div,
+    #     .stDataFrame div,
+    #     div[data-testid="stDataFrame"] div,
+    #     .dataframe div {
+    #         background-color: #12385C !important;
+    #     }
+    #
+    #     /* Таблицы - белый текст и белые границы */
+    #     .stDataFrame table,
+    #     div[data-testid="stDataFrame"] table,
+    #     .dataframe table {
+    #         background-color: #12385C !important;
+    #         border-collapse: collapse !important;
+    #         border: 1px solid #ffffff !important;
+    #         color: #ffffff !important;
+    #     }
+    #
+    #     /* Заголовки таблиц */
+    #     .stDataFrame thead,
+    #     div[data-testid="stDataFrame"] thead,
+    #     .dataframe thead {
+    #         background-color: rgba(18, 56, 92, 0.95) !important;
+    #     }
+    #
+    #     /* Тела таблиц */
+    #     .stDataFrame tbody,
+    #     div[data-testid="stDataFrame"] tbody,
+    #     .dataframe tbody {
+    #         background-color: #12385C !important;
+    #     }
+    #
+    #     /* Строки таблиц */
+    #     .stDataFrame tr,
+    #     div[data-testid="stDataFrame"] tr,
+    #     .dataframe tr {
+    #         background-color: #12385C !important;
+    #         border-bottom: 1px solid #ffffff !important;
+    #     }
+    #
+    #     /* Заголовки ячеек - белый текст, белые границы */
+    #     .stDataFrame th,
+    #     div[data-testid="stDataFrame"] th,
+    #     .dataframe th {
+    #         background-color: rgba(18, 56, 92, 0.95) !important;
+    #         color: #ffffff !important;
+    #         border: 1px solid #ffffff !important;
+    #         border-right: 1px solid #ffffff !important;
+    #         border-bottom: 1px solid #ffffff !important;
+    #         border-left: 1px solid #ffffff !important;
+    #         border-top: 1px solid #ffffff !important;
+    #         padding: 8px !important;
+    #         font-weight: bold !important;
+    #     }
+    #
+    #     /* Ячейки таблиц - белый текст, белые границы */
+    #     .stDataFrame td,
+    #     div[data-testid="stDataFrame"] td,
+    #     .dataframe td {
+    #         background-color: rgba(18, 56, 92, 0.85) !important;
+    #         color: #ffffff !important;
+    #         border: 1px solid #ffffff !important;
+    #         border-right: 1px solid #ffffff !important;
+    #         border-bottom: 1px solid #ffffff !important;
+    #         border-left: 1px solid #ffffff !important;
+    #         border-top: 1px solid #ffffff !important;
+    #         padding: 8px !important;
+    #     }
+    #
+    #     /* Четные строки */
+    #     .stDataFrame tbody tr:nth-child(even),
+    #     div[data-testid="stDataFrame"] tbody tr:nth-child(even),
+    #     .dataframe tbody tr:nth-child(even) {
+    #         background-color: rgba(18, 56, 92, 0.7) !important;
+    #     }
+    #
+    #     .stDataFrame tbody tr:nth-child(even) td,
+    #     div[data-testid="stDataFrame"] tbody tr:nth-child(even) td,
+    #     .dataframe tbody tr:nth-child(even) td {
+    #         background-color: rgba(18, 56, 92, 0.7) !important;
+    #         color: #ffffff !important;
+    #         border: 1px solid #ffffff !important;
+    #         border-right: 1px solid #ffffff !important;
+    #         border-bottom: 1px solid #ffffff !important;
+    #         border-left: 1px solid #ffffff !important;
+    #         border-top: 1px solid #ffffff !important;
+    #     }
+    #
+    #     /* При наведении */
+    #     .stDataFrame tbody tr:hover,
+    #     div[data-testid="stDataFrame"] tbody tr:hover,
+    #     .dataframe tbody tr:hover {
+    #         background-color: rgba(18, 56, 92, 1) !important;
+    #     }
+    #
+    #     .stDataFrame tbody tr:hover td,
+    #     div[data-testid="stDataFrame"] tbody tr:hover td,
+    #     .dataframe tbody tr:hover td {
+    #         background-color: rgba(18, 56, 92, 1) !important;
+    #         color: #ffffff !important;
+    #         border: 1px solid #ffffff !important;
+    #         border-right: 1px solid #ffffff !important;
+    #         border-bottom: 1px solid #ffffff !important;
+    #         border-left: 1px solid #ffffff !important;
+    #         border-top: 1px solid #ffffff !important;
+    #     }
+    #
+    #     /* Текст в таблицах - принудительно белый для всех элементов */
+    #     .stDataFrame,
+    #     div[data-testid="stDataFrame"],
+    #     .dataframe,
+    #     .stDataFrame *,
+    #     div[data-testid="stDataFrame"] *,
+    #     .dataframe * {
+    #         color: #ffffff !important;
+    #     }
+    #
+    #     /* Специфичные селекторы для текста в ячейках - переопределяем все возможные стили Streamlit */
+    #     .stDataFrame td,
+    #     .stDataFrame th,
+    #     div[data-testid="stDataFrame"] td,
+    #     div[data-testid="stDataFrame"] th {
+    #         color: #ffffff !important;
+    #     }
+    #
+    #     /* Вложенные элементы в ячейках - белый текст */
+    #     .stDataFrame td *,
+    #     .stDataFrame th *,
+    #     div[data-testid="stDataFrame"] td *,
+    #     div[data-testid="stDataFrame"] th *,
+    #     .stDataFrame td span,
+    #     .stDataFrame th span,
+    #     div[data-testid="stDataFrame"] td span,
+    #     div[data-testid="stDataFrame"] th span,
+    #     .stDataFrame td div,
+    #     .stDataFrame th div,
+    #     div[data-testid="stDataFrame"] td div,
+    #     div[data-testid="stDataFrame"] th div,
+    #     .stDataFrame td p,
+    #     .stDataFrame th p,
+    #     div[data-testid="stDataFrame"] td p,
+    #     div[data-testid="stDataFrame"] th p,
+    #     .stDataFrame td strong,
+    #     .stDataFrame th strong,
+    #     div[data-testid="stDataFrame"] td strong,
+    #     div[data-testid="stDataFrame"] th strong {
+    #         color: #ffffff !important;
+    #     }
+    #     </style>
+    #     """,
+    #     unsafe_allow_html=True,
+    # )
 
     # Проверка авторизации
     require_auth()
@@ -370,32 +370,32 @@ if user is not None:
                     // Находим активную панель вкладки (содержимое, не заголовок)
                     const activePanel = document.querySelector('[role="tabpanel"][aria-hidden="false"]');
                     if (!activePanel) return;
-                    
+
                     // Находим первый значимый элемент контента внутри панели
                     // Пропускаем заголовки вкладок и ищем реальное содержимое
                     const contentElements = activePanel.querySelectorAll('div[data-testid="stVerticalBlock"] > div, h1, h2, h3, .stSubheader');
                     let targetElement = null;
-                    
+
                     // Ищем первый элемент, который не является частью заголовка вкладки
                     for (let i = 0; i < contentElements.length; i++) {
                         const elem = contentElements[i];
                         // Проверяем, что элемент не находится в заголовке вкладки
-                        if (!elem.closest('[data-baseweb="tab-list"]') && 
+                        if (!elem.closest('[data-baseweb="tab-list"]') &&
                             !elem.closest('[data-baseweb="tab"]')) {
                             targetElement = elem;
                             break;
                         }
                     }
-                    
+
                     // Если не нашли, используем саму панель, но с отступом
                     if (!targetElement) {
                         targetElement = activePanel;
                     }
-                    
+
                     // Вычисляем позицию с учетом отступа от верха
                     const elementPosition = targetElement.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - 100; // 100px отступ от верха
-                    
+
                     // Плавный скролл
                     window.scrollTo({
                         top: offsetPosition,
@@ -403,29 +403,29 @@ if user is not None:
                     });
                 }, 200);
             }
-            
+
             // Выполняем скролл при загрузке
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', scrollToActiveTabContent);
             } else {
                 scrollToActiveTabContent();
             }
-            
+
             // Отслеживаем клики по вкладкам
             document.addEventListener('click', function(e) {
                 if (e.target.closest('[data-baseweb="tab"]')) {
                     scrollToActiveTabContent();
                 }
             });
-            
+
             // Отслеживаем изменения активной вкладки через MutationObserver
             const observer = new MutationObserver(function(mutations) {
                 mutations.forEach(function(mutation) {
                     if (mutation.type === 'attributes') {
                         // Проверяем изменения aria-selected или aria-hidden
-                        if ((mutation.attributeName === 'aria-selected' && 
+                        if ((mutation.attributeName === 'aria-selected' &&
                              mutation.target.getAttribute('aria-selected') === 'true') ||
-                            (mutation.attributeName === 'aria-hidden' && 
+                            (mutation.attributeName === 'aria-hidden' &&
                              mutation.target.getAttribute('aria-hidden') === 'false' &&
                              mutation.target.getAttribute('role') === 'tabpanel')) {
                             scrollToActiveTabContent();
@@ -433,23 +433,23 @@ if user is not None:
                     }
                 });
             });
-            
+
             // Наблюдаем за вкладками и панелями
             setTimeout(function() {
                 const tabs = document.querySelectorAll('[data-baseweb="tab"]');
                 const panels = document.querySelectorAll('[role="tabpanel"]');
-                
+
                 tabs.forEach(tab => {
-                    observer.observe(tab, { 
-                        attributes: true, 
-                        attributeFilter: ['aria-selected'] 
+                    observer.observe(tab, {
+                        attributes: true,
+                        attributeFilter: ['aria-selected']
                     });
                 });
-                
+
                 panels.forEach(panel => {
-                    observer.observe(panel, { 
-                        attributes: true, 
-                        attributeFilter: ['aria-hidden'] 
+                    observer.observe(panel, {
+                        attributes: true,
+                        attributeFilter: ['aria-hidden']
                     });
                 });
             }, 500);
