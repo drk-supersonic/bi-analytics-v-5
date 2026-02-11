@@ -28,6 +28,22 @@ from data_loader import (
     clear_all_data_for_removed_files,
 )
 
+# ┌──────────────────────────────────────────────────────────────────────────┐ #
+# │ ⊗ CSS CONNECT ¤ Start                                                    │ #
+# └──────────────────────────────────────────────────────────────────────────┘ #
+
+def load_custom_css():
+    css_path = Path(__file__).parent / "static" / "css" / "style.css"
+    if css_path.exists():
+        with open(css_path, encoding="utf-8") as f:
+            css_content = f.read()
+        st.markdown(f"<style>{css_content}</style>", unsafe_allow_html=True)
+    else:
+        st.warning("CSS файл не найден: " + str(css_path))
+
+# ┌──────────────────────────────────────────────────────────────────────────┐ #
+# │ ⊗ CSS CONNECT ¤ End                                                      │ #
+# └──────────────────────────────────────────────────────────────────────────┘ #
 
 # Инициализация базы данных (все таблицы создаются в db.init_all_tables)
 init_db()
@@ -45,223 +61,229 @@ st.set_page_config(
 # Дополнительная попытка скрыть через st.navigation (может быть недоступно в версии 1.52.1)
 # Удаляем этот вызов, так как он может вызывать ошибки
 
-# Загрузка CSS стилей из внешнего файла (включая шрифты)
-# Должна быть САМОЙ ПЕРВОЙ, до любого st-вызова
-# load_all_styles()
+# ┌──────────────────────────────────────────────────────────────────────────┐ #
+# │ ⊗ CSS CONNECT ¤ Start                                                    │ #
+# └──────────────────────────────────────────────────────────────────────────┘ #
+
+load_custom_css()
+
+# ┌──────────────────────────────────────────────────────────────────────────┐ #
+# │ ⊗ CSS CONNECT ¤ End                                                      │ #
+# └──────────────────────────────────────────────────────────────────────────┘ #
 
 # Custom CSS for better styling (dark theme)
-st.markdown(
-    """
-    <style>
-    .main-header {
-        font-size: 2.5rem;
-        font-weight: bold;
-        color: #1f77b4;
-        margin-bottom: 1rem;
-    }
-    .metric-card {
-        background-color: #262730;
-        padding: 1rem;
-        border-radius: 0.5rem;
-        margin: 0.5rem 0;
-    }
-    /* Фон основной области — как у меню (sidebar) */
-    .stApp {
-        background-color: #12385C !important;
-    }
-    /* Контейнер контента — тот же тон */
-    .main .block-container,
-    .main .element-container,
-    .main h1, .main h2, .main h3, .main h4, .main h5, .main h6,
-    .main p, .main span, .main label {
-        color: #ffffff !important;
-    }
-    .main .block-container {
-        background-color: rgba(18, 56, 92, 0.8) !important;
-    }
-    /* Хедер — такой же цвет, как фон */
-    header[data-testid="stHeader"],
-    [data-testid="stHeader"],
-    .stHeader,
-    div[data-testid="stHeader"],
-    .stHeader > div,
-    header > div,
-    div[data-testid="stHeader"] > div {
-        background-color: #12385C !important;
-        border-bottom: none !important;
-    }
-    header[data-testid="stHeader"] *,
-    [data-testid="stHeader"] *,
-    .stHeader * {
-        color: #ffffff !important;
-    }
-
-    /* Стилизация полей ввода - подсветка для видимости на темном фоне */
-    .stTextInput > div > div > input,
-    .stTextInput > div > div > input:focus,
-    input[type="text"],
-    input[type="password"],
-    input[type="email"],
-    input[type="number"],
-    textarea {
-        background-color: #2a2a3a !important;
-        color: #ffffff !important;
-        border: 1px solid #4a5568 !important;
-        border-radius: 4px !important;
-        padding: 0.5rem !important;
-    }
-    .stTextInput > div > div > input:focus,
-    input[type="text"]:focus,
-    input[type="password"]:focus,
-    input[type="email"]:focus,
-    input[type="number"]:focus,
-    textarea:focus {
-        border-color: #1f77b4 !important;
-        box-shadow: 0 0 0 2px rgba(31, 119, 180, 0.2) !important;
-        outline: none !important;
-    }
-
-    /* Стилизация кнопок - темные с окантовкой, белый текст */
-    .stButton > button {
-        background-color: #2a2a3a !important;
-        color: #ffffff !important;
-        border: 1px solid #4a5568 !important;
-        border-radius: 4px !important;
-        padding: 0.5rem 1rem !important;
-        font-weight: 500 !important;
-        transition: all 0.2s ease !important;
-    }
-    .stButton > button:hover {
-        background-color: #3a3a4a !important;
-        border-color: #5a5a6a !important;
-        color: #ffffff !important;
-    }
-    .stButton > button:focus {
-        border-color: #1f77b4 !important;
-        box-shadow: 0 0 0 2px rgba(31, 119, 180, 0.2) !important;
-        outline: none !important;
-    }
-    /* Кнопки primary - темные с более яркой окантовкой */
-    .stButton > button[kind="primary"] {
-        background-color: #1a1a2a !important;
-        color: #ffffff !important;
-        border: 1px solid #1f77b4 !important;
-    }
-    .stButton > button[kind="primary"]:hover {
-        background-color: #2a2a3a !important;
-        border-color: #2a8bc4 !important;
-        color: #ffffff !important;
-    }
-    /* Отключенные кнопки */
-    .stButton > button:disabled {
-        background-color: #1a1a2a !important;
-        color: #666666 !important;
-        border-color: #333333 !important;
-        opacity: 0.6 !important;
-    }
-    /* Стилизация selectbox */
-    .stSelectbox > div > div > select {
-        background-color: #2a2a3a !important;
-        color: #ffffff !important;
-        border: 1px solid #4a5568 !important;
-        border-radius: 4px !important;
-    }
-    .stSelectbox > div > div > select:focus {
-        border-color: #1f77b4 !important;
-        box-shadow: 0 0 0 2px rgba(31, 119, 180, 0.2) !important;
-        outline: none !important;
-    }
-    /* Стилизация checkbox */
-    .stCheckbox > label {
-        color: #ffffff !important;
-    }
-    /* Стилизация date input */
-    .stDateInput > div > div > input {
-        background-color: #2a2a3a !important;
-        color: #ffffff !important;
-        border: 1px solid #4a5568 !important;
-    }
-    /* Стилизация number input */
-    .stNumberInput > div > div > input {
-        background-color: #2a2a3a !important;
-        color: #ffffff !important;
-        border: 1px solid #4a5568 !important;
-        border-radius: 4px !important;
-    }
-    .stNumberInput > div > div > input:focus {
-        border-color: #1f77b4 !important;
-        box-shadow: 0 0 0 2px rgba(31, 119, 180, 0.2) !important;
-        outline: none !important;
-    }
-    /* Стилизация multiselect */
-    .stMultiSelect > div > div {
-        background-color: #2a2a3a !important;
-        color: #ffffff !important;
-        border: 1px solid #4a5568 !important;
-    }
-    /* Стилизация file uploader */
-    .stFileUploader > div {
-        background-color: #2a2a3a !important;
-        border: 1px solid #4a5568 !important;
-        border-radius: 4px !important;
-    }
-    /* Таблицы — фон синий #12385C, шрифт белый (переопределяем стандартный чёрный Streamlit) */
-    .main table,
-    .main table th,
-    .main table td,
-    .main table thead th,
-    .main table tbody th,
-    .main table tbody td,
-    table,
-    table th,
-    table td,
-    table thead th,
-    table tbody th,
-    table tbody td {
-        background-color: #12385C !important;
-        color: #ffffff !important;
-        border-color: rgba(255, 255, 255, 0.25) !important;
-        font-size: 14px !important;
-    }
-    .main table *,
-    table th *,
-    table td * {
-        color: #ffffff !important;
-    }
-    /* st.dataframe и st.table — контейнер и все ячейки */
-    [data-testid="stDataFrame"],
-    [data-testid="stDataFrame"] *,
-    .stDataFrame,
-    .stDataFrame *,
-    div[data-testid="stDataFrame"] [role="cell"],
-    div[data-testid="stDataFrame"] [role="columnheader"],
-    [data-testid="stDataFrame"] td,
-    [data-testid="stDataFrame"] th,
-    [data-testid="stDataFrame"] .cell,
-    [data-testid="stDataFrame"] [class*="cell"] {
-        background-color: #12385C !important;
-        color: #ffffff !important;
-        font-size: 14px !important;
-    }
-    [data-testid="stDataFrame"] span,
-    [data-testid="stDataFrame"] div,
-    .stDataFrame span,
-    .stDataFrame div {
-        color: #ffffff !important;
-    }
-    /* Таблица редактирования (st.data_editor) — видимый текст */
-    [data-testid="stDataFrame"] input,
-    [data-testid="stDataFrame"] [contenteditable="true"],
-    .stDataFrame input,
-    .stDataFrame [contenteditable="true"] {
-        color: #ffffff !important;
-        background-color: #1e3a5f !important;
-        border: 1px solid rgba(255,255,255,0.3) !important;
-    }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
+# st.markdown(
+#     """
+#     <style>
+#     .main-header {
+#         font-size: 2.5rem;
+#         font-weight: bold;
+#         color: #1f77b4;
+#         margin-bottom: 1rem;
+#     }
+#     .metric-card {
+#         background-color: #262730;
+#         padding: 1rem;
+#         border-radius: 0.5rem;
+#         margin: 0.5rem 0;
+#     }
+#     /* Фон основной области — как у меню (sidebar) */
+#     .stApp {
+#         background-color: #12385C !important;
+#     }
+#     /* Контейнер контента — тот же тон */
+#     .main .block-container,
+#     .main .element-container,
+#     .main h1, .main h2, .main h3, .main h4, .main h5, .main h6,
+#     .main p, .main span, .main label {
+#         color: #ffffff !important;
+#     }
+#     .main .block-container {
+#         background-color: rgba(18, 56, 92, 0.8) !important;
+#     }
+#     /* Хедер — такой же цвет, как фон */
+#     header[data-testid="stHeader"],
+#     [data-testid="stHeader"],
+#     .stHeader,
+#     div[data-testid="stHeader"],
+#     .stHeader > div,
+#     header > div,
+#     div[data-testid="stHeader"] > div {
+#         background-color: #12385C !important;
+#         border-bottom: none !important;
+#     }
+#     header[data-testid="stHeader"] *,
+#     [data-testid="stHeader"] *,
+#     .stHeader * {
+#         color: #ffffff !important;
+#     }
+#
+#     /* Стилизация полей ввода - подсветка для видимости на темном фоне */
+#     .stTextInput > div > div > input,
+#     .stTextInput > div > div > input:focus,
+#     input[type="text"],
+#     input[type="password"],
+#     input[type="email"],
+#     input[type="number"],
+#     textarea {
+#         background-color: #2a2a3a !important;
+#         color: #ffffff !important;
+#         border: 1px solid #4a5568 !important;
+#         border-radius: 4px !important;
+#         padding: 0.5rem !important;
+#     }
+#     .stTextInput > div > div > input:focus,
+#     input[type="text"]:focus,
+#     input[type="password"]:focus,
+#     input[type="email"]:focus,
+#     input[type="number"]:focus,
+#     textarea:focus {
+#         border-color: #1f77b4 !important;
+#         box-shadow: 0 0 0 2px rgba(31, 119, 180, 0.2) !important;
+#         outline: none !important;
+#     }
+#
+#     /* Стилизация кнопок - темные с окантовкой, белый текст */
+#     .stButton > button {
+#         background-color: #2a2a3a !important;
+#         color: #ffffff !important;
+#         border: 1px solid #4a5568 !important;
+#         border-radius: 4px !important;
+#         padding: 0.5rem 1rem !important;
+#         font-weight: 500 !important;
+#         transition: all 0.2s ease !important;
+#     }
+#     .stButton > button:hover {
+#         background-color: #3a3a4a !important;
+#         border-color: #5a5a6a !important;
+#         color: #ffffff !important;
+#     }
+#     .stButton > button:focus {
+#         border-color: #1f77b4 !important;
+#         box-shadow: 0 0 0 2px rgba(31, 119, 180, 0.2) !important;
+#         outline: none !important;
+#     }
+#     /* Кнопки primary - темные с более яркой окантовкой */
+#     .stButton > button[kind="primary"] {
+#         background-color: #1a1a2a !important;
+#         color: #ffffff !important;
+#         border: 1px solid #1f77b4 !important;
+#     }
+#     .stButton > button[kind="primary"]:hover {
+#         background-color: #2a2a3a !important;
+#         border-color: #2a8bc4 !important;
+#         color: #ffffff !important;
+#     }
+#     /* Отключенные кнопки */
+#     .stButton > button:disabled {
+#         background-color: #1a1a2a !important;
+#         color: #666666 !important;
+#         border-color: #333333 !important;
+#         opacity: 0.6 !important;
+#     }
+#     /* Стилизация selectbox */
+#     .stSelectbox > div > div > select {
+#         background-color: #2a2a3a !important;
+#         color: #ffffff !important;
+#         border: 1px solid #4a5568 !important;
+#         border-radius: 4px !important;
+#     }
+#     .stSelectbox > div > div > select:focus {
+#         border-color: #1f77b4 !important;
+#         box-shadow: 0 0 0 2px rgba(31, 119, 180, 0.2) !important;
+#         outline: none !important;
+#     }
+#     /* Стилизация checkbox */
+#     .stCheckbox > label {
+#         color: #ffffff !important;
+#     }
+#     /* Стилизация date input */
+#     .stDateInput > div > div > input {
+#         background-color: #2a2a3a !important;
+#         color: #ffffff !important;
+#         border: 1px solid #4a5568 !important;
+#     }
+#     /* Стилизация number input */
+#     .stNumberInput > div > div > input {
+#         background-color: #2a2a3a !important;
+#         color: #ffffff !important;
+#         border: 1px solid #4a5568 !important;
+#         border-radius: 4px !important;
+#     }
+#     .stNumberInput > div > div > input:focus {
+#         border-color: #1f77b4 !important;
+#         box-shadow: 0 0 0 2px rgba(31, 119, 180, 0.2) !important;
+#         outline: none !important;
+#     }
+#     /* Стилизация multiselect */
+#     .stMultiSelect > div > div {
+#         background-color: #2a2a3a !important;
+#         color: #ffffff !important;
+#         border: 1px solid #4a5568 !important;
+#     }
+#     /* Стилизация file uploader */
+#     .stFileUploader > div {
+#         background-color: #2a2a3a !important;
+#         border: 1px solid #4a5568 !important;
+#         border-radius: 4px !important;
+#     }
+#     /* Таблицы — фон синий #12385C, шрифт белый (переопределяем стандартный чёрный Streamlit) */
+#     .main table,
+#     .main table th,
+#     .main table td,
+#     .main table thead th,
+#     .main table tbody th,
+#     .main table tbody td,
+#     table,
+#     table th,
+#     table td,
+#     table thead th,
+#     table tbody th,
+#     table tbody td {
+#         background-color: #12385C !important;
+#         color: #ffffff !important;
+#         border-color: rgba(255, 255, 255, 0.25) !important;
+#         font-size: 14px !important;
+#     }
+#     .main table *,
+#     table th *,
+#     table td * {
+#         color: #ffffff !important;
+#     }
+#     /* st.dataframe и st.table — контейнер и все ячейки */
+#     [data-testid="stDataFrame"],
+#     [data-testid="stDataFrame"] *,
+#     .stDataFrame,
+#     .stDataFrame *,
+#     div[data-testid="stDataFrame"] [role="cell"],
+#     div[data-testid="stDataFrame"] [role="columnheader"],
+#     [data-testid="stDataFrame"] td,
+#     [data-testid="stDataFrame"] th,
+#     [data-testid="stDataFrame"] .cell,
+#     [data-testid="stDataFrame"] [class*="cell"] {
+#         background-color: #12385C !important;
+#         color: #ffffff !important;
+#         font-size: 14px !important;
+#     }
+#     [data-testid="stDataFrame"] span,
+#     [data-testid="stDataFrame"] div,
+#     .stDataFrame span,
+#     .stDataFrame div {
+#         color: #ffffff !important;
+#     }
+#     /* Таблица редактирования (st.data_editor) — видимый текст */
+#     [data-testid="stDataFrame"] input,
+#     [data-testid="stDataFrame"] [contenteditable="true"],
+#     .stDataFrame input,
+#     .stDataFrame [contenteditable="true"] {
+#         color: #ffffff !important;
+#         background-color: #1e3a5f !important;
+#         border: 1px solid rgba(255,255,255,0.3) !important;
+#     }
+#         </style>
+#         """,
+#         unsafe_allow_html=True,
+#     )
 
 
 
