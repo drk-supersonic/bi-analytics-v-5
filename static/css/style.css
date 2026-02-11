@@ -42,7 +42,7 @@ header[data-testid="stHeader"] *,
 }
 
 /* Стилизация полей ввода - подсветка для видимости на темном фоне */
-.stTextInput > div > div > input,
+/* .stTextInput > div > div > input,
 .stTextInput > div > div > input:focus,
 input[type="text"],
 input[type="password"],
@@ -64,7 +64,7 @@ textarea:focus {
     border-color: #1f77b4 !important;
     box-shadow: 0 0 0 2px rgba(31, 119, 180, 0.2) !important;
     outline: none !important;
-}
+} */
 
 /* Стилизация кнопок - темные с окантовкой, белый текст */
 .stButton > button {
