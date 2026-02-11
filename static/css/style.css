@@ -555,10 +555,6 @@ div[data-testid="stDataFrame"] [role="columnheader"] {
     margin: 0 !important;            /* ← иногда помогает */
     padding: 0 !important;
 }
-[data-testid="stSidebarContent111111"]::-webkit-scrollbar-track {
-    background: transparent !important;         /* фон трека */
-    border-radius: 0 !important;
-}
 /* Ползунок — занимает ВСЮ ширину (4px), без внутренних отступов */
 [data-testid="stSidebarContent"]::-webkit-scrollbar-thumb {
     background: #4a6a8c !important;
@@ -566,18 +562,7 @@ div[data-testid="stDataFrame"] [role="columnheader"] {
     border-radius: 0 !important;     /* плоский, без скругления */
     box-shadow: none !important;     /* убираем тени */
 }
-[data-testid="stSidebarContent111111"]::-webkit-scrollbar-thumb {
-    background: #4a6a8c !important;         /* цвет ползунка */
-    border-radius: 0 !important;
-}
 /* На hover — можно чуть ярче, но ширина остаётся 4px */
 [data-testid="stSidebarContent"]::-webkit-scrollbar-thumb:hover {
     background: #5a7a9c !important;
-}
-/* [data-testid="stSidebarContent1111111"]::-webkit-scrollbar-thumb:hover {
-    background: #5a7a9c !important;
-} */
-[data-testid="stSidebarContent"] {
-    scrollbar-width: thin !important;
-    scrollbar-color: #4a6a8c transparent !important;
 }
