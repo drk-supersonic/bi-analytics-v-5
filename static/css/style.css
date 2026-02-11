@@ -203,3 +203,77 @@ div[data-testid="stDataFrame"] [role="columnheader"],
     background-color: #1e3a5f !important;
     border: 1px solid rgba(255,255,255,0.3) !important;
 }
+
+
+
+
+
+
+
+/* ┌────────────────────────────────────────────────────────────────────────┐ */
+/* │ ⊗ INPUT ¤ Start                                                        │ */
+/* └────────────────────────────────────────────────────────────────────────┘ */
+
+input{
+    /* width: calc(100% - 79px);
+    height: 29px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; */
+    /* font: 300 normal .884rem/1.4 'Inter', sans-serif;
+    letter-spacing: .008em;
+    text-indent: 0; */
+    /* color: hsl(215,41%,8%) !important; */
+    color: hsl(210,67%,96%) !important;
+    background-color: transparent !important;
+    overflow: none !important;
+    outline: none !important;
+    resize: none !important;
+    border-radius: 4px !important;
+    /* padding: 6px 11px 5px 66px !important;
+    margin: 4px 0 0 0 !important; */
+    box-shadow: none !important;
+    border: none !important;
+    transition: border .08s ease-in-out 0s !important;
+}
+/* input:not(:focus){
+    border: 1px solid hsl(214,34%,80%) !important;
+}
+input:focus{
+    border: 1px solid hsl(181,54%,50%) !important;
+} */
+
+textarea{
+    /* width: calc(100% - 24px);
+    min-height: 60px;
+    height: calc(100% - 25px); */
+    /* display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; */
+    /* font: 300 normal .884rem/1.4 'Inter', sans-serif;
+    letter-spacing: .008em;
+    text-indent: 0; */
+    color: hsl(215,41%,8%) !important;
+    background-color: transparent !important;
+    overflow: none !important;
+    outline: none !important;
+    resize: none !important;
+    /* border-radius: 3px !important; */
+    border-radius: 4px !important;
+    box-shadow: 0 0 0 0 none !important;
+    /* padding: 15px 11px 8px 11px !important;
+    margin: 4px 0 0 0 !important; */
+    transition: border .08s ease-in-out 0s !important;
+}
+textarea:not(:focus){
+    border: 1px solid hsl(214,34%,80%) !important;
+}
+textarea:focus{
+    border: 1px solid hsl(181,54%,50%) !important;
+}
+
+/* ┌────────────────────────────────────────────────────────────────────────┐ */
+/* │ ⊗ INPUT ¤ End                                                          │ */
+/* └────────────────────────────────────────────────────────────────────────┘ */
