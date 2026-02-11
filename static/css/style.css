@@ -507,4 +507,11 @@ div[data-testid="stDataFrame"] [role="columnheader"] {
 [data-testid="stSidebar"] > div:first-child {
     background-color: #12385C !important;
     box-shadow: inset 0 0 0 4px gold;
+
+    width: calc(100 - 4px);
+
+    min-height: 100vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    /* border-right: var(--Muqoneee) solid hsl(190,40%,98%); */
 }
