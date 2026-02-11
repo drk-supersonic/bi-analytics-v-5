@@ -293,277 +293,277 @@ def main():
     # Проверка авторизации - если не авторизован, показываем форму входа
     if not check_authentication():
         # Скрываем боковую панель на странице входа и настраиваем ширину формы
-        st.markdown(
-            """
-            <style>
-            .stSidebar {
-                display: none !important;
-            }
-            [data-testid="stSidebar"] {
-                display: none !important;
-            }
-
-            /* Контейнер для формы авторизации - 75% ширины экрана */
-            /* Используем более специфичные селекторы для переопределения Streamlit */
-            section[data-testid="stAppViewContainer"] .main .block-container,
-            section[data-testid="stAppViewContainer"] .main > div,
-            .main .block-container,
-            .main > div,
-            div[data-testid="stAppViewContainer"] .main .block-container,
-            div[data-testid="stAppViewContainer"] .main > div,
-            [data-testid="stAppViewContainer"] .main .block-container,
-            [data-testid="stAppViewContainer"] .main > div {
-                max-width: 75% !important;
-                width: 75% !important;
-                margin-left: auto !important;
-                margin-right: auto !important;
-                padding-top: 3rem !important;
-                padding-bottom: 3rem !important;
-            }
-
-            /* Убеждаемся, что основной контейнер занимает всю ширину для центрирования */
-            .main,
-            section[data-testid="stAppViewContainer"] .main,
-            div[data-testid="stAppViewContainer"] .main,
-            [data-testid="stAppViewContainer"] .main {
-                width: 100% !important;
-                max-width: 100% !important;
-            }
-
-            /* Переопределяем стандартные ограничения Streamlit */
-            section[data-testid="stAppViewContainer"] > div,
-            div[data-testid="stAppViewContainer"] > div,
-            [data-testid="stAppViewContainer"] > div {
-                max-width: 100% !important;
-                width: 100% !important;
-            }
-
-            /* Переопределяем для layout="wide" */
-            .stApp[data-layout="wide"] .main .block-container,
-            .stApp[data-layout="wide"] .main > div,
-            [data-layout="wide"] .main .block-container,
-            [data-layout="wide"] .main > div {
-                max-width: 75% !important;
-                width: 75% !important;
-                margin-left: auto !important;
-                margin-right: auto !important;
-            }
-
-            /* Дополнительно переопределяем все возможные inline стили */
-            .element-container {
-                max-width: 100% !important;
-                width: 100% !important;
-            }
-
-            /* Центрируем форму входа */
-            .stForm {
-                max-width: 100% !important;
-                width: 100% !important;
-                margin: 0 auto !important;
-            }
-            form[data-testid="stForm"] {
-                max-width: 100% !important;
-                width: 100% !important;
-                margin: 0 auto !important;
-            }
-
-            /* Убеждаемся, что все элементы формы используют доступную ширину */
-            .stForm > div {
-                max-width: 100% !important;
-                width: 100% !important;
-            }
-
-            /* Переопределяем внутренние контейнеры Streamlit */
-            [data-testid="stForm"] {
-                max-width: 100% !important;
-                width: 100% !important;
-            }
-
-            [data-testid="stForm"] > div {
-                max-width: 100% !important;
-                width: 100% !important;
-            }
-
-            /* Expander также 50% ширины */
-            .stExpander {
-                max-width: 100% !important;
-                width: 100% !important;
-            }
-
-            /* Центрируем колонки формы */
-            [data-testid="column"] {
-                max-width: 100% !important;
-            }
-
-            /* Центрируем заголовок и другой контент */
-            h1, h2, h3, p {
-                text-align: center !important;
-            }
-
-            /* Центрируем markdown блоки */
-            .element-container {
-                max-width: 100% !important;
-            }
-
-            /* Стилизация кнопок - одинаковая ширина и высота */
-            .stButton > button {
-                width: 100% !important;
-                min-width: 100% !important;
-                max-width: 100% !important;
-                min-height: 45px !important;
-                height: 45px !important;
-                max-height: 45px !important;
-                padding: 0 !important;
-                box-sizing: border-box !important;
-                white-space: nowrap !important;
-                overflow: hidden !important;
-                text-overflow: ellipsis !important;
-                line-height: 1 !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-            }
-            /* Стилизация внутренних элементов кнопки */
-            .stButton > button > div,
-            .stButton > button > span,
-            .stButton > button > p {
-                margin: 0 !important;
-                padding: 0.5rem 1rem !important;
-                line-height: 1 !important;
-                white-space: nowrap !important;
-                overflow: hidden !important;
-                text-overflow: ellipsis !important;
-                max-width: 100% !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-            }
-            /* Убеждаемся, что кнопки в колонках имеют одинаковую ширину и высоту */
-            [data-testid="column"] .stButton > button {
-                width: 100% !important;
-                min-width: 100% !important;
-                max-width: 100% !important;
-                min-height: 45px !important;
-                height: 45px !important;
-                max-height: 45px !important;
-                padding: 0 !important;
-                box-sizing: border-box !important;
-                white-space: nowrap !important;
-                overflow: hidden !important;
-                text-overflow: ellipsis !important;
-                line-height: 1 !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-            }
-            /* Стилизация внутренних элементов кнопки в колонках */
-            [data-testid="column"] .stButton > button > div,
-            [data-testid="column"] .stButton > button > span,
-            [data-testid="column"] .stButton > button > p {
-                margin: 0 !important;
-                padding: 0.5rem 1rem !important;
-                line-height: 1 !important;
-                white-space: nowrap !important;
-                overflow: hidden !important;
-                text-overflow: ellipsis !important;
-                max-width: 100% !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-            }
-            /* Кнопки в формах также должны иметь одинаковую высоту и ширину */
-            form .stButton > button {
-                min-height: 45px !important;
-                height: 45px !important;
-                max-height: 45px !important;
-                width: 100% !important;
-                padding: 0 !important;
-                box-sizing: border-box !important;
-                white-space: nowrap !important;
-                overflow: hidden !important;
-                text-overflow: ellipsis !important;
-                line-height: 1 !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-            }
-            /* Стилизация внутренних элементов кнопки в формах */
-            form .stButton > button > div,
-            form .stButton > button > span,
-            form .stButton > button > p {
-                margin: 0 !important;
-                padding: 0.5rem 1rem !important;
-                line-height: 1 !important;
-                white-space: nowrap !important;
-                overflow: hidden !important;
-                text-overflow: ellipsis !important;
-                max-width: 100% !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-            }
-            /* Дополнительно для кнопок в колонках формы входа */
-            form [data-testid="column"] .stButton > button {
-                width: 100% !important;
-                min-width: 100% !important;
-                max-width: 100% !important;
-                min-height: 45px !important;
-                height: 45px !important;
-                max-height: 45px !important;
-                padding: 0 !important;
-                box-sizing: border-box !important;
-                white-space: nowrap !important;
-                overflow: hidden !important;
-                text-overflow: ellipsis !important;
-                line-height: 1 !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-            }
-            /* Стилизация внутренних элементов кнопки в колонках формы входа */
-            form [data-testid="column"] .stButton > button > div,
-            form [data-testid="column"] .stButton > button > span,
-            form [data-testid="column"] .stButton > button > p {
-                margin: 0 !important;
-                padding: 0.5rem 1rem !important;
-                line-height: 1 !important;
-                white-space: nowrap !important;
-                overflow: hidden !important;
-                text-overflow: ellipsis !important;
-                max-width: 100% !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-            }
-            </style>
-            <script>
-            // Принудительно применяем ширину контейнера после загрузки
-            function setContainerWidth() {
-                const containers = document.querySelectorAll('.main .block-container, .main > div');
-                containers.forEach(container => {
-                    container.style.setProperty('max-width', '75%', 'important');
-                    container.style.setProperty('width', '75%', 'important');
-                    container.style.setProperty('margin-left', 'auto', 'important');
-                    container.style.setProperty('margin-right', 'auto', 'important');
-                });
-            }
-            // Применяем сразу и после загрузки DOM
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', setContainerWidth);
-            } else {
-                setContainerWidth();
-            }
-            // Также применяем после небольшой задержки для Streamlit
-            setTimeout(setContainerWidth, 100);
-            setTimeout(setContainerWidth, 500);
-            setTimeout(setContainerWidth, 1000);
-            // Наблюдаем за изменениями DOM (Streamlit динамически обновляет страницу)
-            const observer = new MutationObserver(setContainerWidth);
-            observer.observe(document.body, { childList: true, subtree: true });
-            </script>
-        """,
-            unsafe_allow_html=True,
-        )
+        # st.markdown(
+        #     """
+        #     <style>
+        #     .stSidebar {
+        #         display: none !important;
+        #     }
+        #     [data-testid="stSidebar"] {
+        #         display: none !important;
+        #     }
+        #
+        #     /* Контейнер для формы авторизации - 75% ширины экрана */
+        #     /* Используем более специфичные селекторы для переопределения Streamlit */
+        #     section[data-testid="stAppViewContainer"] .main .block-container,
+        #     section[data-testid="stAppViewContainer"] .main > div,
+        #     .main .block-container,
+        #     .main > div,
+        #     div[data-testid="stAppViewContainer"] .main .block-container,
+        #     div[data-testid="stAppViewContainer"] .main > div,
+        #     [data-testid="stAppViewContainer"] .main .block-container,
+        #     [data-testid="stAppViewContainer"] .main > div {
+        #         max-width: 75% !important;
+        #         width: 75% !important;
+        #         margin-left: auto !important;
+        #         margin-right: auto !important;
+        #         padding-top: 3rem !important;
+        #         padding-bottom: 3rem !important;
+        #     }
+        #
+        #     /* Убеждаемся, что основной контейнер занимает всю ширину для центрирования */
+        #     .main,
+        #     section[data-testid="stAppViewContainer"] .main,
+        #     div[data-testid="stAppViewContainer"] .main,
+        #     [data-testid="stAppViewContainer"] .main {
+        #         width: 100% !important;
+        #         max-width: 100% !important;
+        #     }
+        #
+        #     /* Переопределяем стандартные ограничения Streamlit */
+        #     section[data-testid="stAppViewContainer"] > div,
+        #     div[data-testid="stAppViewContainer"] > div,
+        #     [data-testid="stAppViewContainer"] > div {
+        #         max-width: 100% !important;
+        #         width: 100% !important;
+        #     }
+        #
+        #     /* Переопределяем для layout="wide" */
+        #     .stApp[data-layout="wide"] .main .block-container,
+        #     .stApp[data-layout="wide"] .main > div,
+        #     [data-layout="wide"] .main .block-container,
+        #     [data-layout="wide"] .main > div {
+        #         max-width: 75% !important;
+        #         width: 75% !important;
+        #         margin-left: auto !important;
+        #         margin-right: auto !important;
+        #     }
+        #
+        #     /* Дополнительно переопределяем все возможные inline стили */
+        #     .element-container {
+        #         max-width: 100% !important;
+        #         width: 100% !important;
+        #     }
+        #
+        #     /* Центрируем форму входа */
+        #     .stForm {
+        #         max-width: 100% !important;
+        #         width: 100% !important;
+        #         margin: 0 auto !important;
+        #     }
+        #     form[data-testid="stForm"] {
+        #         max-width: 100% !important;
+        #         width: 100% !important;
+        #         margin: 0 auto !important;
+        #     }
+        #
+        #     /* Убеждаемся, что все элементы формы используют доступную ширину */
+        #     .stForm > div {
+        #         max-width: 100% !important;
+        #         width: 100% !important;
+        #     }
+        #
+        #     /* Переопределяем внутренние контейнеры Streamlit */
+        #     [data-testid="stForm"] {
+        #         max-width: 100% !important;
+        #         width: 100% !important;
+        #     }
+        #
+        #     [data-testid="stForm"] > div {
+        #         max-width: 100% !important;
+        #         width: 100% !important;
+        #     }
+        #
+        #     /* Expander также 50% ширины */
+        #     .stExpander {
+        #         max-width: 100% !important;
+        #         width: 100% !important;
+        #     }
+        #
+        #     /* Центрируем колонки формы */
+        #     [data-testid="column"] {
+        #         max-width: 100% !important;
+        #     }
+        #
+        #     /* Центрируем заголовок и другой контент */
+        #     h1, h2, h3, p {
+        #         text-align: center !important;
+        #     }
+        #
+        #     /* Центрируем markdown блоки */
+        #     .element-container {
+        #         max-width: 100% !important;
+        #     }
+        #
+        #     /* Стилизация кнопок - одинаковая ширина и высота */
+        #     .stButton > button {
+        #         width: 100% !important;
+        #         min-width: 100% !important;
+        #         max-width: 100% !important;
+        #         min-height: 45px !important;
+        #         height: 45px !important;
+        #         max-height: 45px !important;
+        #         padding: 0 !important;
+        #         box-sizing: border-box !important;
+        #         white-space: nowrap !important;
+        #         overflow: hidden !important;
+        #         text-overflow: ellipsis !important;
+        #         line-height: 1 !important;
+        #         display: flex !important;
+        #         align-items: center !important;
+        #         justify-content: center !important;
+        #     }
+        #     /* Стилизация внутренних элементов кнопки */
+        #     .stButton > button > div,
+        #     .stButton > button > span,
+        #     .stButton > button > p {
+        #         margin: 0 !important;
+        #         padding: 0.5rem 1rem !important;
+        #         line-height: 1 !important;
+        #         white-space: nowrap !important;
+        #         overflow: hidden !important;
+        #         text-overflow: ellipsis !important;
+        #         max-width: 100% !important;
+        #         display: flex !important;
+        #         align-items: center !important;
+        #         justify-content: center !important;
+        #     }
+        #     /* Убеждаемся, что кнопки в колонках имеют одинаковую ширину и высоту */
+        #     [data-testid="column"] .stButton > button {
+        #         width: 100% !important;
+        #         min-width: 100% !important;
+        #         max-width: 100% !important;
+        #         min-height: 45px !important;
+        #         height: 45px !important;
+        #         max-height: 45px !important;
+        #         padding: 0 !important;
+        #         box-sizing: border-box !important;
+        #         white-space: nowrap !important;
+        #         overflow: hidden !important;
+        #         text-overflow: ellipsis !important;
+        #         line-height: 1 !important;
+        #         display: flex !important;
+        #         align-items: center !important;
+        #         justify-content: center !important;
+        #     }
+        #     /* Стилизация внутренних элементов кнопки в колонках */
+        #     [data-testid="column"] .stButton > button > div,
+        #     [data-testid="column"] .stButton > button > span,
+        #     [data-testid="column"] .stButton > button > p {
+        #         margin: 0 !important;
+        #         padding: 0.5rem 1rem !important;
+        #         line-height: 1 !important;
+        #         white-space: nowrap !important;
+        #         overflow: hidden !important;
+        #         text-overflow: ellipsis !important;
+        #         max-width: 100% !important;
+        #         display: flex !important;
+        #         align-items: center !important;
+        #         justify-content: center !important;
+        #     }
+        #     /* Кнопки в формах также должны иметь одинаковую высоту и ширину */
+        #     form .stButton > button {
+        #         min-height: 45px !important;
+        #         height: 45px !important;
+        #         max-height: 45px !important;
+        #         width: 100% !important;
+        #         padding: 0 !important;
+        #         box-sizing: border-box !important;
+        #         white-space: nowrap !important;
+        #         overflow: hidden !important;
+        #         text-overflow: ellipsis !important;
+        #         line-height: 1 !important;
+        #         display: flex !important;
+        #         align-items: center !important;
+        #         justify-content: center !important;
+        #     }
+        #     /* Стилизация внутренних элементов кнопки в формах */
+        #     form .stButton > button > div,
+        #     form .stButton > button > span,
+        #     form .stButton > button > p {
+        #         margin: 0 !important;
+        #         padding: 0.5rem 1rem !important;
+        #         line-height: 1 !important;
+        #         white-space: nowrap !important;
+        #         overflow: hidden !important;
+        #         text-overflow: ellipsis !important;
+        #         max-width: 100% !important;
+        #         display: flex !important;
+        #         align-items: center !important;
+        #         justify-content: center !important;
+        #     }
+        #     /* Дополнительно для кнопок в колонках формы входа */
+        #     form [data-testid="column"] .stButton > button {
+        #         width: 100% !important;
+        #         min-width: 100% !important;
+        #         max-width: 100% !important;
+        #         min-height: 45px !important;
+        #         height: 45px !important;
+        #         max-height: 45px !important;
+        #         padding: 0 !important;
+        #         box-sizing: border-box !important;
+        #         white-space: nowrap !important;
+        #         overflow: hidden !important;
+        #         text-overflow: ellipsis !important;
+        #         line-height: 1 !important;
+        #         display: flex !important;
+        #         align-items: center !important;
+        #         justify-content: center !important;
+        #     }
+        #     /* Стилизация внутренних элементов кнопки в колонках формы входа */
+        #     form [data-testid="column"] .stButton > button > div,
+        #     form [data-testid="column"] .stButton > button > span,
+        #     form [data-testid="column"] .stButton > button > p {
+        #         margin: 0 !important;
+        #         padding: 0.5rem 1rem !important;
+        #         line-height: 1 !important;
+        #         white-space: nowrap !important;
+        #         overflow: hidden !important;
+        #         text-overflow: ellipsis !important;
+        #         max-width: 100% !important;
+        #         display: flex !important;
+        #         align-items: center !important;
+        #         justify-content: center !important;
+        #     }
+        #     </style>
+        #     <script>
+        #     // Принудительно применяем ширину контейнера после загрузки
+        #     function setContainerWidth() {
+        #         const containers = document.querySelectorAll('.main .block-container, .main > div');
+        #         containers.forEach(container => {
+        #             container.style.setProperty('max-width', '75%', 'important');
+        #             container.style.setProperty('width', '75%', 'important');
+        #             container.style.setProperty('margin-left', 'auto', 'important');
+        #             container.style.setProperty('margin-right', 'auto', 'important');
+        #         });
+        #     }
+        #     // Применяем сразу и после загрузки DOM
+        #     if (document.readyState === 'loading') {
+        #         document.addEventListener('DOMContentLoaded', setContainerWidth);
+        #     } else {
+        #         setContainerWidth();
+        #     }
+        #     // Также применяем после небольшой задержки для Streamlit
+        #     setTimeout(setContainerWidth, 100);
+        #     setTimeout(setContainerWidth, 500);
+        #     setTimeout(setContainerWidth, 1000);
+        #     // Наблюдаем за изменениями DOM (Streamlit динамически обновляет страницу)
+        #     const observer = new MutationObserver(setContainerWidth);
+        #     observer.observe(document.body, { childList: true, subtree: true });
+        #     </script>
+        # """,
+        #     unsafe_allow_html=True,
+        # )
 
         # Заголовок страницы входа
         st.markdown(
