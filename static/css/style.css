@@ -532,7 +532,7 @@ div[data-testid="stDataFrame"] [role="columnheader"] {
     overflow-y: scroll !important;          /* ← force vertical scroll */
     overflow-x: hidden !important;
     scrollbar-width: thin !important;       /* Firefox: тонкий скроллбар */
-    scrollbar-color: #4a6a8c red !important;  /* Firefox: цвета */
+    scrollbar-color: #4a6a8c transparent !important;  /* Firefox: цвета */
 }
 
 /* 3. Самый важный — внутренний скроллируемый контент */
@@ -541,7 +541,7 @@ div[data-testid="stDataFrame"] [role="columnheader"] {
     overflow-x: hidden !important;
     height: 100% !important;                /* растягиваем на всю высоту */
     scrollbar-width: thin !important;
-    scrollbar-color: #4a6a8c red !important;
+    scrollbar-color: #4a6a8c transparent !important;
 }
 
 /* 4. WebKit-браузеры (Chrome, Edge, Safari) — заставляем показывать всегда */
@@ -551,7 +551,7 @@ div[data-testid="stDataFrame"] [role="columnheader"] {
 }
 
 [data-testid="stSidebarContent"]::-webkit-scrollbar-track {
-    background: red !important;         /* фон трека */
+    background: transparent !important;         /* фон трека */
     border-radius: 0 !important;
 }
 
