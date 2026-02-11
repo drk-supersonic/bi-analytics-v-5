@@ -515,12 +515,17 @@ if user is not None:
         else:
             st.info("Пользователи не найдены")
 
-        st.markdown("---")
+        # st.markdown("---")
 
         # Добавление нового пользователя
         st.markdown("### Добавить нового пользователя")
 
         with st.form("add_user_form"):
+
+            # ─── Ловушки для автозаполнения браузера ────────────────────────────────
+            st.markdown('<input type="text"     name="fake_username"    style="display:none" autocomplete="username">',     unsafe_allow_html=True)
+            st.markdown('<input type="password" name="fake_password"    style="display:none" autocomplete="new-password">', unsafe_allow_html=True)
+
             col1, col2 = st.columns(2)
 
             with col1:
@@ -555,7 +560,7 @@ if user is not None:
                 else:
                     st.warning("Заполните обязательные поля (отмечены *)")
 
-        st.markdown("---")
+        # st.markdown("---")
 
         # Изменение роли пользователя
         st.markdown("### Изменить роль пользователя")
