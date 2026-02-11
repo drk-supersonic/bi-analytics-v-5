@@ -546,18 +546,18 @@ div[data-testid="stDataFrame"] [role="columnheader"] {
 
 /* 4. WebKit-браузеры (Chrome, Edge, Safari) — заставляем показывать всегда */
 [data-testid="stSidebarContent"]::-webkit-scrollbar {
-    width: 8px !important;                  /* ширина скроллбара */
+    width: 4px !important;                  /* ширина скроллбара */
     display: block !important;              /* ← ключевой момент */
 }
 
 [data-testid="stSidebarContent"]::-webkit-scrollbar-track {
     background: #1e3a5f !important;         /* фон трека */
-    border-radius: 4px !important;
+    border-radius: 0 !important;
 }
 
 [data-testid="stSidebarContent"]::-webkit-scrollbar-thumb {
     background: #4a6a8c !important;         /* цвет ползунка */
-    border-radius: 4px !important;
+    border-radius: 0 !important;
 }
 
 [data-testid="stSidebarContent"]::-webkit-scrollbar-thumb:hover {
