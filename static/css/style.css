@@ -519,7 +519,8 @@ div[data-testid="stDataFrame"] [role="columnheader"] {
 
     width: calc(100 - 4px) !important;
 
-    min-height: 100vh !important;
+    /* min-height: 100vh !important; */
+    height: 100px !important;
     overflow-y: scroll !important;
     overflow-x: hidden !important;
     /* border-right: var(--Muqoneee) solid hsl(190,40%,98%); */
