@@ -1,0 +1,630 @@
+/* ==================== CSS ПЕРЕМЕННЫЕ ==================== */
+
+:root {
+    /* Цвета фона темы */
+    --themeBackgroundColor: hsl(190,40%,98%);
+    --themeBackgroundColor: hsl(210,67%,96%);
+    --themeBackgroundColor: hsl(216,28%,7%);
+    /* --themeBackgroundColor: #0e1117;      */
+
+    --sidebarBackgroundColor: hsl(214,25%,11%);
+    --thinLinesColor: hsl(214,12%,27%);
+
+    /* Основной шрифт */
+    --mainFont: 'Inter', sans-serif;
+
+    /* Цвет фона графиков */
+    /* --graphBackgroundColor: #0e1117;      */
+    /* --graphBackgroundColor: hsl(190,40%,98%); */
+}
+
+/*
+Применяется последнее значение --themeBackgroundColor (#0e1117 - темная тема)
+Чтобы использовать светлую тему, закомментируйте строку 6 и раскомментируйте строку 5
+*/
+
+/* Боковое меню целиком */
+
+[data-testid="stSidebar"] {
+    height: 100vh !important;
+    max-height: 100vh !important;
+    background-color: var(--sidebarBackgroundColor) !important;
+}
+section[data-testid="stSidebar"] > div:first-child {
+    width: calc(100% - 1px) !important;
+    height: 100% !important;
+    border-right: 1px solid var(--thinLinesColor) !important;
+    background-color: var(--sidebarBackgroundColor) !important;
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
+}
+
+/* Если есть градиент или другие слои — перебиваем */
+[data-testid="stSidebar"] * {
+    background-color: transparent !important;  /* если нужно сбросить вложенные */
+}
+
+/* ==================== ОСНОВНЫЕ СТИЛИ ==================== */
+
+/* Заголовки */
+.main-header {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #1f77b4;
+    margin-bottom: 1rem;
+}
+
+.metric-card {
+    background-color: #262730;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin: 0.5rem 0;
+}
+
+/* Принудительная темная тема - использует CSS переменную */
+.stApp {
+    background-color: var(--themeBackgroundColor);
+    font-family: var(--mainFont);
+}
+
+/* Применение основного шрифта ко всему приложению */
+* {
+    font-family: var(--mainFont) !important;
+}
+
+/* ИСКЛЮЧЕНИЕ: для элементов со стрелочками (Material Icons) НЕ применяем Inter */
+span.material-icons,
+span[class*="material-icons"],
+span[data-testid="stIconMaterial"],
+span[class*="stIconMaterial"],
+span[class*="st-emotion-cache-1c9yjad"] {
+    font-family: 'Material Icons', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    font-size: 24px !important;
+    line-height: 1 !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
+    display: inline-block !important;
+    white-space: nowrap !important;
+    word-wrap: normal !important;
+    direction: ltr !important;
+    -webkit-font-smoothing: antialiased !important;
+    text-rendering: optimizeLegibility !important;
+}
+
+/* Скрываем span элементы с текстом Material Icons (артефакты от смены шрифта) */
+span:not(.material-icons) {
+    /* Проверяем через JavaScript, но также скрываем через CSS селектор по содержимому */
+}
+
+/* Применение шрифта к элементам Streamlit */
+body, html, .stApp, .stMarkdown, .stText, .stButton, .stSelectbox,
+.stTextInput, .stNumberInput, .stDateInput, .stCheckbox, .stMultiSelect {
+    font-family: var(--mainFont) !important;
+}
+
+/* Скрываем span элементы с текстом Material Icons */
+.stButton > button span:not(.material-icons),
+.stSidebar button span:not(.material-icons),
+.stSidebar .stButton > button span:not(.material-icons) {
+    font-family: var(--mainFont) !important;
+}
+
+/* ==================== СКРЫТИЕ ЭЛЕМЕНТОВ ==================== */
+
+/* Скрытие стандартной навигации Streamlit в боковой панели */
+/* (Используется кастомное меню через render_sidebar_menu) */
+[data-testid="stSidebarNav"],
+div[data-testid="stSidebarNav"],
+ul[data-testid="stSidebarNav"],
+nav[data-testid="stSidebarNav"],
+.stSidebar [data-testid="stSidebarNav"],
+section[data-testid="stSidebarNav"] {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+}
+
+/* Скрытие стандартных ссылок на страницы в боковой панели */
+.stSidebar a[href*="pages/"],
+.stSidebar a[href*="project_visualization_app"] {
+    display: none !important;
+}
+
+/* ==================== ФОРМЫ ==================== */
+
+/* Ограничиваем ширину формы входа и expander */
+/* .stForm {
+    max-width: 100% !important;
+    margin: 0 auto !important;
+}
+
+form[data-testid="stForm"] {
+    max-width: 100% !important;
+    margin: 0 auto !important;
+} */
+
+/* Убеждаемся, что expander имеет такую же ширину */
+/* .stExpander {
+    max-width: 100% !important;
+} */
+
+/* ==================== ПОЛЯ ВВОДА ==================== */
+
+/* Стилизация полей ввода - подсветка для видимости на темном фоне */
+/*
+.stTextInput > div > div > input,
+.stTextInput > div > div > input:focus,
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+textarea {
+    background-color: #2a2a3a !important;
+    color: #ffffff !important;
+    border: 1px solid #4a5568 !important;
+    border-radius: 4px !important;
+    padding: 0.5rem !important;
+}
+
+.stTextInput > div > div > input:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+    border-color: #1f77b4 !important;
+    box-shadow: 0 0 0 2px rgba(31, 119, 180, 0.2) !important;
+    outline: none !important;
+}
+*/
+
+/* .stTextInput > div > div > input,
+.stTextInput > div > div > input:focus,
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+textarea {
+    background-color: #2a2a3a !important;
+    color: #ffffff !important;
+    border: 1px solid #4a5568 !important;
+    border-radius: 4px !important;
+    padding: 0.5rem !important;
+}
+
+.stTextInput > div > div > input:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+    border-color: #1f77b4 !important;
+    box-shadow: 0 0 0 2px rgba(31, 119, 180, 0.2) !important;
+    outline: none !important;
+} */
+
+
+
+
+/*
+div[data-testid="stTextInput"] > div,
+div[data-baseweb="input"] > div,
+div[data-baseweb="input"] {
+    overflow: visible !important;
+    padding: 0 !important;
+}
+
+
+[data-testid="stTextInputRootElement"],
+[data-testid="stTextInputRootElement"] * {
+    box-shadow: none !important;
+}
+
+[data-testid="stTextInputRootElement"]:focus-within,
+[data-testid="stTextInputRootElement"] input:focus {
+    box-shadow: none !important;
+}
+
+
+
+.stApp [data-testid="stTextInput"] input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+.stApp input[type="password"]:focus {
+    outline: none !important;
+    box-shadow: none !important;
+} */
+
+/* Скрываем подсказку "Press Enter to submit form"
+div[data-testid="stFormSubmitButton"]::after,
+div[data-testid="stForm"] button::after,
+.stForm button::after {
+    content: none !important;
+    display: none !important;
+}
+
+На всякий случай — для всех кнопок внутри формы
+.stForm .stButton > button::after {
+    content: none !important;
+}
+
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #2a2a3a inset !important;
+    -webkit-text-fill-color: #ffffff !important;
+    transition: background-color 5000s ease-in-out 0s;
+} */
+
+
+
+
+
+input{
+    /* width: calc(100% - 79px);
+    height: 29px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; */
+    /* font: 300 normal .884rem/1.4 'Inter', sans-serif;
+    letter-spacing: .008em;
+    text-indent: 0; */
+    /* color: hsl(215,41%,8%) !important; */
+    color: hsl(210,67%,96%) !important;
+    background-color: transparent !important;
+    overflow: none !important;
+    outline: none !important;
+    resize: none !important;
+    border-radius: 4px !important;
+    /* padding: 6px 11px 5px 66px !important;
+    margin: 4px 0 0 0 !important; */
+    box-shadow: none !important;
+    border: none !important;
+    transition: border .08s ease-in-out 0s !important;
+}
+/* input:not(:focus){
+    border: 1px solid hsl(214,34%,80%) !important;
+}
+input:focus{
+    border: 1px solid hsl(181,54%,50%) !important;
+} */
+
+
+
+textarea{
+    /* width: calc(100% - 24px);
+    min-height: 60px;
+    height: calc(100% - 25px); */
+    /* display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; */
+    /* font: 300 normal .884rem/1.4 'Inter', sans-serif;
+    letter-spacing: .008em;
+    text-indent: 0; */
+    color: hsl(215,41%,8%) !important;
+    background-color: transparent !important;
+    overflow: none !important;
+    outline: none !important;
+    resize: none !important;
+    /* border-radius: 3px !important; */
+    border-radius: 4px !important;
+    box-shadow: 0 0 0 0 none !important;
+    /* padding: 15px 11px 8px 11px !important;
+    margin: 4px 0 0 0 !important; */
+    transition: border .08s ease-in-out 0s !important;
+}
+textarea:not(:focus){
+    border: 1px solid hsl(214,34%,80%) !important;
+}
+textarea:focus{
+    border: 1px solid hsl(181,54%,50%) !important;
+}
+
+
+
+
+/* ┌────────────────────────────────────────────────────────────────────────┐ */
+/* │ ⊗ КНОПКИ В АДМИНКЕ ¤ Start                                             │ */
+/* └────────────────────────────────────────────────────────────────────────┘ */
+/*
+Принудительное размещение кнопок формы одна под другой
+[data-testid="stForm"] button {
+    width: 100% !important;
+    display: block !important;
+    margin-bottom: 10px !important;
+}
+
+Убираем flex-контейнер для кнопок формы
+[data-testid="stForm"] [data-testid="column"] {
+    width: 100% !important;
+}
+
+Контейнер кнопок формы
+[data-testid="stForm"] > div > div {
+    display: block !important;
+}
+
+Дополнительная страховка для кнопок в форме
+[data-testid="stForm"] [data-testid="stFormSubmitButton"] {
+    width: 100% !important;
+} */
+
+/* ┌────────────────────────────────────────────────────────────────────────┐ */
+/* │ ⊗ КНОПКИ В АДМИНКЕ ¤ End                                               │ */
+/* └────────────────────────────────────────────────────────────────────────┘ */
+
+
+
+
+
+/* ==================== КНОПКИ ==================== */
+
+/* Стилизация кнопок - темные с окантовкой, белый текст */
+.stButton > button {
+    background-color: #2a2a3a !important;
+    color: #ffffff !important;
+    border: 1px solid #4a5568 !important;
+    border-radius: 4px !important;
+    padding: 0.5rem 1rem !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+}
+
+.stButton > button:hover {
+    background-color: #3a3a4a !important;
+    border-color: #5a5a6a !important;
+    color: #ffffff !important;
+}
+
+.stButton > button:focus {
+    border-color: #1f77b4 !important;
+    box-shadow: 0 0 0 2px rgba(31, 119, 180, 0.2) !important;
+    outline: none !important;
+}
+
+/* Кнопки primary - темные с более яркой окантовкой */
+.stButton > button[kind="primary"] {
+    background-color: #1a1a2a !important;
+    color: #ffffff !important;
+    border: 1px solid #1f77b4 !important;
+}
+
+.stButton > button[kind="primary"]:hover {
+    background-color: #2a2a3a !important;
+    border-color: #2a8bc4 !important;
+    color: #ffffff !important;
+}
+
+/* Кнопки secondary */
+.stButton > button[kind="secondary"] {
+    background-color: #2a2a3a !important;
+    color: #ffffff !important;
+    border: 1px solid #4a5568 !important;
+}
+
+.stButton > button[kind="secondary"]:hover {
+    background-color: #3a3a4a !important;
+    border-color: #5a5a6a !important;
+    color: #ffffff !important;
+}
+
+/* Отключенные кнопки */
+.stButton > button:disabled {
+    background-color: #1a1a2a !important;
+    color: #666666 !important;
+    border-color: #333333 !important;
+    opacity: 0.6 !important;
+}
+
+/* ==================== SELECTBOX ==================== */
+
+/* .stSelectbox > div > div > select {
+    background-color: #2a2a3a !important;
+    color: #ffffff !important;
+    border: 1px solid #4a5568 !important;
+    border-radius: 4px !important;
+}
+
+.stSelectbox > div > div > select:focus {
+    border-color: #1f77b4 !important;
+    box-shadow: 0 0 0 2px rgba(31, 119, 180, 0.2) !important;
+    outline: none !important;
+} */
+
+/* ==================== CHECKBOX ==================== */
+
+.stCheckbox > label {
+    color: #ffffff !important;
+}
+
+/* ==================== DATE INPUT ==================== */
+
+/* .stDateInput > div > div > input {
+    background-color: #2a2a3a !important;
+    color: #ffffff !important;
+    border: 1px solid #4a5568 !important;
+} */
+
+/* ==================== NUMBER INPUT ==================== */
+
+/* .stNumberInput > div > div > input {
+    background-color: #2a2a3a !important;
+    color: #ffffff !important;
+    border: 1px solid #4a5568 !important;
+    border-radius: 4px !important;
+}
+
+.stNumberInput > div > div > input:focus {
+    border-color: #1f77b4 !important;
+    box-shadow: 0 0 0 2px rgba(31, 119, 180, 0.2) !important;
+    outline: none !important;
+} */
+
+/* ==================== MULTISELECT ==================== */
+
+.stMultiSelect > div > div {
+    background-color: #2a2a3a !important;
+    color: #ffffff !important;
+    border: 1px solid #4a5568 !important;
+}
+
+/* ==================== FILE UPLOADER ==================== */
+
+.stFileUploader > div {
+    background-color: #2a2a3a !important;
+    border: 1px solid #4a5568 !important;
+    border-radius: 4px !important;
+}
+
+
+
+
+
+/* ┌────────────────────────────────────────────────────────────────────────┐ */
+/* │ ⊗ Скрыть подсказку "Press Enter to submit form" ¤ Start                │ */
+/* └────────────────────────────────────────────────────────────────────────┘ */
+
+/* Скрыть подсказку "Press Enter to submit form" */
+[data-testid="stForm"] [data-testid="InputInstructions"] {
+    display: none !important;
+}
+
+/* Скрыть все инструкции в форме */
+[data-testid="stForm"] .st-emotion-cache-1gulkj5,
+[data-testid="stForm"] .st-emotion-cache-10y5sf6 {
+    display: none !important;
+}
+
+/* ┌────────────────────────────────────────────────────────────────────────┐ */
+/* │ ⊗ Скрыть подсказку "Press Enter to submit form" ¤ End                  │ */
+/* └────────────────────────────────────────────────────────────────────────┘ */
+
+div.dragonBlock{
+    height: 0 !important;
+    position: fixed !important;
+    z-index: 2000000 !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    margin: 0 auto auto auto !important;
+    /* visibility: visible !important;
+    opacity: 1 !important;
+    transition: visibility 0s ease-in-out 0s, opacity 0s ease-in-out 0s !important; */
+    will-change: transform !important;
+    pointer-events: none !important;
+}
+@media only screen and (min-width: 0px) and (max-width: 768px){
+
+    div.dragonBlock{
+        width: calc(100% - 34px) !important;
+    }
+}
+@media only screen and (min-width: 768.1px) and (max-width: 1260px){
+
+    div.dragonBlock{
+        width: 700px !important;
+    }
+}
+@media (min-width: 1260.1px){
+
+    div.dragonBlock{
+        width: 1200px !important;
+    }
+}
+div.dragonBlock > section{
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-end !important;
+    align-items: flex-start !important;
+    /* background-color: gold !important; */
+}
+div.dragonBlock > section > div{
+    width: 0 !important;
+    height: calc(100vh - 20px) !important;
+    height: calc(100svh - 20px) !important;
+    position: relative !important;
+
+    /* display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-end !important;
+    align-items: flex-end !important; */
+
+    /* box-shadow: 0 0 0 4px blue !important; */
+}
+div.dragonBlock > section > div > section{
+    height: 0 !important;
+    position: absolute !important;
+    z-index: 5000000 !important;
+    top: auto !important;
+    right: 100% !important;
+    bottom: 0 !important;
+    left: unset !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: auto 0 auto auto !important;
+    pointer-events: auto !important;
+
+    /* box-shadow: 0 0 0 4px gold !important; */
+}
+@media only screen and (min-width: 0px) and (max-width: 768px){
+
+    div.dragonBlock > section > div > section{
+        width: calc(100% - 34px) !important;
+    }
+}
+@media only screen and (min-width: 768.1px) and (max-width: 1260px){
+
+    div.dragonBlock > section > div > section{
+        width: 700px !important;
+    }
+}
+@media (min-width: 1260.1px){
+
+    div.dragonBlock > section > div > section{
+        width: 1200px !important;
+    }
+}
+div.dragonBlock > section > div > section > div{
+    width: 100% !important;
+    height: 100% !important;
+    position: relative !important;
+}
+div.dragonBlock > section > div > section > div > section{
+    width: calc(100% - 14px) !important;
+    max-width: 420px !important;
+    height: 240px !important;
+    position: absolute !important;
+    z-index: 6000000 !important;
+    top: auto !important;
+    right: 0 !important;
+    bottom: 100% !important;
+    left: 0 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: auto auto 0 auto !important;
+    background-color: hsl(168,100%,32%) !important;
+    /* border: 1px solid blue !important; */
+    border-radius: 4px !important;
+    overflow: hidden !important;
+}
+div.dragonBlock > section > div > section > div > section > div.ai-anchor{
+    width: 100% !important;
+    height: 100% !important;
+    box-shadow: inset 0 0 0 4px hsl(198,78%,70%) !important;
+}

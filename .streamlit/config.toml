@@ -1,0 +1,70 @@
+[server]
+enableStaticServing = true
+
+# ──────────────────────────────────────────────
+# Определение всех вариантов шрифта Inter
+# ──────────────────────────────────────────────
+
+[[theme.fontFaces]]
+family = "Inter"
+url    = "static/fonts/Inter_Thin.woff2"
+weight = 100
+style  = "normal"
+
+[[theme.fontFaces]]
+family = "Inter"
+url    = "static/fonts/Inter_Extra_Light.woff2"
+weight = 200
+style  = "normal"
+
+[[theme.fontFaces]]
+family = "Inter"
+url    = "static/fonts/Inter_Light.woff2"
+weight = 300
+style  = "normal"
+
+[[theme.fontFaces]]
+family = "Inter"
+url    = "static/fonts/Inter_Regular.woff2"
+weight = 400
+style  = "normal"
+
+[[theme.fontFaces]]
+family = "Inter"
+url    = "static/fonts/Inter_Medium.woff2"
+weight = 500
+style  = "normal"
+
+[[theme.fontFaces]]
+family = "Inter"
+url    = "static/fonts/Inter_Semi_Bold.woff2"
+weight = 600
+style  = "normal"
+
+[[theme.fontFaces]]
+family = "Inter"
+url    = "static/fonts/Inter_Bold.woff2"
+weight = 700
+style  = "normal"
+
+[[theme.fontFaces]]
+family = "Inter"
+url    = "static/fonts/Inter_Extra_Bold.woff2"
+weight = 800
+style  = "normal"
+
+[[theme.fontFaces]]
+family = "Inter"
+url    = "static/fonts/Inter_Black.woff2"
+weight = 900
+style  = "normal"
+
+# ──────────────────────────────────────────────
+# Устанавливаем Inter как основной шрифт приложения
+# ──────────────────────────────────────────────
+
+[theme]
+font          = "Inter, system-ui, -apple-system, sans-serif"
+headingFont   = "Inter, system-ui, -apple-system, sans-serif"   # или можно оставить другой, если хочешь
+codeFont      = "Consolas, 'Courier New', monospace"           # код обычно лучше оставить моноширинным
+# baseFontSize  = 16   # опционально — размер по умолчанию
