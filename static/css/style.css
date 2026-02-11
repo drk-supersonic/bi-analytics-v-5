@@ -499,7 +499,7 @@ div[data-testid="stDataFrame"] [role="columnheader"] {
 
 /* Весь sidebar (включая header, collapse-кнопку, фон и т.д.) */
 [data-testid="stSidebar"] {
-    background-color: gold !important;
+    background-color: green !important;
     border-right: 1px solid red !important;
 }
 
