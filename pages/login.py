@@ -38,299 +38,299 @@ st.set_page_config(
 )
 
 # Стили для темной темы
-st.markdown(
-    """
-    <style>
-    /* Фон приложения - новый цвет */
-    .stApp {
-        background-color: #12385C !important;
-    }
-    
-    /* Стилизация хедера Streamlit - фон цвета основного фона */
-    header[data-testid="stHeader"],
-    .stHeader,
-    header,
-    div[data-testid="stHeader"],
-    .stHeader > div,
-    header > div,
-    div[data-testid="stHeader"] > div {
-        background-color: #12385C !important;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-    }
-    
-    /* Текст в хедере */
-    header[data-testid="stHeader"] *,
-    .stHeader *,
-    header *,
-    div[data-testid="stHeader"] * {
-        color: #ffffff !important;
-    }
-    
-    /* Основной контент - белый текст */
-    .main .block-container,
-    .main .element-container,
-    .main h1, .main h2, .main h3, .main h4, .main h5, .main h6,
-    .main p, .main span, .main div,
-    .main label {
-        color: #ffffff !important;
-    }
-    
-    /* Скрываем боковую панель на странице входа */
-    .stSidebar {
-        display: none !important;
-    }
-    [data-testid="stSidebar"] {
-        display: none !important;
-    }
-    /* Скрываем стандартную навигацию */
-    [data-testid="stSidebarNav"] {
-        display: none !important;
-    }
-    
-    /* Контейнер для формы авторизации - делаем еще шире */
-    .main .block-container {
-        max-width: 1500px !important;
-        width: 100% !important;
-        padding-top: 3rem !important;
-        padding-bottom: 3rem !important;
-    }
-    
-    /* Переопределяем все возможные ограничения ширины */
-    .main > div {
-        max-width: 1500px !important;
-        width: 100% !important;
-    }
-    
-    /* Контейнер для формы входа - расширяем */
-    form[data-testid="stForm"] {
-        max-width: 1500px !important;
-        width: 100% !important;
-        margin: 0 auto !important;
-    }
-    
-    /* Убеждаемся, что все элементы формы используют доступную ширину */
-    .stForm {
-        max-width: 1500px !important;
-        width: 100% !important;
-    }
-    
-    .stForm > div {
-        max-width: 1500px !important;
-        width: 100% !important;
-    }
-    
-    /* Переопределяем внутренние контейнеры Streamlit */
-    [data-testid="stForm"] {
-        max-width: 1500px !important;
-        width: 100% !important;
-    }
-    
-    [data-testid="stForm"] > div {
-        max-width: 1500px !important;
-        width: 100% !important;
-    }
-    
-    
-    /* Стилизация полей ввода - подсветка для видимости на темном фоне */
-    .stTextInput > div > div > input,
-    .stTextInput > div > div > input:focus,
-    input[type="text"],
-    input[type="password"],
-    input[type="email"] {
-        background-color: #2a2a3a !important;
-        color: #ffffff !important;
-        border: 1px solid #4a5568 !important;
-        border-radius: 4px !important;
-        padding: 0.5rem !important;
-    }
-    .stTextInput > div > div > input:focus,
-    input[type="text"]:focus,
-    input[type="password"]:focus,
-    input[type="email"]:focus {
-        border-color: #1f77b4 !important;
-        box-shadow: 0 0 0 2px rgba(31, 119, 180, 0.2) !important;
-        outline: none !important;
-    }
-    
-    /* Стилизация кнопок - фон цвета основного фона #12385C */
-    .stButton > button {
-        width: 100% !important;
-        min-width: 100% !important;
-        max-width: 100% !important;
-        min-height: 45px !important;
-        height: 45px !important;
-        max-height: 45px !important;
-        background-color: #12385C !important;
-        color: #ffffff !important;
-        border: 1px solid rgba(255, 255, 255, 0.3) !important;
-        border-radius: 4px !important;
-        padding: 0 !important;
-        font-weight: 500 !important;
-        transition: all 0.2s ease !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        box-sizing: border-box !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        line-height: 1 !important;
-    }
-    
-    /* Стилизация внутренних элементов кнопки */
-    .stButton > button > div,
-    .stButton > button > span,
-    .stButton > button > p {
-        margin: 0 !important;
-        padding: 0.5rem 1rem !important;
-        line-height: 1 !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        max-width: 100% !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-    }
-    
-    /* Убеждаемся, что кнопки в колонках имеют одинаковую ширину и высоту */
-    [data-testid="column"] .stButton > button {
-        width: 100% !important;
-        min-width: 100% !important;
-        max-width: 100% !important;
-        min-height: 45px !important;
-        height: 45px !important;
-        max-height: 45px !important;
-        padding: 0 !important;
-        box-sizing: border-box !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        line-height: 1 !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-    }
-    
-    /* Стилизация внутренних элементов кнопки в колонках */
-    [data-testid="column"] .stButton > button > div,
-    [data-testid="column"] .stButton > button > span,
-    [data-testid="column"] .stButton > button > p {
-        margin: 0 !important;
-        padding: 0.5rem 1rem !important;
-        line-height: 1 !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        max-width: 100% !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-    }
-    
-    /* Кнопки в формах также должны иметь одинаковую высоту и ширину */
-    form .stButton > button {
-        min-height: 45px !important;
-        height: 45px !important;
-        max-height: 45px !important;
-        width: 100% !important;
-        padding: 0 !important;
-        box-sizing: border-box !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        line-height: 1 !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-    }
-    
-    /* Стилизация внутренних элементов кнопки в формах */
-    form .stButton > button > div,
-    form .stButton > button > span,
-    form .stButton > button > p {
-        margin: 0 !important;
-        padding: 0.5rem 1rem !important;
-        line-height: 1 !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        max-width: 100% !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-    }
-    
-    /* Дополнительно для кнопок в колонках формы входа */
-    form [data-testid="column"] .stButton > button {
-        width: 100% !important;
-        min-width: 100% !important;
-        max-width: 100% !important;
-        min-height: 45px !important;
-        height: 45px !important;
-        max-height: 45px !important;
-        padding: 0 !important;
-        box-sizing: border-box !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        line-height: 1 !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-    }
-    
-    /* Стилизация внутренних элементов кнопки в колонках формы входа */
-    form [data-testid="column"] .stButton > button > div,
-    form [data-testid="column"] .stButton > button > span,
-    form [data-testid="column"] .stButton > button > p {
-        margin: 0 !important;
-        padding: 0.5rem 1rem !important;
-        line-height: 1 !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        max-width: 100% !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-    }
-    .stButton > button:hover {
-        background-color: rgba(18, 56, 92, 0.9) !important;
-        border-color: rgba(255, 255, 255, 0.5) !important;
-        color: #ffffff !important;
-    }
-    .stButton > button:focus {
-        border-color: #1f77b4 !important;
-        box-shadow: 0 0 0 2px rgba(31, 119, 180, 0.2) !important;
-        outline: none !important;
-    }
-    /* Кнопки primary - фон цвета основного фона */
-    .stButton > button[kind="primary"] {
-        background-color: #12385C !important;
-        color: #ffffff !important;
-        border: 1px solid #1f77b4 !important;
-    }
-    .stButton > button[kind="primary"]:hover {
-        background-color: rgba(18, 56, 92, 0.9) !important;
-        border-color: #2a8bc4 !important;
-        color: #ffffff !important;
-    }
-    /* Кнопки secondary - фон цвета основного фона */
-    .stButton > button[kind="secondary"] {
-        background-color: #12385C !important;
-        color: #ffffff !important;
-        border: 1px solid rgba(255, 255, 255, 0.3) !important;
-    }
-    .stButton > button[kind="secondary"]:hover {
-        background-color: rgba(18, 56, 92, 0.9) !important;
-        border-color: rgba(255, 255, 255, 0.5) !important;
-        color: #ffffff !important;
-    }
-    </style>
-""",
-    unsafe_allow_html=True,
-)
+# st.markdown(
+#     """
+#     <style>
+#     /* Фон приложения - новый цвет */
+#     .stApp {
+#         background-color: #12385C !important;
+#     }
+#
+#     /* Стилизация хедера Streamlit - фон цвета основного фона */
+#     header[data-testid="stHeader"],
+#     .stHeader,
+#     header,
+#     div[data-testid="stHeader"],
+#     .stHeader > div,
+#     header > div,
+#     div[data-testid="stHeader"] > div {
+#         background-color: #12385C !important;
+#         border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+#     }
+#
+#     /* Текст в хедере */
+#     header[data-testid="stHeader"] *,
+#     .stHeader *,
+#     header *,
+#     div[data-testid="stHeader"] * {
+#         color: #ffffff !important;
+#     }
+#
+#     /* Основной контент - белый текст */
+#     .main .block-container,
+#     .main .element-container,
+#     .main h1, .main h2, .main h3, .main h4, .main h5, .main h6,
+#     .main p, .main span, .main div,
+#     .main label {
+#         color: #ffffff !important;
+#     }
+#
+#     /* Скрываем боковую панель на странице входа */
+#     .stSidebar {
+#         display: none !important;
+#     }
+#     [data-testid="stSidebar"] {
+#         display: none !important;
+#     }
+#     /* Скрываем стандартную навигацию */
+#     [data-testid="stSidebarNav"] {
+#         display: none !important;
+#     }
+#
+#     /* Контейнер для формы авторизации - делаем еще шире */
+#     .main .block-container {
+#         max-width: 1500px !important;
+#         width: 100% !important;
+#         padding-top: 3rem !important;
+#         padding-bottom: 3rem !important;
+#     }
+#
+#     /* Переопределяем все возможные ограничения ширины */
+#     .main > div {
+#         max-width: 1500px !important;
+#         width: 100% !important;
+#     }
+#
+#     /* Контейнер для формы входа - расширяем */
+#     form[data-testid="stForm"] {
+#         max-width: 1500px !important;
+#         width: 100% !important;
+#         margin: 0 auto !important;
+#     }
+#
+#     /* Убеждаемся, что все элементы формы используют доступную ширину */
+#     .stForm {
+#         max-width: 1500px !important;
+#         width: 100% !important;
+#     }
+#
+#     .stForm > div {
+#         max-width: 1500px !important;
+#         width: 100% !important;
+#     }
+#
+#     /* Переопределяем внутренние контейнеры Streamlit */
+#     [data-testid="stForm"] {
+#         max-width: 1500px !important;
+#         width: 100% !important;
+#     }
+#
+#     [data-testid="stForm"] > div {
+#         max-width: 1500px !important;
+#         width: 100% !important;
+#     }
+#
+#
+#     /* Стилизация полей ввода - подсветка для видимости на темном фоне */
+#     .stTextInput > div > div > input,
+#     .stTextInput > div > div > input:focus,
+#     input[type="text"],
+#     input[type="password"],
+#     input[type="email"] {
+#         background-color: #2a2a3a !important;
+#         color: #ffffff !important;
+#         border: 1px solid #4a5568 !important;
+#         border-radius: 4px !important;
+#         padding: 0.5rem !important;
+#     }
+#     .stTextInput > div > div > input:focus,
+#     input[type="text"]:focus,
+#     input[type="password"]:focus,
+#     input[type="email"]:focus {
+#         border-color: #1f77b4 !important;
+#         box-shadow: 0 0 0 2px rgba(31, 119, 180, 0.2) !important;
+#         outline: none !important;
+#     }
+#
+#     /* Стилизация кнопок - фон цвета основного фона #12385C */
+#     .stButton > button {
+#         width: 100% !important;
+#         min-width: 100% !important;
+#         max-width: 100% !important;
+#         min-height: 45px !important;
+#         height: 45px !important;
+#         max-height: 45px !important;
+#         background-color: #12385C !important;
+#         color: #ffffff !important;
+#         border: 1px solid rgba(255, 255, 255, 0.3) !important;
+#         border-radius: 4px !important;
+#         padding: 0 !important;
+#         font-weight: 500 !important;
+#         transition: all 0.2s ease !important;
+#         display: flex !important;
+#         align-items: center !important;
+#         justify-content: center !important;
+#         box-sizing: border-box !important;
+#         white-space: nowrap !important;
+#         overflow: hidden !important;
+#         text-overflow: ellipsis !important;
+#         line-height: 1 !important;
+#     }
+#
+#     /* Стилизация внутренних элементов кнопки */
+#     .stButton > button > div,
+#     .stButton > button > span,
+#     .stButton > button > p {
+#         margin: 0 !important;
+#         padding: 0.5rem 1rem !important;
+#         line-height: 1 !important;
+#         white-space: nowrap !important;
+#         overflow: hidden !important;
+#         text-overflow: ellipsis !important;
+#         max-width: 100% !important;
+#         display: flex !important;
+#         align-items: center !important;
+#         justify-content: center !important;
+#     }
+#
+#     /* Убеждаемся, что кнопки в колонках имеют одинаковую ширину и высоту */
+#     [data-testid="column"] .stButton > button {
+#         width: 100% !important;
+#         min-width: 100% !important;
+#         max-width: 100% !important;
+#         min-height: 45px !important;
+#         height: 45px !important;
+#         max-height: 45px !important;
+#         padding: 0 !important;
+#         box-sizing: border-box !important;
+#         white-space: nowrap !important;
+#         overflow: hidden !important;
+#         text-overflow: ellipsis !important;
+#         line-height: 1 !important;
+#         display: flex !important;
+#         align-items: center !important;
+#         justify-content: center !important;
+#     }
+#
+#     /* Стилизация внутренних элементов кнопки в колонках */
+#     [data-testid="column"] .stButton > button > div,
+#     [data-testid="column"] .stButton > button > span,
+#     [data-testid="column"] .stButton > button > p {
+#         margin: 0 !important;
+#         padding: 0.5rem 1rem !important;
+#         line-height: 1 !important;
+#         white-space: nowrap !important;
+#         overflow: hidden !important;
+#         text-overflow: ellipsis !important;
+#         max-width: 100% !important;
+#         display: flex !important;
+#         align-items: center !important;
+#         justify-content: center !important;
+#     }
+#
+#     /* Кнопки в формах также должны иметь одинаковую высоту и ширину */
+#     form .stButton > button {
+#         min-height: 45px !important;
+#         height: 45px !important;
+#         max-height: 45px !important;
+#         width: 100% !important;
+#         padding: 0 !important;
+#         box-sizing: border-box !important;
+#         white-space: nowrap !important;
+#         overflow: hidden !important;
+#         text-overflow: ellipsis !important;
+#         line-height: 1 !important;
+#         display: flex !important;
+#         align-items: center !important;
+#         justify-content: center !important;
+#     }
+#
+#     /* Стилизация внутренних элементов кнопки в формах */
+#     form .stButton > button > div,
+#     form .stButton > button > span,
+#     form .stButton > button > p {
+#         margin: 0 !important;
+#         padding: 0.5rem 1rem !important;
+#         line-height: 1 !important;
+#         white-space: nowrap !important;
+#         overflow: hidden !important;
+#         text-overflow: ellipsis !important;
+#         max-width: 100% !important;
+#         display: flex !important;
+#         align-items: center !important;
+#         justify-content: center !important;
+#     }
+#
+#     /* Дополнительно для кнопок в колонках формы входа */
+#     form [data-testid="column"] .stButton > button {
+#         width: 100% !important;
+#         min-width: 100% !important;
+#         max-width: 100% !important;
+#         min-height: 45px !important;
+#         height: 45px !important;
+#         max-height: 45px !important;
+#         padding: 0 !important;
+#         box-sizing: border-box !important;
+#         white-space: nowrap !important;
+#         overflow: hidden !important;
+#         text-overflow: ellipsis !important;
+#         line-height: 1 !important;
+#         display: flex !important;
+#         align-items: center !important;
+#         justify-content: center !important;
+#     }
+#
+#     /* Стилизация внутренних элементов кнопки в колонках формы входа */
+#     form [data-testid="column"] .stButton > button > div,
+#     form [data-testid="column"] .stButton > button > span,
+#     form [data-testid="column"] .stButton > button > p {
+#         margin: 0 !important;
+#         padding: 0.5rem 1rem !important;
+#         line-height: 1 !important;
+#         white-space: nowrap !important;
+#         overflow: hidden !important;
+#         text-overflow: ellipsis !important;
+#         max-width: 100% !important;
+#         display: flex !important;
+#         align-items: center !important;
+#         justify-content: center !important;
+#     }
+#     .stButton > button:hover {
+#         background-color: rgba(18, 56, 92, 0.9) !important;
+#         border-color: rgba(255, 255, 255, 0.5) !important;
+#         color: #ffffff !important;
+#     }
+#     .stButton > button:focus {
+#         border-color: #1f77b4 !important;
+#         box-shadow: 0 0 0 2px rgba(31, 119, 180, 0.2) !important;
+#         outline: none !important;
+#     }
+#     /* Кнопки primary - фон цвета основного фона */
+#     .stButton > button[kind="primary"] {
+#         background-color: #12385C !important;
+#         color: #ffffff !important;
+#         border: 1px solid #1f77b4 !important;
+#     }
+#     .stButton > button[kind="primary"]:hover {
+#         background-color: rgba(18, 56, 92, 0.9) !important;
+#         border-color: #2a8bc4 !important;
+#         color: #ffffff !important;
+#     }
+#     /* Кнопки secondary - фон цвета основного фона */
+#     .stButton > button[kind="secondary"] {
+#         background-color: #12385C !important;
+#         color: #ffffff !important;
+#         border: 1px solid rgba(255, 255, 255, 0.3) !important;
+#     }
+#     .stButton > button[kind="secondary"]:hover {
+#         background-color: rgba(18, 56, 92, 0.9) !important;
+#         border-color: rgba(255, 255, 255, 0.5) !important;
+#         color: #ffffff !important;
+#     }
+#     </style>
+# """,
+#     unsafe_allow_html=True,
+# )
 
 # Если уже авторизован, перенаправляем
 if st.session_state.get("authenticated", False):
