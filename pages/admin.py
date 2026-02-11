@@ -368,22 +368,35 @@ if user is not None:
     render_sidebar_menu(current_page="admin")
 
     # Заголовок
-    st.title("⚙️ Административная панель")
+    # st.title("⚙️ Административная панель")
+    st.title("Административная панель")
     st.markdown("---")
 
     # Информация о текущем пользователе
     col1, col2, col3 = st.columns(3)
+
     with col1:
+
         st.metric("Пользователь", user["username"])
+
     with col2:
+
         st.metric("Роль", get_user_role_display(user["role"]))
+
     with col3:
+
+        # if st.button("🚪 Выйти"):
+
         if st.button("🚪 Выйти"):
+
             from auth import logout
 
             log_action(user["username"], "logout", "Выход из системы")
+
             logout()
+
             st.success("Вы вышли из системы")
+            
             st.rerun()
 
     st.markdown("---")
