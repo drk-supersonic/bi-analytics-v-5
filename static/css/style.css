@@ -285,3 +285,25 @@ textarea:focus{
 h1{
     color: hotpink !important;
 }
+
+
+
+
+/* ┌────────────────────────────────────────────────────────────────────────┐ */
+/* │ ⊗ Скрыть подсказку "Press Enter to submit form" ¤ Start                │ */
+/* └────────────────────────────────────────────────────────────────────────┘ */
+
+/* Скрыть подсказку "Press Enter to submit form" */
+[data-testid="stForm"] [data-testid="InputInstructions"] {
+    display: none !important;
+}
+
+/* Скрыть все инструкции в форме */
+[data-testid="stForm"] .st-emotion-cache-1gulkj5,
+[data-testid="stForm"] .st-emotion-cache-10y5sf6 {
+    display: none !important;
+}
+
+/* ┌────────────────────────────────────────────────────────────────────────┐ */
+/* │ ⊗ Скрыть подсказку "Press Enter to submit form" ¤ End                  │ */
+/* └────────────────────────────────────────────────────────────────────────┘ */
