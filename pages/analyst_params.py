@@ -6,13 +6,20 @@ from pathlib import Path
 
 # App root: walk up until we find auth.py + config.py (works when __file__ or CWD is wrong)
 _here = Path(__file__).resolve().parent
+
 _app_root = _here.parent
+
 _p = _here.parent
+
 while _p != _p.parent:
+
     if (_p / "auth.py").exists() and (_p / "config.py").exists():
+
         _app_root = _p
+
         break
     _p = _p.parent
+    
 sys.path.insert(0, str(_app_root))
 
 # ┌──────────────────────────────────────────────────────────────────────────┐ #
@@ -20,12 +27,19 @@ sys.path.insert(0, str(_app_root))
 # └──────────────────────────────────────────────────────────────────────────┘ #
 
 def load_custom_css():
+
     css_path = _app_root / "static" / "css" / "style.css"
+
     if css_path.exists():
+
         with open(css_path, encoding="utf-8") as f:
+
             css_content = f.read()
+
         st.markdown(f"<style>{css_content}</style>", unsafe_allow_html=True)
+
     else:
+
         st.warning(f"CSS файл не найден: {css_path}")
 
 # ┌──────────────────────────────────────────────────────────────────────────┐ #
@@ -53,26 +67,45 @@ try:
         AVAILABLE_REPORTS,
         FILTER_TYPES
     )
+
 except ImportError as e:
+
     AVAILABLE_REPORTS = []
+
     FILTER_TYPES = {}
+
     def get_default_filters(*args, **kwargs):
+
         return {}
+
     def set_default_filter(*args, **kwargs):
+
         return False
+
     def delete_default_filter(*args, **kwargs):
+
         return False
+
     def get_all_default_filters(*args, **kwargs):
+
         return []
+
     def copy_filters_to_role(*args, **kwargs):
+
         return False
+
     import warnings
+
     warnings.warn(f"Ошибка импорта модуля filters: {e}")
 
 try:
+
     from logger import log_action
+
 except ImportError:
+
     def log_action(*args, **kwargs):
+
         pass
 
 # Инициализация базы данных
@@ -80,11 +113,17 @@ init_db()
 
 # Проверка, что мы в контексте Streamlit
 def is_streamlit_context():
+
     """Проверка, что код выполняется в контексте Streamlit"""
+
     try:
+
         from streamlit.runtime.scriptrunner import get_script_run_ctx
+
         return get_script_run_ctx() is not None
+
     except:
+
         return False
 
 # Выполняем код только в контексте Streamlit
@@ -611,19 +650,27 @@ if is_streamlit_context():
 
     # Проверка авторизации
     require_auth()
+
     user = get_current_user()
 
     # Проверка, что пользователь получен
     if not user:
+
         st.error("⚠️ Ошибка получения данных пользователя")
+
         st.stop()
 
     # Проверка прав доступа - менеджеры не имеют доступа к параметрам отчетов
     if user['role'] == 'manager':
+
         st.error("⚠️ У вас нет доступа к этой странице")
+
         st.info("Доступ к параметрам отчетов имеют только аналитики и администраторы.")
+
         if st.button("Вернуться к отчетам"):
+
             st.switch_page("project_visualization_app.py")
+
         st.stop()
 
     # Боковая панель с меню навигации
@@ -636,16 +683,28 @@ if is_streamlit_context():
 
     # Информация о текущем пользователе
     col1, col2, col3 = st.columns(3)
+
     with col1:
+
         st.metric("Пользователь", user['username'])
+
     with col2:
+
         st.metric("Роль", get_user_role_display(user['role']))
+
     with col3:
-        if st.button("🚪 Выйти"):
+
+        # if st.button("🚪 Выйти"):
+        if st.button("Выйти"):
+
             from auth import logout
+
             log_action(user['username'], 'logout', 'Выход из системы')
+
             logout()
+
             st.success("Вы вышли из системы")
+
             st.rerun()
 
     st.markdown("---")
@@ -664,15 +723,20 @@ if is_streamlit_context():
         "Копирование фильтров"
     ])
 
-    # ──────────────────────────────────────────────
-    # Вкладка 1: Настроить фильтры
-    # ──────────────────────────────────────────────
+    # ┌──────────────────────────────────────────────────────────────────────┐ #
+    # │ ⊗ TAB 1: Настроить фильтры ¤ Start                                   │ #
+    # └──────────────────────────────────────────────────────────────────────┘ #
+
     with tab_setup:
+
         st.subheader("Настройка фильтров")
 
         with st.form("filter_form"):
+
             col1, col2 = st.columns(2)
+
             with col1:
+
                 selected_role = st.selectbox(
                     "Роль *",
                     options=list(ROLES.keys()),
@@ -684,7 +748,9 @@ if is_streamlit_context():
                     options=AVAILABLE_REPORTS,
                     key="setup_report"
                 )
+
             with col2:
+
                 filter_key = st.text_input(
                     "Ключ фильтра *",
                     help="Например: selected_project, date_range, etc.",
@@ -706,7 +772,9 @@ if is_streamlit_context():
             submitted = st.form_submit_button("Сохранить фильтр", type="primary")
 
             if submitted:
+
                 if filter_key and selected_role and selected_report:
+
                     if set_default_filter(
                         selected_role, selected_report, filter_key, filter_value,
                         filter_type, user['username']
@@ -716,40 +784,53 @@ if is_streamlit_context():
                             'set_default_filter',
                             f'Установлен фильтр {filter_key} для роли {get_user_role_display(selected_role)} в отчете {selected_report}'
                         )
+
                         st.success("✅ Фильтр успешно сохранен!")
+
                         st.rerun()
+
                     else:
+
                         st.error("❌ Ошибка при сохранении фильтра")
                 else:
+
                     st.warning("Заполните обязательные поля (отмечены *)")
 
         st.markdown("---")
 
         # Текущие фильтры
         st.subheader("Текущие фильтры")
+
         col1, col2 = st.columns(2)
+
         with col1:
+
             view_role = st.selectbox(
                 "Роль для просмотра",
-                options=['Все'] + list(ROLES.keys()),
-                format_func=lambda x: ROLES.get(x, x) if x != 'Все' else x,
-                key='view_role_setup'
+                options = ['Все'] + list(ROLES.keys()),
+                format_func = lambda x: ROLES.get(x, x) if x != 'Все' else x,
+                key = 'view_role_setup'
             )
+
         with col2:
+
             view_report = st.selectbox(
                 "Отчет для просмотра",
-                options=['Все'] + AVAILABLE_REPORTS,
-                key='view_report_setup'
+                options = ['Все'] + AVAILABLE_REPORTS,
+                key = 'view_report_setup'
             )
 
         filters = get_all_default_filters(
-            role=None if view_role == 'Все' else view_role,
-            report_name=None if view_report == 'Все' else view_report
+            role = None if view_role == 'Все' else view_role,
+            report_name = None if view_report == 'Все' else view_report
         )
 
         if filters:
+
             filters_data = []
+
             for f in filters:
+
                 filters_data.append({
                     'Роль': get_user_role_display(f['role']),
                     'Отчет': f['report_name'],
@@ -759,28 +840,39 @@ if is_streamlit_context():
                     'Обновлено': f['updated_at'] or '-',
                     'Обновил': f['updated_by'] or '-'
                 })
+
             df_filters = pd.DataFrame(filters_data)
+
             st.dataframe(df_filters, use_container_width=True, hide_index=True)
 
             # Удаление фильтров
             st.markdown("#### Удаление фильтра")
+
             with st.form("delete_filter_form"):
+
                 del_col1, del_col2, del_col3 = st.columns(3)
+
                 with del_col1:
+
                     del_role = st.selectbox(
                         "Роль",
                         options=list(ROLES.keys()),
                         format_func=lambda x: ROLES[x],
                         key='del_role_setup'
                     )
+
                 with del_col2:
+
                     del_report = st.selectbox(
                         "Отчет",
                         options=AVAILABLE_REPORTS,
                         key='del_report_setup'
                     )
+
                 with del_col3:
+
                     role_filters = get_default_filters(del_role, del_report)
+
                     del_filter_key = st.selectbox(
                         "Ключ фильтра",
                         options=list(role_filters.keys()) if role_filters else [],
@@ -788,38 +880,60 @@ if is_streamlit_context():
                     )
 
                 if st.form_submit_button("Удалить фильтр", type="primary"):
+
                     if del_filter_key:
+
                         if delete_default_filter(del_role, del_report, del_filter_key):
+
                             log_action(
                                 user['username'],
                                 'delete_default_filter',
                                 f'Удален фильтр {del_filter_key} для роли {get_user_role_display(del_role)} в отчете {del_report}'
                             )
+
                             st.success("✅ Фильтр успешно удален!")
+
                             st.rerun()
+
                         else:
+
                             st.error("❌ Ошибка при удалении фильтра")
         else:
+
             st.info("Фильтры не найдены")
 
-    # ──────────────────────────────────────────────
-    # Вкладка 2: Просмотр всех фильтров
-    # ──────────────────────────────────────────────
+    # ┌──────────────────────────────────────────────────────────────────────┐ #
+    # │ ⊗ TAB 1: Настроить фильтры ¤ End                                     │ #
+    # └──────────────────────────────────────────────────────────────────────┘ #
+
+    # ┌──────────────────────────────────────────────────────────────────────┐ #
+    # │ ⊗ TAB 2: Просмотр всех фильтров ¤ Start                              │ #
+    # └──────────────────────────────────────────────────────────────────────┘ #
+
     with tab_view_all:
+
         st.subheader("Все фильтры по умолчанию")
 
         all_filters = get_all_default_filters()
 
         if all_filters:
+
             filters_by_role_report = {}
+
             for f in all_filters:
+
                 key = (f['role'], f['report_name'])
+
                 filters_by_role_report.setdefault(key, []).append(f)
 
             for (role, report), filters_list in sorted(filters_by_role_report.items()):
+
                 with st.expander(f"📋 {get_user_role_display(role)} - {report} ({len(filters_list)} фильтров)"):
+
                     filters_data = []
+
                     for f in filters_list:
+
                         filters_data.append({
                             'Ключ': f['filter_key'],
                             'Значение': f['filter_value'] or '-',
@@ -827,28 +941,43 @@ if is_streamlit_context():
                             'Обновлено': f['updated_at'] or '-',
                             'Обновил': f['updated_by'] or '-'
                         })
+
                     df = pd.DataFrame(filters_data)
+
                     st.dataframe(df, use_container_width=True, hide_index=True)
         else:
+
             st.info("Фильтры не настроены")
 
-    # ──────────────────────────────────────────────
-    # Вкладка 3: Копирование фильтров
-    # ──────────────────────────────────────────────
+    # ┌──────────────────────────────────────────────────────────────────────┐ #
+    # │ ⊗ TAB 2: Просмотр всех фильтров ¤ End                                │ #
+    # └──────────────────────────────────────────────────────────────────────┘ #
+
+    # ┌──────────────────────────────────────────────────────────────────────┐ #
+    # │ ⊗ TAB 3: Копирование фильтров ¤ Start                                │ #
+    # └──────────────────────────────────────────────────────────────────────┘ #
+
     with tab_copy:
+
         st.subheader("Копирование фильтров")
+
         st.info("Скопируйте все фильтры из одной роли в другую. Можно для конкретного отчета или всех.")
 
         with st.form("copy_filters_form"):
+
             col1, col2 = st.columns(2)
+
             with col1:
+
                 source_role = st.selectbox(
                     "Исходная роль",
                     options=list(ROLES.keys()),
                     format_func=lambda x: ROLES[x],
                     key="copy_source_role"
                 )
+
             with col2:
+
                 target_role = st.selectbox(
                     "Целевая роль",
                     options=list(ROLES.keys()),
@@ -863,25 +992,38 @@ if is_streamlit_context():
             )
 
             if st.form_submit_button("Копировать фильтры", type="primary"):
+
                 if source_role == target_role:
+
                     st.warning("⚠️ Исходная и целевая роли не могут быть одинаковыми")
+
                 else:
+
                     report_name = None if copy_report == 'Все' else copy_report
+
                     if copy_filters_to_role(source_role, target_role, report_name):
+
                         log_action(
                             user['username'],
                             'copy_filters',
                             f'Скопированы фильтры из роли {get_user_role_display(source_role)} в роль {get_user_role_display(target_role)}' +
                             (f' для отчета {copy_report}' if report_name else ' для всех отчетов')
                         )
+
                         st.success("✅ Фильтры успешно скопированы!")
+
                         st.rerun()
+
                     else:
+
                         st.error("❌ Ошибка при копировании фильтров")
 
-    # ──────────────────────────────────────────────
-    # Кнопка возврата
-    # ──────────────────────────────────────────────
+    # ┌──────────────────────────────────────────────────────────────────────┐ #
+    # │ ⊗ TAB 3: Копирование фильтров ¤ End                                  │ #
+    # └──────────────────────────────────────────────────────────────────────┘ #
+
     st.markdown("---")
+
     if st.button("← Вернуться к отчетам"):
+
         st.switch_page("project_visualization_app.py")
