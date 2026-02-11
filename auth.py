@@ -459,204 +459,204 @@ def render_sidebar_menu(current_page: str = "reports"):
 
     # CSS для скрытия стандартной навигации Streamlit и стилизации элементов
     # Этот CSS применяется глобально для всех страниц
-    st.markdown(
-        """
-        <style>
-        /* Скрываем стандартную навигацию Streamlit в боковой панели */
-        [data-testid="stSidebarNav"],
-        div[data-testid="stSidebarNav"],
-        ul[data-testid="stSidebarNav"],
-        nav[data-testid="stSidebarNav"],
-        .stSidebar [data-testid="stSidebarNav"],
-        section[data-testid="stSidebarNav"] {
-            display: none !important;
-            visibility: hidden !important;
-            height: 0 !important;
-            overflow: hidden !important;
-        }
-        /* Скрываем стандартные ссылки на страницы в боковой панели */
-        .stSidebar a[href*="pages/"],
-        .stSidebar a[href*="project_visualization_app"] {
-            display: none !important;
-        }
-        
-        /* Хедер — такой же цвет, как фон приложения */
-        header[data-testid="stHeader"],
-        [data-testid="stHeader"],
-        .stHeader,
-        header,
-        div[data-testid="stHeader"],
-        .stHeader > div,
-        header > div,
-        div[data-testid="stHeader"] > div {
-            background-color: #12385C !important;
-            border-bottom: none !important;
-        }
-        header[data-testid="stHeader"] *,
-        [data-testid="stHeader"] *,
-        .stHeader *,
-        header * {
-            color: #ffffff !important;
-        }
-        
-        /* Стилизация полей ввода - подсветка для видимости на темном фоне */
-        .stTextInput > div > div > input,
-        .stTextInput > div > div > input:focus,
-        input[type="text"],
-        input[type="password"],
-        input[type="email"],
-        input[type="number"],
-        textarea {
-            background-color: #2a2a3a !important;
-            color: #ffffff !important;
-            border: 1px solid #4a5568 !important;
-            border-radius: 4px !important;
-            padding: 0.5rem !important;
-        }
-        .stTextInput > div > div > input:focus,
-        input[type="text"]:focus,
-        input[type="password"]:focus,
-        input[type="email"]:focus,
-        input[type="number"]:focus,
-        textarea:focus {
-            border-color: #1f77b4 !important;
-            box-shadow: 0 0 0 2px rgba(31, 119, 180, 0.2) !important;
-            outline: none !important;
-        }
-        
-        /* Стилизация кнопок - фон цвета основного фона, белый текст */
-        .stButton > button {
-            background-color: #12385C !important;
-            color: #ffffff !important;
-            border: 1px solid rgba(255, 255, 255, 0.3) !important;
-            border-radius: 4px !important;
-            padding: 0.5rem 1rem !important;
-            font-weight: 500 !important;
-            transition: all 0.2s ease !important;
-        }
-        .stButton > button:hover {
-            background-color: rgba(18, 56, 92, 0.9) !important;
-            border-color: rgba(255, 255, 255, 0.5) !important;
-            color: #ffffff !important;
-        }
-        .stButton > button:focus {
-            border-color: #1f77b4 !important;
-            box-shadow: 0 0 0 2px rgba(31, 119, 180, 0.2) !important;
-            outline: none !important;
-        }
-        /* Кнопки primary - фон цвета основного фона с более яркой окантовкой */
-        .stButton > button[kind="primary"] {
-            background-color: #12385C !important;
-            color: #ffffff !important;
-            border: 1px solid #1f77b4 !important;
-        }
-        .stButton > button[kind="primary"]:hover {
-            background-color: rgba(18, 56, 92, 0.9) !important;
-            border-color: #2a8bc4 !important;
-            color: #ffffff !important;
-        }
-        /* Отключенные кнопки */
-        .stButton > button:disabled {
-            background-color: rgba(18, 56, 92, 0.6) !important;
-            color: #666666 !important;
-            border-color: rgba(255, 255, 255, 0.2) !important;
-            opacity: 0.6 !important;
-        }
-        /* Стилизация selectbox */
-        .stSelectbox > div > div > select {
-            background-color: #2a2a3a !important;
-            color: #ffffff !important;
-            border: 1px solid #4a5568 !important;
-            border-radius: 4px !important;
-        }
-        .stSelectbox > div > div > select:focus {
-            border-color: #1f77b4 !important;
-            box-shadow: 0 0 0 2px rgba(31, 119, 180, 0.2) !important;
-            outline: none !important;
-        }
-        /* Стилизация checkbox */
-        .stCheckbox > label {
-            color: #ffffff !important;
-        }
-        /* Стилизация date input */
-        .stDateInput > div > div > input {
-            background-color: #2a2a3a !important;
-            color: #ffffff !important;
-            border: 1px solid #4a5568 !important;
-        }
-        /* Стилизация number input */
-        .stNumberInput > div > div > input {
-            background-color: #2a2a3a !important;
-            color: #ffffff !important;
-            border: 1px solid #4a5568 !important;
-            border-radius: 4px !important;
-        }
-        .stNumberInput > div > div > input:focus {
-            border-color: #1f77b4 !important;
-            box-shadow: 0 0 0 2px rgba(31, 119, 180, 0.2) !important;
-            outline: none !important;
-        }
-        /* Стилизация multiselect */
-        .stMultiSelect > div > div {
-            background-color: #2a2a3a !important;
-            color: #ffffff !important;
-            border: 1px solid #4a5568 !important;
-        }
-        /* Стилизация file uploader */
-        .stFileUploader > div {
-            background-color: #2a2a3a !important;
-            border: 1px solid #4a5568 !important;
-            border-radius: 4px !important;
-        }
-        
-        /* Таблицы — фон синий #12385C, шрифт белый */
-        .main table, .main table th, .main table td,
-        table, table th, table td, table thead th, table tbody th, table tbody td {
-            background-color: #12385C !important;
-            color: #ffffff !important;
-            border-color: rgba(255, 255, 255, 0.25) !important;
-        }
-        .main table *, table th *, table td * {
-            color: #ffffff !important;
-        }
-        [data-testid="stDataFrame"], [data-testid="stDataFrame"] *,
-        .stDataFrame, .stDataFrame * {
-            background-color: #12385C !important;
-            color: #ffffff !important;
-        }
-        
-        /* Стилизация sidebar (бокового меню) - фон цвета основного фона */
-        .stSidebar,
-        [data-testid="stSidebar"],
-        section[data-testid="stSidebar"],
-        div[data-testid="stSidebar"],
-        .stSidebar > div,
-        [data-testid="stSidebar"] > div,
-        section[data-testid="stSidebar"] > div,
-        div[data-testid="stSidebar"] > div {
-            background-color: #12385C !important;
-        }
-        
-        /* Разделитель между sidebar и основной областью - отступ 30px от границы кнопок */
-        .stSidebar,
-        [data-testid="stSidebar"],
-        section[data-testid="stSidebar"],
-        div[data-testid="stSidebar"] {
-            border-right: 1px solid rgba(255, 255, 255, 0.3) !important;
-            padding-right: 30px !important;
-        }
-        
-        /* Текст в sidebar - белый */
-        .stSidebar *,
-        [data-testid="stSidebar"] *,
-        section[data-testid="stSidebar"] *,
-        div[data-testid="stSidebar"] * {
-            color: #ffffff !important;
-        }
-        </style>
-    """,
-        unsafe_allow_html=True,
-    )
+    # st.markdown(
+    #     """
+    #     <style>
+    #     /* Скрываем стандартную навигацию Streamlit в боковой панели */
+    #     [data-testid="stSidebarNav"],
+    #     div[data-testid="stSidebarNav"],
+    #     ul[data-testid="stSidebarNav"],
+    #     nav[data-testid="stSidebarNav"],
+    #     .stSidebar [data-testid="stSidebarNav"],
+    #     section[data-testid="stSidebarNav"] {
+    #         display: none !important;
+    #         visibility: hidden !important;
+    #         height: 0 !important;
+    #         overflow: hidden !important;
+    #     }
+    #     /* Скрываем стандартные ссылки на страницы в боковой панели */
+    #     .stSidebar a[href*="pages/"],
+    #     .stSidebar a[href*="project_visualization_app"] {
+    #         display: none !important;
+    #     }
+    #
+    #     /* Хедер — такой же цвет, как фон приложения */
+    #     header[data-testid="stHeader"],
+    #     [data-testid="stHeader"],
+    #     .stHeader,
+    #     header,
+    #     div[data-testid="stHeader"],
+    #     .stHeader > div,
+    #     header > div,
+    #     div[data-testid="stHeader"] > div {
+    #         background-color: #12385C !important;
+    #         border-bottom: none !important;
+    #     }
+    #     header[data-testid="stHeader"] *,
+    #     [data-testid="stHeader"] *,
+    #     .stHeader *,
+    #     header * {
+    #         color: #ffffff !important;
+    #     }
+    #
+    #     /* Стилизация полей ввода - подсветка для видимости на темном фоне */
+    #     .stTextInput > div > div > input,
+    #     .stTextInput > div > div > input:focus,
+    #     input[type="text"],
+    #     input[type="password"],
+    #     input[type="email"],
+    #     input[type="number"],
+    #     textarea {
+    #         background-color: #2a2a3a !important;
+    #         color: #ffffff !important;
+    #         border: 1px solid #4a5568 !important;
+    #         border-radius: 4px !important;
+    #         padding: 0.5rem !important;
+    #     }
+    #     .stTextInput > div > div > input:focus,
+    #     input[type="text"]:focus,
+    #     input[type="password"]:focus,
+    #     input[type="email"]:focus,
+    #     input[type="number"]:focus,
+    #     textarea:focus {
+    #         border-color: #1f77b4 !important;
+    #         box-shadow: 0 0 0 2px rgba(31, 119, 180, 0.2) !important;
+    #         outline: none !important;
+    #     }
+    #
+    #     /* Стилизация кнопок - фон цвета основного фона, белый текст */
+    #     .stButton > button {
+    #         background-color: #12385C !important;
+    #         color: #ffffff !important;
+    #         border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    #         border-radius: 4px !important;
+    #         padding: 0.5rem 1rem !important;
+    #         font-weight: 500 !important;
+    #         transition: all 0.2s ease !important;
+    #     }
+    #     .stButton > button:hover {
+    #         background-color: rgba(18, 56, 92, 0.9) !important;
+    #         border-color: rgba(255, 255, 255, 0.5) !important;
+    #         color: #ffffff !important;
+    #     }
+    #     .stButton > button:focus {
+    #         border-color: #1f77b4 !important;
+    #         box-shadow: 0 0 0 2px rgba(31, 119, 180, 0.2) !important;
+    #         outline: none !important;
+    #     }
+    #     /* Кнопки primary - фон цвета основного фона с более яркой окантовкой */
+    #     .stButton > button[kind="primary"] {
+    #         background-color: #12385C !important;
+    #         color: #ffffff !important;
+    #         border: 1px solid #1f77b4 !important;
+    #     }
+    #     .stButton > button[kind="primary"]:hover {
+    #         background-color: rgba(18, 56, 92, 0.9) !important;
+    #         border-color: #2a8bc4 !important;
+    #         color: #ffffff !important;
+    #     }
+    #     /* Отключенные кнопки */
+    #     .stButton > button:disabled {
+    #         background-color: rgba(18, 56, 92, 0.6) !important;
+    #         color: #666666 !important;
+    #         border-color: rgba(255, 255, 255, 0.2) !important;
+    #         opacity: 0.6 !important;
+    #     }
+    #     /* Стилизация selectbox */
+    #     .stSelectbox > div > div > select {
+    #         background-color: #2a2a3a !important;
+    #         color: #ffffff !important;
+    #         border: 1px solid #4a5568 !important;
+    #         border-radius: 4px !important;
+    #     }
+    #     .stSelectbox > div > div > select:focus {
+    #         border-color: #1f77b4 !important;
+    #         box-shadow: 0 0 0 2px rgba(31, 119, 180, 0.2) !important;
+    #         outline: none !important;
+    #     }
+    #     /* Стилизация checkbox */
+    #     .stCheckbox > label {
+    #         color: #ffffff !important;
+    #     }
+    #     /* Стилизация date input */
+    #     .stDateInput > div > div > input {
+    #         background-color: #2a2a3a !important;
+    #         color: #ffffff !important;
+    #         border: 1px solid #4a5568 !important;
+    #     }
+    #     /* Стилизация number input */
+    #     .stNumberInput > div > div > input {
+    #         background-color: #2a2a3a !important;
+    #         color: #ffffff !important;
+    #         border: 1px solid #4a5568 !important;
+    #         border-radius: 4px !important;
+    #     }
+    #     .stNumberInput > div > div > input:focus {
+    #         border-color: #1f77b4 !important;
+    #         box-shadow: 0 0 0 2px rgba(31, 119, 180, 0.2) !important;
+    #         outline: none !important;
+    #     }
+    #     /* Стилизация multiselect */
+    #     .stMultiSelect > div > div {
+    #         background-color: #2a2a3a !important;
+    #         color: #ffffff !important;
+    #         border: 1px solid #4a5568 !important;
+    #     }
+    #     /* Стилизация file uploader */
+    #     .stFileUploader > div {
+    #         background-color: #2a2a3a !important;
+    #         border: 1px solid #4a5568 !important;
+    #         border-radius: 4px !important;
+    #     }
+    #
+    #     /* Таблицы — фон синий #12385C, шрифт белый */
+    #     .main table, .main table th, .main table td,
+    #     table, table th, table td, table thead th, table tbody th, table tbody td {
+    #         background-color: #12385C !important;
+    #         color: #ffffff !important;
+    #         border-color: rgba(255, 255, 255, 0.25) !important;
+    #     }
+    #     .main table *, table th *, table td * {
+    #         color: #ffffff !important;
+    #     }
+    #     [data-testid="stDataFrame"], [data-testid="stDataFrame"] *,
+    #     .stDataFrame, .stDataFrame * {
+    #         background-color: #12385C !important;
+    #         color: #ffffff !important;
+    #     }
+    #
+    #     /* Стилизация sidebar (бокового меню) - фон цвета основного фона */
+    #     .stSidebar,
+    #     [data-testid="stSidebar"],
+    #     section[data-testid="stSidebar"],
+    #     div[data-testid="stSidebar"],
+    #     .stSidebar > div,
+    #     [data-testid="stSidebar"] > div,
+    #     section[data-testid="stSidebar"] > div,
+    #     div[data-testid="stSidebar"] > div {
+    #         background-color: #12385C !important;
+    #     }
+    #
+    #     /* Разделитель между sidebar и основной областью - отступ 30px от границы кнопок */
+    #     .stSidebar,
+    #     [data-testid="stSidebar"],
+    #     section[data-testid="stSidebar"],
+    #     div[data-testid="stSidebar"] {
+    #         border-right: 1px solid rgba(255, 255, 255, 0.3) !important;
+    #         padding-right: 30px !important;
+    #     }
+    #
+    #     /* Текст в sidebar - белый */
+    #     .stSidebar *,
+    #     [data-testid="stSidebar"] *,
+    #     section[data-testid="stSidebar"] *,
+    #     div[data-testid="stSidebar"] * {
+    #         color: #ffffff !important;
+    #     }
+    #     </style>
+    # """,
+    #     unsafe_allow_html=True,
+    # )
 
     with st.sidebar:
         # Меню навигации
