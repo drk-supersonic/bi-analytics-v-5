@@ -237,12 +237,12 @@ input{
     border: none !important;
     transition: border .08s ease-in-out 0s !important;
 }
-input:not(:focus){
+/* input:not(:focus){
     border: 1px solid hsl(214,34%,80%) !important;
 }
 input:focus{
     border: 1px solid hsl(181,54%,50%) !important;
-}
+} */
 
 textarea{
     /* width: calc(100% - 24px);
@@ -267,12 +267,12 @@ textarea{
     margin: 4px 0 0 0 !important; */
     transition: border .08s ease-in-out 0s !important;
 }
-textarea:not(:focus){
+/* textarea:not(:focus){
     border: 1px solid hsl(214,34%,80%) !important;
 }
 textarea:focus{
     border: 1px solid hsl(181,54%,50%) !important;
-}
+} */
 
 /* ┌────────────────────────────────────────────────────────────────────────┐ */
 /* │ ⊗ INPUT ¤ End                                                          │ */
