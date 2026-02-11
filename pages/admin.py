@@ -15,6 +15,23 @@ while _p != _p.parent:
     _p = _p.parent
 sys.path.insert(0, str(_app_root))
 
+# ┌──────────────────────────────────────────────────────────────────────────┐ #
+# │ ⊗ CSS CONNECT ¤ Start                                                    │ #
+# └──────────────────────────────────────────────────────────────────────────┘ #
+
+def load_custom_css():
+    css_path = _app_root / "static" / "css" / "style.css"
+    if css_path.exists():
+        with open(css_path, encoding="utf-8") as f:
+            css_content = f.read()
+        st.markdown(f"<style>{css_content}</style>", unsafe_allow_html=True)
+    else:
+        st.warning(f"CSS файл не найден: {css_path}")
+
+# ┌──────────────────────────────────────────────────────────────────────────┐ #
+# │ ⊗ CSS CONNECT ¤ End                                                      │ #
+# └──────────────────────────────────────────────────────────────────────────┘ #
+
 import streamlit as st
 import pandas as pd
 from datetime import datetime
@@ -79,23 +96,6 @@ except ImportError as e:
 
     warnings.warn(f"Ошибка импорта модуля filters: {e}")
 
-# ┌──────────────────────────────────────────────────────────────────────────┐ #
-# │ ⊗ CSS CONNECT ¤ Start                                                    │ #
-# └──────────────────────────────────────────────────────────────────────────┘ #
-
-def load_custom_css():
-    css_path = Path(__file__).parent.parent / "static" / "css" / "style.css"
-    if css_path.exists():
-        with open(css_path, encoding="utf-8") as f:
-            css_content = f.read()
-        st.markdown(f"<style>{css_content}</style>", unsafe_allow_html=True)
-    else:
-        st.warning("CSS файл не найден: " + str(css_path))
-
-# ┌──────────────────────────────────────────────────────────────────────────┐ #
-# │ ⊗ CSS CONNECT ¤ End                                                      │ #
-# └──────────────────────────────────────────────────────────────────────────┘ #
-
 # Инициализация базы данных
 init_db()
 
@@ -113,6 +113,7 @@ def is_streamlit_context():
 
 # Выполняем код только в контексте Streamlit
 if is_streamlit_context():
+    
     # Настройка страницы
     st.set_page_config(
         page_title="Настройки - BI Analytics",
@@ -120,6 +121,16 @@ if is_streamlit_context():
         layout="wide",
         menu_items={"Get Help": None, "Report a bug": None, "About": None},
     )
+
+    # ┌──────────────────────────────────────────────────────────────────────┐ #
+    # │ ⊗ CSS CONNECT ¤ Start                                                │ #
+    # └──────────────────────────────────────────────────────────────────────┘ #
+
+    load_custom_css()
+
+    # ┌──────────────────────────────────────────────────────────────────────┐ #
+    # │ ⊗ CSS CONNECT ¤ End                                                  │ #
+    # └──────────────────────────────────────────────────────────────────────┘ #
 
     # Custom CSS для фона страницы
     # st.markdown(
