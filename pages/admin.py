@@ -79,6 +79,23 @@ except ImportError as e:
 
     warnings.warn(f"Ошибка импорта модуля filters: {e}")
 
+# ┌──────────────────────────────────────────────────────────────────────────┐ #
+# │ ⊗ CSS CONNECT ¤ Start                                                    │ #
+# └──────────────────────────────────────────────────────────────────────────┘ #
+
+def load_custom_css():
+    css_path = Path(__file__).parent / "static" / "css" / "style.css"
+    if css_path.exists():
+        with open(css_path, encoding="utf-8") as f:
+            css_content = f.read()
+        st.markdown(f"<style>{css_content}</style>", unsafe_allow_html=True)
+    else:
+        st.warning("CSS файл не найден: " + str(css_path))
+
+# ┌──────────────────────────────────────────────────────────────────────────┐ #
+# │ ⊗ CSS CONNECT ¤ End                                                      │ #
+# └──────────────────────────────────────────────────────────────────────────┘ #
+
 # Инициализация базы данных
 init_db()
 
