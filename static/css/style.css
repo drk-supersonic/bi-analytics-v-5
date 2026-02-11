@@ -498,20 +498,29 @@ div[data-testid="stDataFrame"] [role="columnheader"] {
 
 
 /* Весь sidebar (включая header, collapse-кнопку, фон и т.д.) */
-[data-testid="stSidebar"] {
+[data-testid="stSidebar"]{
     background-color: green !important;
     border-right: 1px solid red !important;
+
+
+
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
 }
-
 /* Более точный вариант, если нужно переопределить вложенный div */
-[data-testid="stSidebar"] > div:first-child {
+[data-testid="stSidebar"] > div:first-child{
+
+
+
     background-color: #12385C !important;
-    box-shadow: inset 0 0 0 4px gold;
+    /* box-shadow: inset 0 0 0 4px gold !important; */
 
-    width: calc(100 - 4px);
+    width: calc(100 - 4px) !important;
 
-    min-height: 100vh;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    min-height: 100vh !important;
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
     /* border-right: var(--Muqoneee) solid hsl(190,40%,98%); */
 }
