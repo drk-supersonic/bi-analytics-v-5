@@ -1,9 +1,11 @@
+# .streamlit/config.toml
+
 [server]
 enableStaticServing = true
 
-# ──────────────────────────────────────────────
-# Определение всех вариантов шрифта Inter
-# ──────────────────────────────────────────────
+# =============================================
+# Определение шрифта Inter (все начертания)
+# =============================================
 
 [[theme.fontFaces]]
 family = "Inter"
@@ -59,12 +61,21 @@ url    = "static/fonts/Inter_Black.woff2"
 weight = 900
 style  = "normal"
 
-# ──────────────────────────────────────────────
-# Устанавливаем Inter как основной шрифт приложения
-# ──────────────────────────────────────────────
+# =============================================
+# Основные настройки темы
+# =============================================
 
 [theme]
-font          = "Inter, system-ui, -apple-system, sans-serif"
-headingFont   = "Inter, system-ui, -apple-system, sans-serif"   # или можно оставить другой, если хочешь
-codeFont      = "Consolas, 'Courier New', monospace"           # код обычно лучше оставить моноширинным
-# baseFontSize  = 16   # опционально — размер по умолчанию
+# Базовая тема: light или dark
+base = "dark"
+
+# Шрифты приложения
+font = "Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+headingFont = "Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+codeFont = "Consolas, 'Courier New', monospace"
+
+# Опционально: можно явно указать цвета, если хочется чуть подправить
+# primaryColor       = "#0068c9"         # основной акцентный цвет кнопок и т.д.
+# backgroundColor    = "#ffffff"
+# secondaryBackgroundColor = "#f0f2f6"
+# textColor          = "#262730"
