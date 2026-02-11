@@ -510,7 +510,7 @@ div[data-testid="stDataFrame"] [role="columnheader"] {
     align-items: center !important;
 }
 /* Более точный вариант, если нужно переопределить вложенный div */
-[data-testid="stSidebar"] > div:first-child{
+[data-testid="stSidebar111"] > div:first-child{
 
 
 
@@ -524,4 +524,42 @@ div[data-testid="stDataFrame"] [role="columnheader"] {
     overflow-y: scroll !important;
     overflow-x: hidden !important;
     /* border-right: var(--Muqoneee) solid hsl(190,40%,98%); */
+}
+
+
+[data-testid="stSidebar"] > div:first-child {
+    background-color: #12385C !important;
+    overflow-y: scroll !important;          /* ← force vertical scroll */
+    overflow-x: hidden !important;
+    scrollbar-width: thin !important;       /* Firefox: тонкий скроллбар */
+    scrollbar-color: #4a6a8c #1e3a5f !important;  /* Firefox: цвета */
+}
+
+/* 3. Самый важный — внутренний скроллируемый контент */
+[data-testid="stSidebarContent"] {
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
+    height: 100% !important;                /* растягиваем на всю высоту */
+    scrollbar-width: thin !important;
+    scrollbar-color: #4a6a8c #1e3a5f !important;
+}
+
+/* 4. WebKit-браузеры (Chrome, Edge, Safari) — заставляем показывать всегда */
+[data-testid="stSidebarContent"]::-webkit-scrollbar {
+    width: 8px !important;                  /* ширина скроллбара */
+    display: block !important;              /* ← ключевой момент */
+}
+
+[data-testid="stSidebarContent"]::-webkit-scrollbar-track {
+    background: #1e3a5f !important;         /* фон трека */
+    border-radius: 4px !important;
+}
+
+[data-testid="stSidebarContent"]::-webkit-scrollbar-thumb {
+    background: #4a6a8c !important;         /* цвет ползунка */
+    border-radius: 4px !important;
+}
+
+[data-testid="stSidebarContent"]::-webkit-scrollbar-thumb:hover {
+    background: #5a7a9c !important;
 }
