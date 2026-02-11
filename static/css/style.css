@@ -323,6 +323,25 @@ h1{
     display: none !important;
 }
 
+/* -------------------------------------------------------------------------- */
+
+/* Самый надёжный способ скрыть ВСЕ подсказки ввода в формах */
+[data-testid="stForm"] [data-testid="InputInstructions"],
+[data-testid="stForm"] div[style*="font-size: 0.75rem"],   /* часто серый мелкий текст */
+[data-testid="stForm"] .st-emotion-cache-1gulkj5,
+[data-testid="stForm"] .st-emotion-cache-10y5sf6,
+[data-testid="stForm"] .st-emotion-cache-* {               /* wildcard на все emotion-классы с инструкциями */
+    display: none !important;
+}
+
+/* Дополнительно: скрыть любые инструкции под text_input / password */
+.stTextInput [data-testid="InputInstructions"],
+.stTextInput div[role="alert"],
+.stTextInput div[style*="color: rgb(139, 0, 0)"],           /* если есть ошибки */
+.stTextInput div[style*="font-size: smaller"] {
+    display: none !important;
+}
+
 /* ┌────────────────────────────────────────────────────────────────────────┐ */
 /* │ ⊗ Скрыть подсказку "Press Enter to submit form" ¤ End                  │ */
 /* └────────────────────────────────────────────────────────────────────────┘ */
