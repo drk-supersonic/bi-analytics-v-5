@@ -47,7 +47,7 @@ st.set_page_config(
 
 # Загрузка CSS стилей из внешнего файла (включая шрифты)
 # Должна быть САМОЙ ПЕРВОЙ, до любого st-вызова
-load_all_styles()
+# load_all_styles()
 
 # Custom CSS for better styling (dark theme)
 st.markdown(
