@@ -467,20 +467,43 @@ div.dragonBlock > section > div > section > div > section > div.ai-anchor{
 
 
 
-
+/* ┌────────────────────────────────────────────────────────────────────────┐ */
+/* │ ⊗ Я хз что это пока ¤ Start                                            │ */
+/* └────────────────────────────────────────────────────────────────────────┘ */
 
 div[data-testid="stDataFrame"] [role="grid"] {
-    background-color: red !important;
+    background-color: #12385C !important;
 }
 
 div[data-testid="stDataFrame"] [role="row"],
 div[data-testid="stDataFrame"] [role="cell"] {
-    background-color: red !important;
-    color: gold !important;
+    background-color: #12385C !important;
+    color: #ffffff !important;
 }
 
 /* Заголовки таблицы */
 div[data-testid="stDataFrame"] [role="columnheader"] {
-    background-color: green !important;
-    color: hotpink !important;
+    background-color: #0d2b47 !important;
+    color: #e0f0ff !important;
+}
+
+/* ┌────────────────────────────────────────────────────────────────────────┐ */
+/* │ ⊗ Я хз что это пока ¤ End                                              │ */
+/* └────────────────────────────────────────────────────────────────────────┘ */
+
+
+
+
+
+
+
+/* Весь sidebar (включая header, collapse-кнопку, фон и т.д.) */
+[data-testid="stSidebar"] {
+    background-color: gold !important;
+    border-right: 1px solid red !important;
+}
+
+/* Более точный вариант, если нужно переопределить вложенный div */
+[data-testid="stSidebar"] > div:first-child {
+    background-color: #12385C !important;
 }
