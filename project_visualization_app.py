@@ -781,7 +781,7 @@ def main():
         st.stop()
 
     st.markdown(
-        '<h1 class="main-header">📊 Панель аналитики проектов</h1>',
+        '<h1 class="main-header">📊 Панель аналитики проектов111</h1>',
         unsafe_allow_html=True,
     )
 
