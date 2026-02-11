@@ -708,42 +708,111 @@ def main():
 
         # Режим входа
         else:
-            # Форма входа в центрированном контейнере (50% ширины экрана)
-            # Используем пустые колонки для центрирования
-            col_left, col_center, col_right = st.columns([1, 1, 1])
+            # # Форма входа в центрированном контейнере (50% ширины экрана)
+            # # Используем пустые колонки для центрирования
+            # col_left, col_center, col_right = st.columns([1, 1, 1])
+            # with col_center:
+            #     with st.form("login_form", clear_on_submit=False):
+            #         st.markdown("### Вход в систему")
+            #         st.markdown("---")
+            #
+            #         username = st.text_input(
+            #             "👤 Имя пользователя",
+            #             key="login_username",
+            #             placeholder="Введите имя пользователя",
+            #             autocomplete="username",
+            #         )
+            #
+            #         password = st.text_input(
+            #             "🔒 Пароль",
+            #             type="password",
+            #             key="login_password",
+            #             placeholder="Введите пароль",
+            #             autocomplete="current-password",
+            #         )
+            #
+            #         col1, col2 = st.columns(2)
+            #
+            #         with col1:
+            #             submit_button = st.form_submit_button(
+            #                 "🚀 Войти", type="primary", use_container_width=True
+            #             )
+            #
+            #         with col2:
+            #             if st.form_submit_button(
+            #                 "❓ Забыли пароль?", use_container_width=True
+            #             ):
+            #                 st.session_state.reset_mode = True
+            #                 st.rerun()
+            #
+            #         if submit_button:
+            #             if username and password:
+            #                 success, user = authenticate(username, password)
+            #                 if success and user:
+            #                     st.session_state.authenticated = True
+            #                     st.session_state.user = user
+            #                     st.success(f"✅ Добро пожаловать, {user['username']}!")
+            #                     st.balloons()
+            #                     import time
+            #
+            #                     time.sleep(1)
+            #                     st.rerun()
+            #                 else:
+            #                     st.error("❌ Неверное имя пользователя или пароль")
+            #             else:
+            #                 st.warning("⚠️ Заполните все поля")
+            #
+            #     st.markdown("---")
+
+            # Форма входа в центрированном контейнере (уже)
+            col_left, col_center, col_right = st.columns([2, 1.5, 2])
             with col_center:
                 with st.form("login_form", clear_on_submit=False):
-                    st.markdown("### Вход в систему")
-                    st.markdown("---")
+
+                    # st.markdown("### Вход в систему")
+
+                    st.markdown("<br>", unsafe_allow_html=True)
+
+                    st.markdown("""
+                    <div style='text-align: center; font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: white;'>
+                        Вход в систему
+                    </div>
+                    """, unsafe_allow_html=True)
+
+                    # st.markdown("---")
+
+                    # Скрытое поле-ловушка для браузера
+                    st.markdown('<input type="text" style="display:none" autocomplete="username">', unsafe_allow_html=True)
+                    st.markdown('<input type="password" style="display:none" autocomplete="new-password">', unsafe_allow_html=True)
 
                     username = st.text_input(
                         "👤 Имя пользователя",
                         key="login_username",
                         placeholder="Введите имя пользователя",
-                        autocomplete="username",
+                        # autocomplete="username",
+                        autocomplete="off",
+                        value=""
                     )
-
                     password = st.text_input(
                         "🔒 Пароль",
                         type="password",
                         key="login_password",
                         placeholder="Введите пароль",
-                        autocomplete="current-password",
+                        # autocomplete="current-password",
+                        autocomplete="new-password",
+                        value=""
                     )
 
-                    col1, col2 = st.columns(2)
+                    # ИСПРАВЛЕНИЕ: убираем колонки, делаем кнопки одна под другой
+                    st.markdown("<br>", unsafe_allow_html=True)
 
-                    with col1:
-                        submit_button = st.form_submit_button(
-                            "🚀 Войти", type="primary", use_container_width=True
-                        )
+                    # submit_button = st.form_submit_button("🚀 Войти", type="primary", use_container_width=True)
+                    submit_button = st.form_submit_button("Войти", type="primary", use_container_width=True)
 
-                    with col2:
-                        if st.form_submit_button(
-                            "❓ Забыли пароль?", use_container_width=True
-                        ):
-                            st.session_state.reset_mode = True
-                            st.rerun()
+                    # submit_reset = st.form_submit_button("❓ Забыли пароль?", use_container_width=True)
+                    submit_reset = st.form_submit_button("Забыли пароль?", use_container_width=True)
+
+                    st.markdown("<br>", unsafe_allow_html=True)
 
                     if submit_button:
                         if username and password:
@@ -754,7 +823,6 @@ def main():
                                 st.success(f"✅ Добро пожаловать, {user['username']}!")
                                 st.balloons()
                                 import time
-
                                 time.sleep(1)
                                 st.rerun()
                             else:
@@ -762,7 +830,13 @@ def main():
                         else:
                             st.warning("⚠️ Заполните все поля")
 
-                st.markdown("---")
+                    if submit_reset:
+                        st.session_state.reset_mode = True
+                        st.rerun()
+
+                # st.markdown("---")
+
+                st.markdown("<br>", unsafe_allow_html=True)
 
                 # Информация о доступе (учётные данные задаются при развёртывании)
                 # with st.expander("ℹ️ Учётные данные", expanded=False):
