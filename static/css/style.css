@@ -457,3 +457,30 @@ div.dragonBlock > section > div > section > div > section > div.ai-anchor{
 /* ┌────────────────────────────────────────────────────────────────────────┐ */
 /* │ ⊗ Кастомный fixed-блок под AI ¤ End                                    │ */
 /* └────────────────────────────────────────────────────────────────────────┘ */
+
+
+
+
+
+
+
+
+
+
+
+
+div[data-testid="stDataFrame"] [role="grid"] {
+    background-color: red !important;
+}
+
+div[data-testid="stDataFrame"] [role="row"],
+div[data-testid="stDataFrame"] [role="cell"] {
+    background-color: red !important;
+    color: gold !important;
+}
+
+/* Заголовки таблицы */
+div[data-testid="stDataFrame"] [role="columnheader"] {
+    background-color: green !important;
+    color: hotpink !important;
+}
