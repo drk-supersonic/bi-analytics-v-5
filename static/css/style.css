@@ -1,3 +1,22 @@
+
+:root{
+
+    /* ┌────────────────────────────────────────────────────────────────────────┐ */
+    /* │ Цвет фона #12385C / hsl(209,67%,22%);                                  │ */
+    /* └────────────────────────────────────────────────────────────────────────┘ */
+
+    --themeBackgroundColor: hsl(190,40%,98%);
+    --themeBackgroundColor: hsl(210,67%,96%);
+    --themeBackgroundColor: hsl(216,28%,7%);
+    /* --themeBackgroundColor: hsl(209,67%,22%); */
+}
+
+
+
+
+
+
+
 .main-header {
     font-size: 2.5rem;
     font-weight: bold;
@@ -12,7 +31,7 @@
 }
 /* Фон основной области — как у меню (sidebar) */
 .stApp {
-    background-color: #12385C !important;
+    background-color: var(--themeBackgroundColor) !important;
 }
 /* Контейнер контента — тот же тон */
 .main .block-container,
@@ -32,7 +51,7 @@ div[data-testid="stHeader"],
 .stHeader > div,
 header > div,
 div[data-testid="stHeader"] > div {
-    background-color: #12385C !important;
+    background-color: var(--themeBackgroundColor) !important;
     border-bottom: none !important;
 }
 header[data-testid="stHeader"] *,
@@ -163,7 +182,7 @@ table td,
 table thead th,
 table tbody th,
 table tbody td {
-    background-color: #12385C !important;
+    background-color: var(--themeBackgroundColor) !important;
     color: #ffffff !important;
     border-color: rgba(255, 255, 255, 0.25) !important;
     font-size: 14px !important;
@@ -184,7 +203,7 @@ div[data-testid="stDataFrame"] [role="columnheader"],
 [data-testid="stDataFrame"] th,
 [data-testid="stDataFrame"] .cell,
 [data-testid="stDataFrame"] [class*="cell"] {
-    background-color: #12385C !important;
+    background-color: var(--themeBackgroundColor) !important;
     color: #ffffff !important;
     font-size: 14px !important;
 }
