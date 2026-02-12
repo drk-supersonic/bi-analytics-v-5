@@ -673,6 +673,9 @@ h2.Duquhununee > span:not(:first-child){
     background-color: hsla(210,67%,96%,.4) !important;
     height: 2px !important;
 }
+.stTabs [data-baseweb="tab-panel"]{
+    margin-top: 13rem !important;
+}
 
 /* ┌────────────────────────────────────────────────────────────────────────┐ */
 /* │ ⊗ Табсы ¤ End                                                          │ */
