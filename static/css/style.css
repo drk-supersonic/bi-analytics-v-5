@@ -9,6 +9,8 @@
     --themeBackgroundColor: hsl(210,67%,96%);
     --themeBackgroundColor: hsl(216,28%,7%);
     --themeBackgroundColor: hsl(209,67%,22%);
+
+    --themeFontColor: hsl(210,67%,96%);
 }
 
 
@@ -580,7 +582,7 @@ h1.Buquhununee{
     line-height: 1 !important;
     letter-spacing: 0.004em !important;
     text-align: left !important;
-    color: var(--themeBackgroundColor) !important;
+    color: var(--themeFontColor) !important;
     margin: 0 0 55px 0 !important;
 
     /* box-shadow: inset 0 0 0 1px gold !important; */
