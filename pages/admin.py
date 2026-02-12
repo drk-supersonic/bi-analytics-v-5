@@ -877,50 +877,120 @@ if user is not None:
     # │ ⊗ TAB 4: Логи действий ¤ Start                                       │ #
     # └──────────────────────────────────────────────────────────────────────┘ #
 
-    with tab4:
+    # with tab4:
+    #
+    #     st.subheader("Логи действий пользователей")
+    #
+    #     # Фильтры
+    #     col1, col2, col3 = st.columns(3)
+    #
+    #     with col1:
+    #
+    #         conn = sqlite3.connect(DB_PATH)
+    #
+    #         cursor = conn.cursor()
+    #
+    #         cursor.execute(
+    #             "SELECT DISTINCT username FROM user_activity_logs ORDER BY username"
+    #         )
+    #
+    #         usernames = [row[0] for row in cursor.fetchall()]
+    #
+    #         conn.close()
+    #
+    #         filter_username = st.selectbox("Фильтр по пользователю", options=["Все"] + usernames)
+    #
+    #     with col2:
+    #
+    #         conn = sqlite3.connect(DB_PATH)
+    #
+    #         cursor = conn.cursor()
+    #
+    #         cursor.execute("SELECT DISTINCT action FROM user_activity_logs ORDER BY action")
+    #
+    #         actions = [row[0] for row in cursor.fetchall()]
+    #
+    #         conn.close()
+    #
+    #         filter_action = st.selectbox("Фильтр по действию", options=["Все"] + actions)
+    #
+    #     with col3:
+    #
+    #         log_limit = st.number_input("Количество записей", min_value=10, max_value=1000, value=100, step=10)
+    #
+    #     # Применение фильтров
+    #     username_filter = None if filter_username == "Все" else filter_username
+    #     action_filter = None if filter_action == "Все" else filter_action
+    #
+    #     # Получение логов
+    #     logs = get_logs(limit=log_limit, username=username_filter, action=action_filter)
+    #
+    #     if logs:
+    #         logs_data = []
+    #         for log in logs:
+    #             logs_data.append(
+    #                 {
+    #                     "ID": log["id"],
+    #                     "Пользователь": log["username"],
+    #                     "Действие": log["action"],
+    #                     "Детали": log["details"] or "-",
+    #                     "IP адрес": log["ip_address"] or "-",
+    #                     "Время": log["created_at"] if log["created_at"] else "-",
+    #                 }
+    #             )
+    #
+    #         df_logs = pd.DataFrame(logs_data)
+    #         html_table = format_dataframe_as_html(df_logs)
+    #         st.markdown(html_table, unsafe_allow_html=True)
+    #
+    #         # Экспорт логов
+    #         csv = df_logs.to_csv(index=False).encode("utf-8-sig")
+    #         st.download_button(
+    #             label="📥 Скачать логи (CSV)",
+    #             data=csv,
+    #             file_name=f"logs_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv",
+    #             mime="text/csv",
+    #         )
+    #     else:
+    #         st.info("Логи не найдены")
 
+    with tab4:
+        
         st.subheader("Логи действий пользователей")
 
         # Фильтры
         col1, col2, col3 = st.columns(3)
 
         with col1:
-
             conn = sqlite3.connect(DB_PATH)
-
             cursor = conn.cursor()
-
             cursor.execute(
                 "SELECT DISTINCT username FROM user_activity_logs ORDER BY username"
             )
-
             usernames = [row[0] for row in cursor.fetchall()]
-
             conn.close()
-
             filter_username = st.selectbox("Фильтр по пользователю", options=["Все"] + usernames)
 
         with col2:
-
             conn = sqlite3.connect(DB_PATH)
-
             cursor = conn.cursor()
-
             cursor.execute("SELECT DISTINCT action FROM user_activity_logs ORDER BY action")
-
             actions = [row[0] for row in cursor.fetchall()]
-
             conn.close()
-
             filter_action = st.selectbox("Фильтр по действию", options=["Все"] + actions)
 
         with col3:
-
-            log_limit = st.number_input("Количество записей", min_value=10, max_value=1000, value=100, step=10)
+            log_limit = st.number_input(
+                "Количество записей",
+                min_value=10,
+                max_value=1000,
+                value=100,
+                step=10
+            )
 
         # Применение фильтров
         username_filter = None if filter_username == "Все" else filter_username
-        action_filter = None if filter_action == "Все" else filter_action
+        action_filter  = None if filter_action  == "Все" else action_filter
 
         # Получение логов
         logs = get_logs(limit=log_limit, username=username_filter, action=action_filter)
@@ -928,16 +998,37 @@ if user is not None:
         if logs:
             logs_data = []
             for log in logs:
-                logs_data.append(
-                    {
-                        "ID": log["id"],
-                        "Пользователь": log["username"],
-                        "Действие": log["action"],
-                        "Детали": log["details"] or "-",
-                        "IP адрес": log["ip_address"] or "-",
-                        "Время": log["created_at"] if log["created_at"] else "-",
-                    }
-                )
+                # Форматирование времени
+                created_at_raw = log.get("created_at")
+                if created_at_raw:
+                    # Если строка — приводим к datetime
+                    if isinstance(created_at_raw, str):
+                        # Убираем микросекунды и возможный Z
+                        created_at = datetime.fromisoformat(created_at_raw.split('.')[0])
+                    else:
+                        created_at = created_at_raw
+
+                    # Формат: 12 февр. 2026, 00:09
+                    day   = created_at.strftime("%d")
+                    month = created_at.strftime("%b").replace(
+                        "Jan", "янв").replace("Feb", "февр").replace("Mar", "мар").replace("Apr", "апр")
+                        .replace("May", "мая").replace("Jun", "июн").replace("Jul", "июл").replace("Aug", "авг")
+                        .replace("Sep", "сен").replace("Oct", "окт").replace("Nov", "нояб").replace("Dec", "дек")
+                    year  = created_at.strftime("%Y")
+                    time  = created_at.strftime("%H:%M")
+
+                    formatted_time = f"{day} {month}. {year}, {time}"
+                else:
+                    formatted_time = "-"
+
+                logs_data.append({
+                    "ID":         log["id"],
+                    "Пользователь": log["username"]   or "-",
+                    "Действие":   log["action"]       or "-",
+                    "Детали":     log["details"]      or "-",
+                    "IP адрес":   log["ip_address"]   or "-",
+                    "Время":      formatted_time,
+                })
 
             df_logs = pd.DataFrame(logs_data)
             html_table = format_dataframe_as_html(df_logs)
