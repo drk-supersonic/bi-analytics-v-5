@@ -774,7 +774,9 @@ if user is not None:
 
     with tab2:
 
-        st.subheader("Статистика системы")
+        # st.subheader("Статистика системы")
+
+        st.markdown("<h2 class='Duquhununee'>Статистика системы</h2>", unsafe_allow_html=True)
 
         conn = sqlite3.connect(DB_PATH)
         cursor = conn.cursor()
@@ -1040,7 +1042,9 @@ if user is not None:
 
     with tab4:
 
-        st.subheader("Логи действий пользователей")
+        # st.subheader("Логи действий пользователей")
+
+        st.markdown("<h2 class='Duquhununee'>Логи действий пользователей</h2>", unsafe_allow_html=True)
 
         # Фильтры
         col1, col2, col3 = st.columns(3)
@@ -1220,7 +1224,9 @@ if user is not None:
 
     with tab6:
 
-        st.subheader("Управление правами доступа к проектам")
+        # st.subheader("Управление правами доступа к проектам")
+
+        st.markdown("<h2 class='Duquhununee'>Управление правами доступа к проектам</h2>", unsafe_allow_html=True)
 
         st.info(
             """
