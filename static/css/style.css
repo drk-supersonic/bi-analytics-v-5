@@ -727,13 +727,24 @@ table {
 
 /* Заголовки таблицы (шапка) */
 table thead th {
-    background-color: #0d2b47 !important; /* Темнее для шапки */
-    color: #e0f0ff !important; /* Светло-голубой текст */
+    /* background-color: #0d2b47 !important; 
+    color: #e0f0ff !important;
     font-family: "Inter", sans-serif !important;
     font-weight: 600 !important;
     font-size: 15px !important;
-    letter-spacing: 10.02em !important;
+    letter-spacing: 0.02em !important;
+    text-align: left !important; */
+
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-weight: 500 !important;
+    font-style: normal !important;
+    font-size: .94rem !important;
+    line-height: 1.08 !important;
+    letter-spacing: 0.004em !important;
     text-align: left !important;
+    color: hsla(210,67%,96%,1) !important;
+
+
     padding: 16px 20px !important;
     border-bottom: 2px solid rgba(255, 255, 255, 0.3) !important;
     border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
