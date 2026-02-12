@@ -649,7 +649,7 @@ div.tab-list{
 
 /* Контейнер вкладок */
 .stTabs {
-    margin-bottom: 2rem;
+    margin-bottom: 21rem;
 }
 
 /* Список вкладок (сама навигационная панель) */
@@ -732,7 +732,7 @@ button.stTabs [data-baseweb="tab"]:hover {
 
 /* Активная вкладка */
 button.stTabs [data-baseweb="tab"][aria-selected="true"] {
-    color: blue !important;
+    color: #ff4b4b !important;
     /* Красный цвет как на скриншоте */
     font-weight: 600 !important;
 }
