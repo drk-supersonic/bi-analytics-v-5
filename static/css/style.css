@@ -751,7 +751,16 @@ table thead th {
 
     padding: 16px 20px !important;
     border-bottom: 2px solid rgba(255, 255, 255, 0.3) !important;
-    border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+    /* border-right: 1px solid rgba(255, 255, 255, 0.1) !important; */
+}
+table thead th:first-of-type{
+    border-right: 1px solid green !important;
+}
+table thead th:not(:first-of-type):not(:last-of-type){
+    border-right: 1px solid red !important;
+}
+table thead th:last-of-type{
+    border-right: 1px solid blue !important;
 }
 
 /* Убираем правую границу у последней колонки в шапке */
