@@ -716,28 +716,15 @@ h3.Muquhununee > span:not(:first-child){
 /* │ ⊗ Таблицы ¤ Start                                                      │ */
 /* └────────────────────────────────────────────────────────────────────────┘ */
 
-/* Основной контейнер таблицы */
-table {
+table{
     width: calc(100% - 2px) !important;
     border-collapse: separate !important;
     border-spacing: 0 !important;
-    
-    border-radius: 8px !important;
+    border-radius: 3px !important;
     overflow: hidden !important;
-
-    border: 1px solid hsla(210,67%,96%,1) !important;
+    border: 1px solid hsla(210,67%,96%,.9) !important;
 }
-
-/* Заголовки таблицы (шапка) */
-table thead th {
-    /* background-color: #0d2b47 !important; 
-    color: #e0f0ff !important;
-    font-family: "Inter", sans-serif !important;
-    font-weight: 600 !important;
-    font-size: 15px !important;
-    letter-spacing: 0.02em !important;
-    text-align: left !important; */
-
+table thead th{
     background-color: #0d2b47 !important; 
     font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
     font-weight: 500 !important;
@@ -747,28 +734,18 @@ table thead th {
     letter-spacing: 0.004em !important;
     text-align: left !important;
     color: hsla(210,67%,96%,1) !important;
-
-
     padding: 16px 20px !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
-    /* border-right: 1px solid rgba(255, 255, 255, 0.1) !important; */
+    border-bottom: 1px solid hsla(210,67%,96%,.4) !important;
 }
 table thead th:first-of-type{
-    border-right: 1px solid green !important;
+    border-right: 1px solid hsla(210,67%,96%,.4) !important;
 }
 table thead th:not(:first-of-type):not(:last-of-type){
-    border-right: 1px solid red !important;
+    border-right: 1px solid hsla(210,67%,96%,.4) !important;
 }
 table thead th:last-of-type{
-    border-right: 0 solid blue !important;
+    border-right: 0 solid hsla(210,67%,96%,.4) !important;
 }
-
-/* Убираем правую границу у последней колонки в шапке */
-table thead th:last-child {
-    border-right: none !important;
-}
-
-/* Ячейки тела таблицы */
 table tbody td{
     background-color: var(--themeBackgroundColor) !important; /* #12385C */
     color: #ffffff !important;
@@ -776,18 +753,17 @@ table tbody td{
     font-weight: 400 !important;
     font-size: 14px !important;
     padding: 14px 20px !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
-    /* border-right: 1px solid rgba(255, 255, 255, 0.08) !important; */
+    border-bottom: 1px solid hsla(210,67%,96%,.4) !important;
     transition: background-color 0.2s ease !important;
 }
 table tbody td:first-of-type{
-    border-right: 1px solid hotpink !important;
+    border-right: 1px solid hsla(210,67%,96%,.4) !important;
 }
 table tbody td:not(:first-of-type):not(:last-of-type){
-    border-right: 1px solid gold !important;
+    border-right: 1px solid hsla(210,67%,96%,.4) !important;
 }
 table tbody td:last-of-type{
-    border-right: 0 solid blue !important;
+    border-right: 0 solid hsla(210,67%,96%,.4) !important;
 }
 
 
@@ -797,10 +773,10 @@ table tbody td:last-of-type{
 } */
 
 /* Подсветка строки при наведении */
-table tbody tr:hover td {
+/* table tbody tr:hover td {
     background-color: rgba(255, 255, 255, 0.05) !important;
     cursor: pointer !important;
-}
+} */
 
 /* Убираем границу у последней строки */
 table tbody tr:last-child td {
@@ -808,21 +784,21 @@ table tbody tr:last-child td {
 }
 
 /* Стилизация для первой колонки (ID) - можно сделать акцент */
-table tbody td:first-child,
+/* table tbody td:first-child,
 table thead th:first-child {
     font-weight: 600 !important;
-    color: #4fc3f7 !important; /* Голубой для ID */
-}
+    color: #4fc3f7 !important;
+} */
 
 /* Стилизация для колонки "Активен" (галочка) */
-table tbody td:last-child {
+/* table tbody td:last-child {
     text-align: center !important;
-}
+} */
 
 /* Если в таблице есть иконки/эмодзи */
-table tbody td span {
+/* table tbody td span {
     font-size: 18px !important;
-}
+} */
 
 /* Альтернативный вариант - чередующиеся строки (zebra stripes) */
 table tbody tr:nth-child(even) td {
