@@ -702,6 +702,7 @@ button.stTabs [data-baseweb="tab"]{
     appearance: none !important;
     outline: none !important;
     padding: 0 1.4rem !important;
+    margin: 0 1rem !important;
     /* border-radius: 2px !important; */
     /* margin: 0 auto 40px auto !important; */
 
