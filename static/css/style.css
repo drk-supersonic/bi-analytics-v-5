@@ -743,7 +743,7 @@ button.stTabs [data-baseweb="tab"][aria-selected="true"] {
 .stTabs [data-baseweb="tab-border"] {
     background-color: blue !important;
     /* Красная линия */
-    height: 1px !important;
+    height: 4px !important;
     /* Толщина линии */
 }
 
