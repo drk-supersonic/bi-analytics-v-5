@@ -570,7 +570,7 @@ div[data-testid="stDataFrame"] [role="columnheader"] {
 /* │ ⊗ Скрыть иконку якоря у всех заголовков ¤ Start                        │ */
 /* └────────────────────────────────────────────────────────────────────────┘ */
 
-.stApp header .st-emotion-cache-1v0mbdj + div,
+/* .stApp header .st-emotion-cache-1v0mbdj + div,
 .stApp .st-emotion-cache-1v0mbdj + div,
 .stApp h1:hover .st-emotion-cache-10trblm,
 .stApp h2:hover .st-emotion-cache-10trblm,
@@ -585,8 +585,28 @@ div[data-testid="stMarkdownContainer"] > h1::after,
 div[data-testid="stMarkdownContainer"] > h2::after,
 div[data-testid="stMarkdownContainer"] > h3::after {
     content: none !important;
-}
+} */
 
 /* ┌────────────────────────────────────────────────────────────────────────┐ */
 /* │ ⊗ Скрыть иконку якоря у всех заголовков ¤ End                          │ */
 /* └────────────────────────────────────────────────────────────────────────┘ */
+
+
+
+
+
+h1.Buquhununee {
+    width: 100%;
+    height: auto;
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    font-size: 1.54rem;
+    line-height: 1.46;
+    letter-spacing: 0.018em;
+    text-align: left;
+    color: hsl(215,41%,8%);
+    margin: 0 0 55px 0;
+
+    box-shadow: inset 0 0 0 1px gold;
+}

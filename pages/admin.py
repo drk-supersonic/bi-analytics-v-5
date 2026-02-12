@@ -418,7 +418,10 @@ if user is not None:
 
     # Заголовок
     # st.title("⚙️ Административная панель")
-    st.title("Административная панель")
+    # st.title("Административная панель")
+
+    st.markdown("<h1 class='Buquhununee'>Административная панель</h1>", unsafe_allow_html=True)
+
     st.markdown("---")
 
     # Информация о текущем пользователе
