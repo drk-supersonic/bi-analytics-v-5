@@ -649,7 +649,7 @@ div.tab-list{
 
 /* Контейнер вкладок */
 .stTabs {
-    margin-bottom: 21rem;
+    margin-bottom: 2rem;
 }
 
 /* Список вкладок (сама навигационная панель) */
@@ -701,6 +701,7 @@ button.stTabs [data-baseweb="tab"]{
     user-select: none !important;
     appearance: none !important;
     outline: none !important;
+    padding: 0 1.4rem !important;
     /* border-radius: 2px !important; */
     /* margin: 0 auto 40px auto !important; */
 
