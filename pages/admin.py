@@ -101,18 +101,44 @@ init_db()
 
 
 def format_russian_datetime(dt_str):
-    """Преобразует ISO-строку в формат '12 февр. 2026, 14:35'"""
-    if not dt_str or dt_str == "-":
+
+    # """Преобразует ISO-строку в формат '12 февр. 2026, 14:35'"""
+    # if not dt_str or dt_str == "-":
+    #     return "-"
+
+    """Преобразует ISO-строку в формат '12 фев. 2026, 14:35' с неразрывными пробелами"""
+
+    if not dt_str or dt_str in ("-", None, ""):
+
         return "-"
+
+    # try:
+    #     dt = datetime.fromisoformat(dt_str.replace("Z", "+00:00"))  # на случай UTC с Z
+    #     months_ru_short = [
+    #         "янв", "фев", "мар", "апр", "май", "июн",
+    #         "июл", "авг", "сен", "окт", "ноя", "дек"
+    #     ]
+    #     month_short = months_ru_short[dt.month - 1] + "."
+    #     return dt.strftime(f"%d {month_short} %Y, %H:%M")
+
     try:
-        dt = datetime.fromisoformat(dt_str.replace("Z", "+00:00"))  # на случай UTC с Z
-        months_ru_short = [
-            "янв", "фев", "мар", "апр", "май", "июн",
-            "июл", "авг", "сен", "окт", "ноя", "дек"
-        ]
-        month_short = months_ru_short[dt.month - 1] + "."
-        return dt.strftime(f"%d {month_short} %Y, %H:%M")
+        # Убираем микросекунды, если они есть
+        dt_str_clean = dt_str.split('.')[0]
+
+        dt = datetime.fromisoformat(dt_str_clean)
+
+        months_ru = ["янв.", "фев.", "мар.", "апр.", "май", "июн.",
+                     "июл.", "авг.", "сен.", "окт.", "ноя.", "дек."]
+
+        month = months_ru[dt.month - 1]
+
+        # Используем неразрывный пробел \u00A0
+        nbsp = "\u00A0"
+        
+        return f"{dt.day}{nbsp}{month}{nbsp}{dt.year},{nbsp}{dt:%H:%M}"
+
     except Exception:
+
         return dt_str  # если не получилось — оставляем как есть
 
 
