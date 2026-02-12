@@ -755,7 +755,7 @@ table thead th:last-of-type{
     border-right: 0 solid hsla(var(--theColor),.4) !important;
 }
 table tbody td{
-    background-color: var(--themeBackgroundColor) !important; /* #12385C */
+    /* background-color: var(--themeBackgroundColor) !important; */
     color: hsla(210,67%,96%,1) !important;
     font-family: "Inter", sans-serif !important;
     font-weight: 400 !important;
