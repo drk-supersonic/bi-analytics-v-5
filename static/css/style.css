@@ -623,7 +623,7 @@ h2.Duquhununee > span:not(:first-child){
 
 
 .stTabs{
-    box-shadow: 0 0 0 4px hotpink !important;
+    /* box-shadow: 0 0 0 4px hotpink !important; */
 }
 
 /* .stTabs > div > div{
