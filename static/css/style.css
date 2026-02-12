@@ -636,3 +636,69 @@ h2.Duquhununee > span:not(:first-child){
 div.tab-list{
     /* background-color: black !important; */
 }
+
+
+
+
+
+
+
+/* ┌────────────────────────────────────────────────────────────────────────┐ */
+/* │ ⊗ Табсы ¤ Start                                                        │ */
+/* └────────────────────────────────────────────────────────────────────────┘ */
+
+/* Контейнер вкладок */
+.stTabs {
+    margin-bottom: 2rem;
+    background-color: red !important;
+}
+
+/* Список вкладок (сама навигационная панель) */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 2rem;
+    /* Отступы между кнопками */
+    padding: 0.5rem 0;
+}
+
+/* Каждая отдельная вкладка/кнопка */
+.stTabs [data-baseweb="tab"] {
+    font-size: 1.1rem !important;
+    /* Размер шрифта */
+    font-weight: 500 !important;
+    /* Жирность шрифта */
+    padding: 0.75rem 1.5rem !important;
+    /* Отступы внутри кнопки (вертикальные и горизонтальные) */
+    color: rgba(255, 255, 255, 0.7) !important;
+    /* Цвет неактивной вкладки */
+    transition: all 0.3s ease !important;
+}
+
+/* Вкладка при наведении */
+.stTabs [data-baseweb="tab"]:hover {
+    color: rgba(255, 255, 255, 0.9) !important;
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Активная вкладка */
+.stTabs [data-baseweb="tab"][aria-selected="true"] {
+    color: #ff4b4b !important;
+    /* Красный цвет как на скриншоте */
+    font-weight: 600 !important;
+}
+
+/* Подчеркивающая линия активной вкладки */
+.stTabs [data-baseweb="tab-border"] {
+    background-color: #ff4b4b !important;
+    /* Красная линия */
+    height: 3px !important;
+    /* Толщина линии */
+}
+
+/* Линия под всеми вкладками */
+.stTabs [data-baseweb="tab-list"] {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ┌────────────────────────────────────────────────────────────────────────┐ */
+/* │ ⊗ Табсы ¤ End                                                          │ */
+/* └────────────────────────────────────────────────────────────────────────┘ */
