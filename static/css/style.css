@@ -725,7 +725,7 @@ table {
     border-radius: 8px !important;
     overflow: hidden !important;
 
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid hsla(210,67%,96%,1) !important;
 }
 
 /* Заголовки таблицы (шапка) */
@@ -750,7 +750,7 @@ table thead th {
 
 
     padding: 16px 20px !important;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.3) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
     /* border-right: 1px solid rgba(255, 255, 255, 0.1) !important; */
 }
 table thead th:first-of-type{
@@ -777,7 +777,7 @@ table tbody td{
     font-size: 14px !important;
     padding: 14px 20px !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
-    border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
+    /* border-right: 1px solid rgba(255, 255, 255, 0.08) !important; */
     transition: background-color 0.2s ease !important;
 }
 table tbody td:first-of-type{
