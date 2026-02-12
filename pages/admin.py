@@ -100,6 +100,22 @@ except ImportError as e:
 init_db()
 
 
+def format_russian_datetime(dt_str):
+    """Преобразует ISO-строку в формат '12 февр. 2026, 14:35'"""
+    if not dt_str or dt_str == "-":
+        return "-"
+    try:
+        dt = datetime.fromisoformat(dt_str.replace("Z", "+00:00"))  # на случай UTC с Z
+        months_ru_short = [
+            "янв", "фев", "мар", "апр", "май", "июн",
+            "июл", "авг", "сен", "окт", "ноя", "дек"
+        ]
+        month_short = months_ru_short[dt.month - 1] + "."
+        return dt.strftime(f"%d {month_short} %Y, %H:%M")
+    except Exception:
+        return dt_str  # если не получилось — оставляем как есть
+
+
 # Проверка, что мы в контексте Streamlit
 def is_streamlit_context():
     """Проверка, что код выполняется в контексте Streamlit"""
@@ -877,78 +893,157 @@ if user is not None:
     # │ ⊗ TAB 4: Логи действий ¤ Start                                       │ #
     # └──────────────────────────────────────────────────────────────────────┘ #
 
-    with tab4:
+    # with tab4:
+    #
+    #     st.subheader("Логи действий пользователей")
+    #
+    #     # Фильтры
+    #     col1, col2, col3 = st.columns(3)
+    #
+    #     with col1:
+    #
+    #         conn = sqlite3.connect(DB_PATH)
+    #
+    #         cursor = conn.cursor()
+    #
+    #         cursor.execute(
+    #             "SELECT DISTINCT username FROM user_activity_logs ORDER BY username"
+    #         )
+    #
+    #         usernames = [row[0] for row in cursor.fetchall()]
+    #
+    #         conn.close()
+    #
+    #         filter_username = st.selectbox("Фильтр по пользователю", options=["Все"] + usernames)
+    #
+    #     with col2:
+    #
+    #         conn = sqlite3.connect(DB_PATH)
+    #
+    #         cursor = conn.cursor()
+    #
+    #         cursor.execute("SELECT DISTINCT action FROM user_activity_logs ORDER BY action")
+    #
+    #         actions = [row[0] for row in cursor.fetchall()]
+    #
+    #         conn.close()
+    #
+    #         filter_action = st.selectbox("Фильтр по действию", options=["Все"] + actions)
+    #
+    #     with col3:
+    #
+    #         log_limit = st.number_input("Количество записей", min_value=10, max_value=1000, value=100, step=10)
+    #
+    #     # Применение фильтров
+    #     username_filter = None if filter_username == "Все" else filter_username
+    #     action_filter = None if filter_action == "Все" else filter_action
+    #
+    #     # Получение логов
+    #     logs = get_logs(limit=log_limit, username=username_filter, action=action_filter)
+    #
+    #     if logs:
+    #         logs_data = []
+    #         for log in logs:
+    #             logs_data.append(
+    #                 {
+    #                     "ID": log["id"],
+    #                     "Пользователь": log["username"],
+    #                     "Действие": log["action"],
+    #                     "Детали": log["details"] or "-",
+    #                     "IP адрес": log["ip_address"] or "-",
+    #                     "Время": log["created_at"] if log["created_at"] else "-",
+    #                 }
+    #             )
+    #
+    #         df_logs = pd.DataFrame(logs_data)
+    #         html_table = format_dataframe_as_html(df_logs)
+    #         st.markdown(html_table, unsafe_allow_html=True)
+    #
+    #         # Экспорт логов
+    #         csv = df_logs.to_csv(index=False).encode("utf-8-sig")
+    #         st.download_button(
+    #             label="📥 Скачать логи (CSV)",
+    #             data=csv,
+    #             file_name=f"logs_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv",
+    #             mime="text/csv",
+    #         )
+    #     else:
+    #         st.info("Логи не найдены")
 
+    with tab4:
         st.subheader("Логи действий пользователей")
 
         # Фильтры
         col1, col2, col3 = st.columns(3)
-
         with col1:
-
             conn = sqlite3.connect(DB_PATH)
-
-            cursor = conn.cursor()
-
-            cursor.execute(
-                "SELECT DISTINCT username FROM user_activity_logs ORDER BY username"
-            )
-
-            usernames = [row[0] for row in cursor.fetchall()]
-
+            usernames = pd.read_sql_query(
+                "SELECT DISTINCT username FROM user_activity_logs ORDER BY username",
+                conn
+            )["username"].tolist()
             conn.close()
-
-            filter_username = st.selectbox("Фильтр по пользователю", options=["Все"] + usernames)
+            filter_username = st.selectbox("Фильтр по пользователю", ["Все"] + usernames)
 
         with col2:
-
             conn = sqlite3.connect(DB_PATH)
-
-            cursor = conn.cursor()
-
-            cursor.execute("SELECT DISTINCT action FROM user_activity_logs ORDER BY action")
-
-            actions = [row[0] for row in cursor.fetchall()]
-
+            actions = pd.read_sql_query(
+                "SELECT DISTINCT action FROM user_activity_logs ORDER BY action",
+                conn
+            )["action"].tolist()
             conn.close()
-
-            filter_action = st.selectbox("Фильтр по действию", options=["Все"] + actions)
+            filter_action = st.selectbox("Фильтр по действию", ["Все"] + actions)
 
         with col3:
+            log_limit = st.number_input("Количество записей", 10, 1000, 100, 10)
 
-            log_limit = st.number_input("Количество записей", min_value=10, max_value=1000, value=100, step=10)
-
-        # Применение фильтров
         username_filter = None if filter_username == "Все" else filter_username
         action_filter = None if filter_action == "Все" else filter_action
 
-        # Получение логов
+        # Получаем логи
         logs = get_logs(limit=log_limit, username=username_filter, action=action_filter)
 
         if logs:
             logs_data = []
             for log in logs:
-                logs_data.append(
-                    {
-                        "ID": log["id"],
-                        "Пользователь": log["username"],
-                        "Действие": log["action"],
-                        "Детали": log["details"] or "-",
-                        "IP адрес": log["ip_address"] or "-",
-                        "Время": log["created_at"] if log["created_at"] else "-",
-                    }
+                # Для отладки можно временно раскомментировать:
+                # st.write(log)   # посмотришь все ключи словаря
+
+                created_at = log.get("created_at", None)
+                formatted_time = format_russian_datetime(created_at) if created_at else "-"
+
+                # Пробуем разные возможные имена ключа для IP
+                ip = (
+                    log.get("ip_address") or
+                    log.get("ip") or
+                    log.get("client_ip") or
+                    log.get("ip_addr") or
+                    "-"
                 )
 
+                logs_data.append({
+                    "ID": log.get("id", "-"),
+                    "Пользователь": log.get("username", "-"),
+                    "Действие": log.get("action", "-"),
+                    "Детали": log.get("details") or "-",
+                    "IP адрес": ip,
+                    "Время": formatted_time,
+                })
+
             df_logs = pd.DataFrame(logs_data)
+
+            # Если хочешь красивую дату ещё и в сортировке — можно добавить скрытую колонку
+            # df_logs["sort_time"] = pd.to_datetime(df_logs["Время"], format=..., errors="coerce")
+            # но обычно достаточно просто сортировки по строке
+
             html_table = format_dataframe_as_html(df_logs)
             st.markdown(html_table, unsafe_allow_html=True)
 
-            # Экспорт логов
-            csv = df_logs.to_csv(index=False).encode("utf-8-sig")
+            # Экспорт
+            csv = df_logs.to_csv(index=False, encoding="utf-8-sig")
             st.download_button(
                 label="📥 Скачать логи (CSV)",
                 data=csv,
-                file_name=f"logs_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv",
+                file_name=f"logs_{datetime.now():%Y%m%d_%H%M%S}.csv",
                 mime="text/csv",
             )
         else:
