@@ -732,7 +732,7 @@ button.stTabs [data-baseweb="tab"]:hover {
 
 /* Активная вкладка */
 button.stTabs [data-baseweb="tab"][aria-selected="true"] {
-    color: #ff4b4b !important;
+    color: blue !important;
     /* Красный цвет как на скриншоте */
     font-weight: 600 !important;
 }
