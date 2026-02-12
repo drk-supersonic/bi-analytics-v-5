@@ -682,7 +682,7 @@ button.stTabs11 [data-baseweb="tab11"] {
     /* Отступы между кнопками */
     /* padding: 0.5rem 0; */
     padding: 0 !important;
-    background-color: #2a2a3a !important;
+    /* background-color: #2a2a3a !important; */
 }
 .stTabs button[data-baseweb="tab"]{
     font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
