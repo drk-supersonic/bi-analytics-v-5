@@ -724,11 +724,11 @@ button.stTabs11 [data-baseweb="tab11"] {
 } */
 
 /* Активная вкладка */
-/* .stTabs button[data-baseweb="tab"][aria-selected="true"] {
+.stTabs button[data-baseweb="tab"][aria-selected="true"] {
     color: #ff4b4b !important;
-    Красный цвет как на скриншоте
-    font-weight: 600 !important;
-} */
+    /* Красный цвет как на скриншоте */
+    /* font-weight: 600 !important; */
+}
 
 /* Подчеркивающая линия активной вкладки */
 .stTabs div[data-baseweb="tab-border"] {
