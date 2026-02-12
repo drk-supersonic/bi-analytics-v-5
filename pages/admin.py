@@ -1003,35 +1003,23 @@ if user is not None:
         logs = get_logs(limit=log_limit, username=username_filter, action=action_filter)
 
         if logs:
-            logs_data = []
-            for log in logs:
-                # Для отладки можно временно раскомментировать:
-                # st.write(log)   # посмотришь все ключи словаря
 
-                # st.write("Ключи в логе:", list(logs[0].keys()))
+            logs_data = []
+
+            for log in logs:
 
                 created_at = log.get("created_at", None)
                 formatted_time = format_russian_datetime(created_at) if created_at else "-"
 
-                # # Пробуем разные возможные имена ключа для IP
-                # ip = (
-                #     log.get("ip_address") or
-                #     log.get("ip") or
-                #     log.get("client_ip") or
-                #     log.get("ip_addr") or
-                #     "-"
-                # )
-
-                ip_raw = log.get("ip_address")
-                ip = ip_raw if ip_raw else "ПУСТО"
+                ip = log.get("ip_address") or "-"
 
                 logs_data.append({
                     "ID": log.get("id", "-"),
                     "Пользователь": log.get("username", "-"),
                     "Действие": log.get("action", "-"),
                     "Детали": log.get("details") or "-",
-                    "IP адрес": ip,
-                    "Дата и время": formatted_time,
+                    "IP\u00A0адрес": ip,
+                    "Дата\u00A0и\u00A0время": formatted_time,
                 })
 
             df_logs = pd.DataFrame(logs_data)
