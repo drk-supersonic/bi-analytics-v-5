@@ -578,7 +578,7 @@ h1.Buquhununee{
     font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
     font-weight: 800 !important;
     font-style: normal !important;
-    font-size: 2.54rem !important;
+    font-size: 2.84rem !important;
     line-height: 1 !important;
     letter-spacing: 0.004em !important;
     text-align: left !important;
@@ -586,6 +586,9 @@ h1.Buquhununee{
     margin: 0 0 55px 0 !important;
 
     /* box-shadow: inset 0 0 0 1px gold !important; */
+}
+h1.Buquhununee > span:not(:first-child){
+    box-shadow: inset 0 0 0 4px hotpink !important;  
 }
 
 /* ┌────────────────────────────────────────────────────────────────────────┐ */
