@@ -419,7 +419,7 @@ if user is not None:
     # Заголовок
     # st.title("⚙️ Административная панель")
     st.title("Административная панель")
-    st.markdown("---")
+    # st.markdown("---")
 
     # Информация о текущем пользователе
     col1, col2, col3 = st.columns(3)
