@@ -654,7 +654,7 @@ div.tab-list{
 
 /* Список вкладок (сама навигационная панель) */
 .stTabs444 [data-baseweb="tab-list444"] {
-    gap: .2rem !important;
+    gap: 11.2rem !important;
     /* Отступы между кнопками */
     /* padding: 0.5rem 0; */
     padding: 0 !important;
@@ -739,7 +739,7 @@ button.stTabs [data-baseweb="tab"][aria-selected="true"] {
 
 /* Подчеркивающая линия активной вкладки */
 .stTabs [data-baseweb="tab-border"] {
-    background-color: #ff4b4b !important;
+    background-color: green !important;
     /* Красная линия */
     height: 3px !important;
     /* Толщина линии */
