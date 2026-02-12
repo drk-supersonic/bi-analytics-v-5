@@ -736,7 +736,7 @@ table thead th{
     color: hsla(210,67%,96%,1) !important;
     padding: 16px 20px !important;
     /* border-bottom: 1px solid hsla(210,67%,96%,.4) !important; */
-    border-bottom: 1px solid aquamarine !important;
+    border-bottom: 1px solid hotpink !important;
 }
 table thead th:first-of-type{
     border-right: 1px solid hsla(210,67%,96%,.4) !important;
