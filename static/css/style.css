@@ -727,20 +727,20 @@ button.stTabs11 [data-baseweb="tab11"] {
 
 
 /* Вкладка при наведении */
-button.stTabs [data-baseweb="tab"]:hover {
+/* button.stTabs [data-baseweb="tab"]:hover {
     color: rgba(255, 255, 255, 0.9) !important;
     background-color: rgba(255, 255, 255, 0.05) !important;
-}
+} */
 
 /* Активная вкладка */
-button.stTabs [data-baseweb="tab"][aria-selected="true"] {
+.stTabs button[data-baseweb="tab"][aria-selected="true"] {
     color: #ff4b4b !important;
     /* Красный цвет как на скриншоте */
     font-weight: 600 !important;
 }
 
 /* Подчеркивающая линия активной вкладки */
-.stTabs [data-baseweb="tab-border"] {
+.stTabs div[data-baseweb="tab-border"] {
     background-color: whitesmoke !important;
     /* Красная линия */
     height: 2px !important;
@@ -748,7 +748,7 @@ button.stTabs [data-baseweb="tab"][aria-selected="true"] {
 }
 
 /* Линия под всеми вкладками */
-.stTabs [data-baseweb="tab-list"] {
+.stTabs div[data-baseweb="tab-list"] {
     border-bottom: 0 solid rgba(255, 255, 255, 0.1) !important;
 }
 
