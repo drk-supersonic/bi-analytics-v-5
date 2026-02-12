@@ -100,6 +100,10 @@ except ImportError as e:
 init_db()
 
 
+# ┌──────────────────────────────────────────────────────────────────────────┐ #
+# │ ⊗ Красивый формат даты ¤ Start                                           │ #
+# └──────────────────────────────────────────────────────────────────────────┘ #
+
 def format_russian_datetime(dt_str):
 
     # """Преобразует ISO-строку в формат '12 февр. 2026, 14:35'"""
@@ -134,13 +138,16 @@ def format_russian_datetime(dt_str):
 
         # Используем неразрывный пробел \u00A0
         nbsp = "\u00A0"
-        
+
         return f"{dt.day}{nbsp}{month}{nbsp}{dt.year},{nbsp}{dt:%H:%M}"
 
     except Exception:
 
         return dt_str  # если не получилось — оставляем как есть
 
+# ┌──────────────────────────────────────────────────────────────────────────┐ #
+# │ ⊗ Красивый формат даты ¤ End                                             │ #
+# └──────────────────────────────────────────────────────────────────────────┘ #
 
 # Проверка, что мы в контексте Streamlit
 def is_streamlit_context():
@@ -589,18 +596,42 @@ if user is not None:
         users = cursor.fetchall()
         conn.close()
 
+        # if users:
+        #     # Таблица пользователей
+        #     users_data = []
+        #     for u in users:
+        #         users_data.append(
+        #             {
+        #                 "ID": u[0],
+        #                 "Имя пользователя": u[1],
+        #                 "Роль": get_user_role_display(u[2]),
+        #                 "Email": u[3] or "-",
+        #                 "Создан": u[4] if u[4] else "-",
+        #                 "Последний вход": u[5] if u[5] else "Никогда",
+        #                 "Активен": "✅" if u[6] else "❌",
+        #             }
+        #         )
+        #
+        #     df_users = pd.DataFrame(users_data)
+        #     html_table = format_dataframe_as_html(df_users)
+        #     st.markdown(html_table, unsafe_allow_html=True)
+        # else:
+        #     st.info("Пользователи не найдены")
+
         if users:
-            # Таблица пользователей
             users_data = []
             for u in users:
+                created_formatted = format_russian_datetime(u[4]) if u[4] else "-"
+                last_login_formatted = format_russian_datetime(u[5]) if u[5] else "Никогда"
+
                 users_data.append(
                     {
                         "ID": u[0],
                         "Имя пользователя": u[1],
                         "Роль": get_user_role_display(u[2]),
                         "Email": u[3] or "-",
-                        "Создан": u[4] if u[4] else "-",
-                        "Последний вход": u[5] if u[5] else "Никогда",
+                        "Создан": created_formatted,
+                        "Последний вход": last_login_formatted,
                         "Активен": "✅" if u[6] else "❌",
                     }
                 )
@@ -720,6 +751,7 @@ if user is not None:
                     else:
                         st.warning("Выберите другую роль")
         else:
+
             st.info("Нет активных пользователей")
 
     # ┌──────────────────────────────────────────────────────────────────────┐ #
@@ -997,29 +1029,40 @@ if user is not None:
     #         st.info("Логи не найдены")
 
     with tab4:
+
         st.subheader("Логи действий пользователей")
 
         # Фильтры
         col1, col2, col3 = st.columns(3)
+
         with col1:
+
             conn = sqlite3.connect(DB_PATH)
+
             usernames = pd.read_sql_query(
                 "SELECT DISTINCT username FROM user_activity_logs ORDER BY username",
                 conn
             )["username"].tolist()
+
             conn.close()
+
             filter_username = st.selectbox("Фильтр по пользователю", ["Все"] + usernames)
 
         with col2:
+
             conn = sqlite3.connect(DB_PATH)
+
             actions = pd.read_sql_query(
                 "SELECT DISTINCT action FROM user_activity_logs ORDER BY action",
                 conn
             )["action"].tolist()
+
             conn.close()
+
             filter_action = st.selectbox("Фильтр по действию", ["Все"] + actions)
 
         with col3:
+
             log_limit = st.number_input("Количество записей", 10, 1000, 100, 10)
 
         username_filter = None if filter_username == "Все" else filter_username
