@@ -678,7 +678,7 @@ button.stTabs11 [data-baseweb="tab11"] {
 
 
 .stTabs [data-baseweb="tab-list"] {
-    gap: .3rem !important;
+    gap: .4rem !important;
     /* Отступы между кнопками */
     /* padding: 0.5rem 0; */
     padding: 0 !important;
