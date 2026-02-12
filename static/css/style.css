@@ -624,22 +624,6 @@ h2.Duquhununee > span:not(:first-child){
 /* └────────────────────────────────────────────────────────────────────────┘ */
 
 
-.stTabs{
-    /* box-shadow: 0 0 0 4px hotpink !important; */
-}
-
-/* .stTabs > div > div{
-    background-color: gold !important;
-    margin: 0 0 100px 0 !important;
-} */
-
-div.tab-list{
-    /* background-color: black !important; */
-}
-
-
-
-
 
 
 
@@ -649,9 +633,9 @@ div.tab-list{
 
 /* Контейнер вкладок */
 .stTabs {
-    margin-bottom: 112rem;
+    margin-bottom: 1112rem;
 }
-.stTabs div[data-baseweb="tab-list"] {
+.stTabs div[data-baseweb="tab-list"]{
     gap: .5rem !important;
     padding: 0 !important;
 }
