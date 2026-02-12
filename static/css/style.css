@@ -675,7 +675,7 @@ button.stTabs11 [data-baseweb="tab11"] {
 
 
 }
-button.stTabs [data-baseweb="tab"]{
+.stTabs button[data-baseweb="tab"]{
     /* width: calc(100% - 74px);
     height: 50px;
     display: flex;
@@ -690,7 +690,7 @@ button.stTabs [data-baseweb="tab"]{
     font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
     font-weight: 500 !important;
     font-style: normal !important;
-    font-size: 14.14rem !important;
+    font-size: 1.14rem !important;
     line-height: 1.08 !important;
     letter-spacing: 0.004em !important;
     text-align: left !important;
@@ -710,12 +710,12 @@ button.stTabs [data-baseweb="tab"]{
 
     transition: background-color .3s ease-in-out 0s, border .3s ease-in-out 0s, color .3s ease-in-out 0s !important;
 }
-button.stTabs [data-baseweb="tab"]:not(:hover) {
+.stTabs button[data-baseweb="tab"]:not(:hover) {
     background-color: hsl(181, 54%, 90%) !important;
     border: 1px solid hsl(181, 54%, 50%) !important;
     color: hsl(181, 54%, 34%) !important;
 }
-button.stTabs [data-baseweb="tab"]:hover {
+.stTabs button[data-baseweb="tab"]:hover {
     background-color: hsl(181, 54%, 80%) !important;
     border: 1px solid hsl(181, 54%, 50%) !important;
     color: hsl(181, 54%, 24%) !important;
