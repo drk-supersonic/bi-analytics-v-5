@@ -631,12 +631,12 @@ h2.Duquhununee > span:not(:first-child){
 /* │ ⊗ Табсы ¤ Start                                                        │ */
 /* └────────────────────────────────────────────────────────────────────────┘ */
 
-/* Контейнер вкладок */
 .stTabs {
-    margin-bottom: 1112rem;
+
 }
 .stTabs div[data-baseweb="tab-list"]{
     gap: .5rem !important;
+    margin: 0 0 100px 0 !important;
     padding: 0 !important;
 }
 .stTabs button[data-baseweb="tab"]{
@@ -673,7 +673,6 @@ h2.Duquhununee > span:not(:first-child){
     background-color: hsla(210,67%,96%,.4) !important;
     height: 2px !important;
 }
-
 
 /* ┌────────────────────────────────────────────────────────────────────────┐ */
 /* │ ⊗ Табсы ¤ End                                                          │ */
