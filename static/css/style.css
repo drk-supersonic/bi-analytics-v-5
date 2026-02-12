@@ -618,6 +618,29 @@ h2.Duquhununee > span:not(:first-child){
 
     /* box-shadow: 0 0 0 4px hotpink !important; */
 }
+h3.Muquhununee{
+    width: 100% !important;
+    height: auto !important;
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-weight: 700 !important;
+    font-style: normal !important;
+    font-size: 1.84rem !important;
+    line-height: 1.08 !important;
+    letter-spacing: 0.004em !important;
+    text-align: left !important;
+    color: red !important;
+    margin: 0 0 40px 0 !important;
+    padding: 0 !important;
+
+    /* box-shadow: inset 0 0 0 1px gold !important; */
+}
+h3.Muquhununee > span:not(:first-child){
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+
+    /* box-shadow: 0 0 0 4px hotpink !important; */
+}
 
 /* ┌────────────────────────────────────────────────────────────────────────┐ */
 /* │ ⊗ Кастомные шрифты ¤ End                                               │ */
@@ -666,7 +689,7 @@ h2.Duquhununee > span:not(:first-child){
     line-height: 1.08 !important;
     letter-spacing: 0.004em !important;
     text-align: left !important;
-}    
+}
 .stTabs button[data-baseweb="tab"][aria-selected="true"] {
     color: #ff4b4b !important;
 }

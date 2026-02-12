@@ -590,7 +590,9 @@ if user is not None:
         st.markdown("<h2 class='Duquhununee'>Управление пользователями</h2>", unsafe_allow_html=True)
 
         # Список пользователей
-        st.markdown("### Список пользователей")
+        # st.markdown("### Список пользователей")
+
+        st.markdown("<h3 class='Muquhununee'>Управление пользователями</h3>", unsafe_allow_html=True)
 
         conn = sqlite3.connect(DB_PATH)
         cursor = conn.cursor()
