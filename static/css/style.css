@@ -696,11 +696,11 @@ button.stTabs11 [data-baseweb="tab11"] {
 }
 .stTabs button[data-baseweb="tab"]:not(:hover) {
     background-color: transparent !important;
-    color: hsl(181, 54%, 34%) !important;
+    color: hsla(210,67%,96%,.8) !important;
 }
 .stTabs button[data-baseweb="tab"]:hover {
     background-color: transparent !important;
-    color: hsl(181, 54%, 24%) !important;
+    color: hsla(210,67%,96%,1) !important;
 }
 
 
@@ -723,7 +723,7 @@ button.stTabs11 [data-baseweb="tab11"] {
 
 /* Подчеркивающая линия активной вкладки */
 .stTabs div[data-baseweb="tab-border"] {
-    background-color: whitesmoke !important;
+    background-color: hsla(210,67%,96%,.8) !important;
     /* Красная линия */
     height: 2px !important;
     /* Толщина линии */
