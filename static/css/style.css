@@ -650,12 +650,11 @@ div.tab-list{
 /* Контейнер вкладок */
 .stTabs {
     margin-bottom: 2rem;
-    background-color: red !important;
 }
 
 /* Список вкладок (сама навигационная панель) */
 .stTabs [data-baseweb="tab-list"] {
-    gap: 2rem;
+    gap: 21rem;
     /* Отступы между кнопками */
     padding: 0.5rem 0;
 }
