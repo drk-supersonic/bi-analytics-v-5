@@ -1030,8 +1030,8 @@ if user is not None:
                     "Пользователь": log.get("username", "-"),
                     "Действие": log.get("action", "-"),
                     "Детали": log.get("details") or "-",
-                    "IP адрес": ip,
-                    "Время": formatted_time,
+                    "IP&nbsp;адрес": ip,
+                    "Дата&nbsp;и&nbsp;время": formatted_time,
                 })
 
             df_logs = pd.DataFrame(logs_data)
