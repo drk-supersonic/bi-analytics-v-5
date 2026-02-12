@@ -753,7 +753,7 @@ table tbody td{
     font-weight: 400 !important;
     font-size: 14px !important;
     padding: 14px 20px !important;
-    border-bottom: 1px solid hsla(210,67%,96%,.4) !important;
+    /* border-bottom: 1px solid hsla(210,67%,96%,.4) !important; */
     transition: background-color 0.2s ease !important;
 }
 table tbody td:first-of-type{
@@ -779,9 +779,20 @@ table tbody td:last-of-type{
 } */
 
 /* Убираем границу у последней строки */
-table tbody tr:last-child td {
+table tbody tr:last-child td{
     border-bottom: none !important;
 }
+
+table tbody tr:first-of-type td{
+    border-bottom: 1px solid hotpink !important;
+}
+table tbody tr:not(:first-of-type):not(:last-of-type) td{
+    border-bottom: 1px solid hotpink !important;
+}
+table tbody tr:last-of-type td{
+    border-bottom: 0 solid hotpink !important;
+}
+
 
 /* Стилизация для первой колонки (ID) - можно сделать акцент */
 /* table tbody td:first-child,
@@ -801,8 +812,9 @@ table thead th:first-child {
 } */
 
 /* Альтернативный вариант - чередующиеся строки (zebra stripes) */
-table tbody tr:nth-child(even) td {
-    background-color: rgba(255, 255, 255, 0.02) !important;
+table tbody tr:nth-child(even) td{
+    /* background-color: rgba(255, 255, 255, 0.02) !important; */
+    background-color: hsla(209,67%,22%,.04) !important;
 }
 
 /* table tbody tr:nth-child(even):hover td {
