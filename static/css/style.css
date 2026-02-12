@@ -661,7 +661,7 @@ div.tab-list{
 }
 
 /* Каждая отдельная вкладка/кнопка */
-.stTabs [data-baseweb="tab"] {
+button.stTabs11 [data-baseweb="tab11"] {
     font-size: 1.1rem !important;
     /* Размер шрифта */
     font-weight: 500 !important;
@@ -671,16 +671,67 @@ div.tab-list{
     color: rgba(255, 255, 255, 0.7) !important;
     /* Цвет неактивной вкладки */
     transition: all 0.3s ease !important;
+
+
+
+}
+button.stTabs [data-baseweb="tab"]{
+    /* width: calc(100% - 74px);
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font: 800 normal .924rem/1 'Inter', sans-serif;
+    letter-spacing: .018em;
+    text-indent: .018em;
+    text-align: center; */
+
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-weight: 500 !important;
+    font-style: normal !important;
+    font-size: 1.14rem !important;
+    line-height: 1.08 !important;
+    letter-spacing: 0.004em !important;
+    text-align: left !important;
+
+
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-touch-callout: none !important;
+    user-select: none !important;
+    appearance: none !important;
+    outline: none !important;
+    /* border-radius: 2px !important; */
+    /* margin: 0 auto 40px auto !important; */
+
+    cursor: pointer !important;
+
+    transition: background-color .3s ease-in-out 0s, border .3s ease-in-out 0s, color .3s ease-in-out 0s !important;
+}
+button.stTabs [data-baseweb="tab"]:not(:hover) {
+    background-color: hsl(181, 54%, 90%) !important;
+    border: 1px solid hsl(181, 54%, 50%) !important;
+    color: hsl(181, 54%, 34%) !important;
+}
+button.stTabs [data-baseweb="tab"]:hover {
+    background-color: hsl(181, 54%, 80%) !important;
+    border: 1px solid hsl(181, 54%, 50%) !important;
+    color: hsl(181, 54%, 24%) !important;
 }
 
+
+
+
+
+
 /* Вкладка при наведении */
-.stTabs [data-baseweb="tab"]:hover {
+button.stTabs [data-baseweb="tab"]:hover {
     color: rgba(255, 255, 255, 0.9) !important;
     background-color: rgba(255, 255, 255, 0.05) !important;
 }
 
 /* Активная вкладка */
-.stTabs [data-baseweb="tab"][aria-selected="true"] {
+button.stTabs [data-baseweb="tab"][aria-selected="true"] {
     color: #ff4b4b !important;
     /* Красный цвет как на скриншоте */
     font-weight: 600 !important;
