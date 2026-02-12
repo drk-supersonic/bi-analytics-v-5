@@ -563,3 +563,30 @@ div[data-testid="stDataFrame"] [role="columnheader"] {
 [data-testid="stSidebarContent"]::-webkit-scrollbar-thumb:hover {
     background: #5a7a9c !important;
 }
+
+
+
+/* ┌────────────────────────────────────────────────────────────────────────┐ */
+/* │ ⊗ Скрыть иконку якоря у всех заголовков ¤ Start                        │ */
+/* └────────────────────────────────────────────────────────────────────────┘ */
+
+.stApp header .st-emotion-cache-1v0mbdj + div,
+.stApp .st-emotion-cache-1v0mbdj + div,
+.stApp h1:hover .st-emotion-cache-10trblm,
+.stApp h2:hover .st-emotion-cache-10trblm,
+.stApp h3:hover .st-emotion-cache-10trblm,
+.stApp h4:hover .st-emotion-cache-10trblm,
+.stApp h5:hover .st-emotion-cache-10trblm,
+.stApp h6:hover .st-emotion-cache-10trblm {
+    visibility: hidden !important;
+}
+
+div[data-testid="stMarkdownContainer"] > h1::after,
+div[data-testid="stMarkdownContainer"] > h2::after,
+div[data-testid="stMarkdownContainer"] > h3::after {
+    content: none !important;
+}
+
+/* ┌────────────────────────────────────────────────────────────────────────┐ */
+/* │ ⊗ Скрыть иконку якоря у всех заголовков ¤ End                          │ */
+/* └────────────────────────────────────────────────────────────────────────┘ */
