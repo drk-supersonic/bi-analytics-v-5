@@ -747,7 +747,7 @@ button.stTabs [data-baseweb="tab"][aria-selected="true"] {
 
 /* Линия под всеми вкладками */
 .stTabs [data-baseweb="tab-list"] {
-    border-bottom: 10px solid rgba(255, 255, 255, 0.1) !important;
+    border-bottom: 0 solid rgba(255, 255, 255, 0.1) !important;
 }
 
 /* ┌────────────────────────────────────────────────────────────────────────┐ */
