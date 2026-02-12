@@ -654,9 +654,10 @@ div.tab-list{
 
 /* Список вкладок (сама навигационная панель) */
 .stTabs [data-baseweb="tab-list"] {
-    gap: 21rem;
+    gap: 14rem !important;
     /* Отступы между кнопками */
-    padding: 0.5rem 0;
+    /* padding: 0.5rem 0; */
+    padding: 0 !important;
 }
 
 /* Каждая отдельная вкладка/кнопка */
