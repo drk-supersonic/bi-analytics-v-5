@@ -1,9 +1,10 @@
 
-:root{
+/* ┌────────────────────────────────────────────────────────────────────────┐ */
+/* │ Цвет фона #12385C / hsl(209,67%,22%);                                  │ */
+/* └────────────────────────────────────────────────────────────────────────┘ */
 
-    /* ┌────────────────────────────────────────────────────────────────────────┐ */
-    /* │ Цвет фона #12385C / hsl(209,67%,22%);                                  │ */
-    /* └────────────────────────────────────────────────────────────────────────┘ */
+
+:root{
 
     --themeBackgroundColor: hsl(190,40%,98%);
     --themeBackgroundColor: hsl(210,67%,96%);
@@ -11,6 +12,8 @@
     --themeBackgroundColor: hsl(209,67%,22%);
 
     --themeFontColor: hsl(210,67%,96%);
+
+    --theColor: 210,67%,96%;
 }
 
 
@@ -708,7 +711,10 @@ h3.Muquhununee > span:not(:first-child){
 
 
 
+:root{
 
+    
+}
 
 
 
@@ -722,7 +728,8 @@ table{
     border-spacing: 0 !important;
     border-radius: 3px !important;
     overflow: hidden !important;
-    border: 1px solid hsla(210,67%,96%,.9) !important;
+    /* background-color: hsla(var(--theColor),.3) !important; */
+    border: 1px solid hsla(var(--theColor),.9) !important;
 }
 table thead th{
     /* background-color: #0d2b47 !important;  */
@@ -733,23 +740,23 @@ table thead th{
     line-height: 1.08 !important;
     letter-spacing: 0.004em !important;
     text-align: left !important;
-    color: hsla(210,67%,96%,1) !important;
+    color: hsla(var(--theColor),1) !important;
     padding: 16px 20px !important;
     /* border-bottom: 1px solid hsla(210,67%,96%,.4) !important; */
-    border-bottom: 1px solid hotpink !important;
+    border-bottom: 1px solid hsla(var(--theColor),.4) !important;
 }
 table thead th:first-of-type{
-    border-right: 1px solid hsla(210,67%,96%,.4) !important;
+    border-right: 1px solid hsla(var(--theColor),.4) !important;
 }
 table thead th:not(:first-of-type):not(:last-of-type){
-    border-right: 1px solid hsla(210,67%,96%,.4) !important;
+    border-right: 1px solid hsla(var(--theColor),.4) !important;
 }
 table thead th:last-of-type{
-    border-right: 0 solid hsla(210,67%,96%,.4) !important;
+    border-right: 0 solid hsla(var(--theColor),.4) !important;
 }
 table tbody td{
     background-color: var(--themeBackgroundColor) !important; /* #12385C */
-    color: #ffffff !important;
+    color: hsla(210,67%,96%,1) !important;
     font-family: "Inter", sans-serif !important;
     font-weight: 400 !important;
     font-size: 14px !important;
@@ -785,13 +792,13 @@ table tbody td:last-of-type{
 } */
 
 table tbody tr:first-of-type td{
-    border-bottom: 1px solid hotpink !important;
+    border-bottom: 1px solid hsla(210,67%,96%,.4) !important;
 }
 table tbody tr:not(:first-of-type):not(:last-of-type) td{
-    border-bottom: 1px solid hotpink !important;
+    border-bottom: 1px solid hsla(210,67%,96%,.4) !important;
 }
 table tbody tr:last-of-type td{
-    border-bottom: 0 solid hotpink !important;
+    border-bottom: 0 solid hsla(210,67%,96%,.4) !important;
 }
 
 
