@@ -1013,14 +1013,17 @@ if user is not None:
                 created_at = log.get("created_at", None)
                 formatted_time = format_russian_datetime(created_at) if created_at else "-"
 
-                # Пробуем разные возможные имена ключа для IP
-                ip = (
-                    log.get("ip_address") or
-                    log.get("ip") or
-                    log.get("client_ip") or
-                    log.get("ip_addr") or
-                    "-"
-                )
+                # # Пробуем разные возможные имена ключа для IP
+                # ip = (
+                #     log.get("ip_address") or
+                #     log.get("ip") or
+                #     log.get("client_ip") or
+                #     log.get("ip_addr") or
+                #     "-"
+                # )
+
+                ip_raw = log.get("ip_address")
+                ip = ip_raw if ip_raw else "ПУСТО"
 
                 logs_data.append({
                     "ID": log.get("id", "-"),
