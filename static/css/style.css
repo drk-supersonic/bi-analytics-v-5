@@ -653,7 +653,7 @@ div.tab-list{
 }
 
 /* Список вкладок (сама навигационная панель) */
-.stTabs [data-baseweb="tab-list"] {
+.stTabs444 [data-baseweb="tab-list444"] {
     gap: .2rem !important;
     /* Отступы между кнопками */
     /* padding: 0.5rem 0; */
