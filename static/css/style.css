@@ -636,7 +636,6 @@ h2.Duquhununee > span:not(:first-child){
 }
 .stTabs div[data-baseweb="tab-list"]{
     gap: .5rem !important;
-    margin: 0 0 100px 0 !important;
     padding: 0 !important;
 }
 .stTabs button[data-baseweb="tab"]{
@@ -674,7 +673,7 @@ h2.Duquhununee > span:not(:first-child){
     height: 2px !important;
 }
 .stTabs [data-baseweb="tab-panel"]{
-    margin-top: 13rem !important;
+    margin: 100px 0 0 0 !important;
 }
 
 /* ┌────────────────────────────────────────────────────────────────────────┐ */
