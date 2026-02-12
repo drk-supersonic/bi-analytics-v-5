@@ -628,7 +628,7 @@ h3.Muquhununee{
     line-height: 1.08 !important;
     letter-spacing: 0.004em !important;
     text-align: left !important;
-    color: red !important;
+    color: var(--themeFontColor) !important;
     margin: 0 0 40px 0 !important;
     padding: 0 !important;
 
