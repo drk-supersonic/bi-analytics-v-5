@@ -741,9 +741,9 @@ button.stTabs [data-baseweb="tab"][aria-selected="true"] {
 
 /* Подчеркивающая линия активной вкладки */
 .stTabs [data-baseweb="tab-border"] {
-    background-color: blue !important;
+    background-color: whitesmoke !important;
     /* Красная линия */
-    height: 4px !important;
+    height: 3px !important;
     /* Толщина линии */
 }
 
