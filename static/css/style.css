@@ -760,7 +760,7 @@ table thead th:not(:first-of-type):not(:last-of-type){
     border-right: 1px solid red !important;
 }
 table thead th:last-of-type{
-    border-right: 1px solid blue !important;
+    border-right: 0 solid blue !important;
 }
 
 /* Убираем правую границу у последней колонки в шапке */
@@ -769,7 +769,7 @@ table thead th:last-child {
 }
 
 /* Ячейки тела таблицы */
-table tbody td {
+table tbody td{
     background-color: var(--themeBackgroundColor) !important; /* #12385C */
     color: #ffffff !important;
     font-family: "Inter", sans-serif !important;
@@ -780,11 +780,21 @@ table tbody td {
     border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
     transition: background-color 0.2s ease !important;
 }
+table tbody td:first-of-type{
+    border-right: 1px solid hotpink !important;
+}
+table tbody td:not(:first-of-type):not(:last-of-type){
+    border-right: 1px solid gold !important;
+}
+table tbody td:last-of-type{
+    border-right: 0 solid blue !important;
+}
+
 
 /* Убираем правую границу у последней колонки */
-table tbody td:last-child {
+/* table tbody td:last-child {
     border-right: none !important;
-}
+} */
 
 /* Подсветка строки при наведении */
 table tbody tr:hover td {
@@ -819,9 +829,9 @@ table tbody tr:nth-child(even) td {
     background-color: rgba(255, 255, 255, 0.02) !important;
 }
 
-table tbody tr:nth-child(even):hover td {
+/* table tbody tr:nth-child(even):hover td {
     background-color: rgba(255, 255, 255, 0.07) !important;
-}
+} */
 
 /* Для узких экранов - адаптивность */
 @media (max-width: 768px) {
