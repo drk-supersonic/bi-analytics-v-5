@@ -1008,6 +1008,8 @@ if user is not None:
                 # Для отладки можно временно раскомментировать:
                 # st.write(log)   # посмотришь все ключи словаря
 
+                st.write("Ключи в логе:", list(logs[0].keys()))
+
                 created_at = log.get("created_at", None)
                 formatted_time = format_russian_datetime(created_at) if created_at else "-"
 
