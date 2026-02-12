@@ -643,7 +643,7 @@ h2.Duquhununee > span:not(:first-child){
     font-weight: 800 !important;
     font-style: normal !important;
     font-size: 1.24rem !important;
-    line-height: 10.08 !important;
+    line-height: 1.08 !important;
     letter-spacing: 0.004em !important;
     text-align: left !important;
     -webkit-tap-highlight-color: transparent !important;
@@ -651,7 +651,7 @@ h2.Duquhununee > span:not(:first-child){
     user-select: none !important;
     appearance: none !important;
     outline: none !important;
-    padding: 0 .5rem !important;
+    padding: .3rem .5rem !important;
     border: 0 !important;
     margin: 0 !important;
     cursor: pointer !important;
