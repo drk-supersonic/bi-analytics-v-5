@@ -583,11 +583,33 @@ h1.Buquhununee{
     letter-spacing: 0.004em !important;
     text-align: left !important;
     color: var(--themeFontColor) !important;
-    margin: 0 0 55px 0 !important;
+    margin: 0 0 54px 0 !important;
 
     /* box-shadow: inset 0 0 0 1px gold !important; */
 }
 h1.Buquhununee > span:not(:first-child){
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+
+    /* box-shadow: 0 0 0 4px hotpink !important; */
+}
+h2.Duquhununee{
+    width: 100% !important;
+    height: auto !important;
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-weight: 800 !important;
+    font-style: normal !important;
+    font-size: 1.94rem !important;
+    line-height: 1.08 !important;
+    letter-spacing: 0.004em !important;
+    text-align: left !important;
+    color: var(--themeFontColor) !important;
+    margin: 0 0 54px 0 !important;
+
+    /* box-shadow: inset 0 0 0 1px gold !important; */
+}
+h2.Duquhununee > span:not(:first-child){
     width: 0 !important;
     height: 0 !important;
     overflow: hidden !important;

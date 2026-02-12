@@ -580,7 +580,9 @@ if user is not None:
 
     with tab1:
 
-        st.subheader("Управление пользователями")
+        # st.subheader("Управление пользователями")
+
+        st.markdown("<h2 class='Duquhununee'>Управление пользователями</h2>", unsafe_allow_html=True)
 
         # Список пользователей
         st.markdown("### Список пользователей")
