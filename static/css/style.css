@@ -660,7 +660,7 @@ h2.Duquhununee > span:not(:first-child){
 }
 .stTabs button[data-baseweb="tab"] p{
     font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-    font-weight: 800 !important;
+    font-weight: 600 !important;
     font-style: normal !important;
     font-size: 1.24rem !important;
     line-height: 1.08 !important;
