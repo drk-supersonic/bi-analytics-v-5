@@ -625,3 +625,8 @@ h2.Duquhununee > span:not(:first-child){
 .stTabs{
     box-shadow: 0 0 0 4px hotpink !important;
 }
+
+.stTabs > div > div{
+    background-color: gold !important;
+    margin: 0 0 100px 0 !important;
+}
