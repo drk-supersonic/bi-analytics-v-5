@@ -677,7 +677,7 @@ button.stTabs11 [data-baseweb="tab11"] {
 }
 .stTabs button[data-baseweb="tab"]{
     font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-    font-weight: 500 !important;
+    font-weight: 700 !important;
     font-style: normal !important;
     font-size: 1.14rem !important;
     line-height: 1.08 !important;
